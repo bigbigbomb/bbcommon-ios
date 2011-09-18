@@ -15,6 +15,28 @@
 		D3E3259E1426546500924841 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E3259C1426546500924841 /* InfoPlist.strings */; };
 		D3E325A11426546500924841 /* BBCommonTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D3E325A01426546500924841 /* BBCommonTests.h */; };
 		D3E325A31426546500924841 /* BBCommonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325A21426546500924841 /* BBCommonTests.m */; };
+		D3E325C71426569D00924841 /* BBButtonStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325B31426569D00924841 /* BBButtonStyle.h */; };
+		D3E325C81426569D00924841 /* BBButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325B41426569D00924841 /* BBButtonStyle.m */; };
+		D3E325C91426569D00924841 /* BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325B51426569D00924841 /* BBCommon.h */; };
+		D3E325CA1426569D00924841 /* BBLabelStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325B61426569D00924841 /* BBLabelStyle.h */; };
+		D3E325CB1426569D00924841 /* BBLabelStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325B71426569D00924841 /* BBLabelStyle.m */; };
+		D3E325CC1426569D00924841 /* BBMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325B81426569D00924841 /* BBMacros.h */; };
+		D3E325CD1426569D00924841 /* BBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325B91426569D00924841 /* BBQuery.h */; };
+		D3E325CE1426569D00924841 /* BBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325BA1426569D00924841 /* BBQuery.m */; };
+		D3E325CF1426569D00924841 /* BBStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325BB1426569D00924841 /* BBStackView.h */; };
+		D3E325D01426569D00924841 /* BBStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325BC1426569D00924841 /* BBStackView.m */; };
+		D3E325D11426569D00924841 /* BBWrapView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325BD1426569D00924841 /* BBWrapView.h */; };
+		D3E325D21426569D00924841 /* BBWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325BE1426569D00924841 /* BBWrapView.m */; };
+		D3E325D31426569D00924841 /* NSManagedObject+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325BF1426569D00924841 /* NSManagedObject+BBCommon.h */; };
+		D3E325D41426569D00924841 /* NSManagedObject+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325C01426569D00924841 /* NSManagedObject+BBCommon.m */; };
+		D3E325D51426569D00924841 /* UILabel+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325C11426569D00924841 /* UILabel+BBCommon.h */; };
+		D3E325D61426569D00924841 /* UILabel+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325C21426569D00924841 /* UILabel+BBCommon.m */; };
+		D3E325D71426569D00924841 /* UIView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325C31426569D00924841 /* UIView+BBCommon.h */; };
+		D3E325D81426569D00924841 /* UIView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325C41426569D00924841 /* UIView+BBCommon.m */; };
+		D3E325D91426569D00924841 /* UIViewController+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325C51426569D00924841 /* UIViewController+BBCommon.h */; };
+		D3E325DA1426569D00924841 /* UIViewController+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325C61426569D00924841 /* UIViewController+BBCommon.m */; };
+		D3E325E11426574900924841 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325DF1426574900924841 /* CoreData.framework */; };
+		D3E325E21426574900924841 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325E01426574900924841 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +61,28 @@
 		D3E3259F1426546500924841 /* BBCommonTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommonTests-Prefix.pch"; sourceTree = "<group>"; };
 		D3E325A01426546500924841 /* BBCommonTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBCommonTests.h; sourceTree = "<group>"; };
 		D3E325A21426546500924841 /* BBCommonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBCommonTests.m; sourceTree = "<group>"; };
+		D3E325B31426569D00924841 /* BBButtonStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBButtonStyle.h; sourceTree = "<group>"; };
+		D3E325B41426569D00924841 /* BBButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBButtonStyle.m; sourceTree = "<group>"; };
+		D3E325B51426569D00924841 /* BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCommon.h; sourceTree = "<group>"; };
+		D3E325B61426569D00924841 /* BBLabelStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLabelStyle.h; sourceTree = "<group>"; };
+		D3E325B71426569D00924841 /* BBLabelStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLabelStyle.m; sourceTree = "<group>"; };
+		D3E325B81426569D00924841 /* BBMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMacros.h; sourceTree = "<group>"; };
+		D3E325B91426569D00924841 /* BBQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBQuery.h; sourceTree = "<group>"; };
+		D3E325BA1426569D00924841 /* BBQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBQuery.m; sourceTree = "<group>"; };
+		D3E325BB1426569D00924841 /* BBStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBStackView.h; sourceTree = "<group>"; };
+		D3E325BC1426569D00924841 /* BBStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBStackView.m; sourceTree = "<group>"; };
+		D3E325BD1426569D00924841 /* BBWrapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWrapView.h; sourceTree = "<group>"; };
+		D3E325BE1426569D00924841 /* BBWrapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWrapView.m; sourceTree = "<group>"; };
+		D3E325BF1426569D00924841 /* NSManagedObject+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325C01426569D00924841 /* NSManagedObject+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325C11426569D00924841 /* UILabel+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325C21426569D00924841 /* UILabel+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325C31426569D00924841 /* UIView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325C41426569D00924841 /* UIView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325C51426569D00924841 /* UIViewController+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325C61426569D00924841 /* UIViewController+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325DF1426574900924841 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D3E325E01426574900924841 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E325E11426574900924841 /* CoreData.framework in Frameworks */,
+				D3E325E21426574900924841 /* QuartzCore.framework in Frameworks */,
 				D3E325871426546400924841 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +132,8 @@
 		D3E325851426546400924841 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325DF1426574900924841 /* CoreData.framework */,
+				D3E325E01426574900924841 /* QuartzCore.framework */,
 				D3E325861426546400924841 /* Foundation.framework */,
 				D3E325911426546500924841 /* UIKit.framework */,
 				D3E325941426546500924841 /* CoreGraphics.framework */,
@@ -96,17 +144,29 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
-				D3E325891426546400924841 /* Supporting Files */,
-			);
-			path = BBCommon;
-			sourceTree = "<group>";
-		};
-		D3E325891426546400924841 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				D3E325B31426569D00924841 /* BBButtonStyle.h */,
+				D3E325B41426569D00924841 /* BBButtonStyle.m */,
+				D3E325B51426569D00924841 /* BBCommon.h */,
+				D3E325B61426569D00924841 /* BBLabelStyle.h */,
+				D3E325B71426569D00924841 /* BBLabelStyle.m */,
+				D3E325B81426569D00924841 /* BBMacros.h */,
+				D3E325B91426569D00924841 /* BBQuery.h */,
+				D3E325BA1426569D00924841 /* BBQuery.m */,
+				D3E325BB1426569D00924841 /* BBStackView.h */,
+				D3E325BC1426569D00924841 /* BBStackView.m */,
+				D3E325BD1426569D00924841 /* BBWrapView.h */,
+				D3E325BE1426569D00924841 /* BBWrapView.m */,
+				D3E325BF1426569D00924841 /* NSManagedObject+BBCommon.h */,
+				D3E325C01426569D00924841 /* NSManagedObject+BBCommon.m */,
+				D3E325C11426569D00924841 /* UILabel+BBCommon.h */,
+				D3E325C21426569D00924841 /* UILabel+BBCommon.m */,
+				D3E325C31426569D00924841 /* UIView+BBCommon.h */,
+				D3E325C41426569D00924841 /* UIView+BBCommon.m */,
+				D3E325C51426569D00924841 /* UIViewController+BBCommon.h */,
+				D3E325C61426569D00924841 /* UIViewController+BBCommon.m */,
 				D3E3258A1426546400924841 /* BBCommon-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = BBCommon;
 			sourceTree = "<group>";
 		};
 		D3E325991426546500924841 /* BBCommonTests */ = {
@@ -136,6 +196,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E325C71426569D00924841 /* BBButtonStyle.h in Headers */,
+				D3E325C91426569D00924841 /* BBCommon.h in Headers */,
+				D3E325CA1426569D00924841 /* BBLabelStyle.h in Headers */,
+				D3E325CC1426569D00924841 /* BBMacros.h in Headers */,
+				D3E325CD1426569D00924841 /* BBQuery.h in Headers */,
+				D3E325CF1426569D00924841 /* BBStackView.h in Headers */,
+				D3E325D11426569D00924841 /* BBWrapView.h in Headers */,
+				D3E325D31426569D00924841 /* NSManagedObject+BBCommon.h in Headers */,
+				D3E325D51426569D00924841 /* UILabel+BBCommon.h in Headers */,
+				D3E325D71426569D00924841 /* UIView+BBCommon.h in Headers */,
+				D3E325D91426569D00924841 /* UIViewController+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E325C81426569D00924841 /* BBButtonStyle.m in Sources */,
+				D3E325CB1426569D00924841 /* BBLabelStyle.m in Sources */,
+				D3E325CE1426569D00924841 /* BBQuery.m in Sources */,
+				D3E325D01426569D00924841 /* BBStackView.m in Sources */,
+				D3E325D21426569D00924841 /* BBWrapView.m in Sources */,
+				D3E325D41426569D00924841 /* NSManagedObject+BBCommon.m in Sources */,
+				D3E325D61426569D00924841 /* UILabel+BBCommon.m in Sources */,
+				D3E325D81426569D00924841 /* UIView+BBCommon.m in Sources */,
+				D3E325DA1426569D00924841 /* UIViewController+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +462,7 @@
 				D3E325A81426546500924841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E325A91426546500924841 /* Build configuration list for PBXNativeTarget "BBCommonTests" */ = {
 			isa = XCConfigurationList;
@@ -390,6 +471,7 @@
 				D3E325AB1426546500924841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
