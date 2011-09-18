@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3E325871426546400924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
+		D3E325921426546500924841 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325911426546500924841 /* UIKit.framework */; };
+		D3E325931426546500924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
+		D3E325951426546500924841 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325941426546500924841 /* CoreGraphics.framework */; };
+		D3E325981426546500924841 /* libBBCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325831426546400924841 /* libBBCommon.a */; };
+		D3E3259E1426546500924841 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E3259C1426546500924841 /* InfoPlist.strings */; };
+		D3E325A11426546500924841 /* BBCommonTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D3E325A01426546500924841 /* BBCommonTests.h */; };
+		D3E325A31426546500924841 /* BBCommonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325A21426546500924841 /* BBCommonTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3E325961426546500924841 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E3257A1426546400924841 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3E325821426546400924841;
+			remoteInfo = BBCommon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D3E325831426546400924841 /* libBBCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBBCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E325861426546400924841 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D3E3258A1426546400924841 /* BBCommon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommon-Prefix.pch"; sourceTree = "<group>"; };
+		D3E325901426546500924841 /* BBCommonTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBCommonTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E325911426546500924841 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D3E325941426546500924841 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D3E3259B1426546500924841 /* BBCommonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BBCommonTests-Info.plist"; sourceTree = "<group>"; };
+		D3E3259D1426546500924841 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D3E3259F1426546500924841 /* BBCommonTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommonTests-Prefix.pch"; sourceTree = "<group>"; };
+		D3E325A01426546500924841 /* BBCommonTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBCommonTests.h; sourceTree = "<group>"; };
+		D3E325A21426546500924841 /* BBCommonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBCommonTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3E325801426546400924841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E325871426546400924841 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E3258C1426546500924841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E325921426546500924841 /* UIKit.framework in Frameworks */,
+				D3E325931426546500924841 /* Foundation.framework in Frameworks */,
+				D3E325951426546500924841 /* CoreGraphics.framework in Frameworks */,
+				D3E325981426546500924841 /* libBBCommon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3E325781426546400924841 = {
+			isa = PBXGroup;
+			children = (
+				D3E325881426546400924841 /* BBCommon */,
+				D3E325991426546500924841 /* BBCommonTests */,
+				D3E325851426546400924841 /* Frameworks */,
+				D3E325841426546400924841 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3E325841426546400924841 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3E325831426546400924841 /* libBBCommon.a */,
+				D3E325901426546500924841 /* BBCommonTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3E325851426546400924841 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3E325861426546400924841 /* Foundation.framework */,
+				D3E325911426546500924841 /* UIKit.framework */,
+				D3E325941426546500924841 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3E325881426546400924841 /* BBCommon */ = {
+			isa = PBXGroup;
+			children = (
+				D3E325891426546400924841 /* Supporting Files */,
+			);
+			path = BBCommon;
+			sourceTree = "<group>";
+		};
+		D3E325891426546400924841 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E3258A1426546400924841 /* BBCommon-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3E325991426546500924841 /* BBCommonTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3E325A01426546500924841 /* BBCommonTests.h */,
+				D3E325A21426546500924841 /* BBCommonTests.m */,
+				D3E3259A1426546500924841 /* Supporting Files */,
+			);
+			path = BBCommonTests;
+			sourceTree = "<group>";
+		};
+		D3E3259A1426546500924841 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E3259B1426546500924841 /* BBCommonTests-Info.plist */,
+				D3E3259C1426546500924841 /* InfoPlist.strings */,
+				D3E3259F1426546500924841 /* BBCommonTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D3E325811426546400924841 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D3E325821426546400924841 /* BBCommon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E325A61426546500924841 /* Build configuration list for PBXNativeTarget "BBCommon" */;
+			buildPhases = (
+				D3E3257F1426546400924841 /* Sources */,
+				D3E325801426546400924841 /* Frameworks */,
+				D3E325811426546400924841 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BBCommon;
+			productName = BBCommon;
+			productReference = D3E325831426546400924841 /* libBBCommon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D3E3258F1426546500924841 /* BBCommonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E325A91426546500924841 /* Build configuration list for PBXNativeTarget "BBCommonTests" */;
+			buildPhases = (
+				D3E3258B1426546500924841 /* Sources */,
+				D3E3258C1426546500924841 /* Frameworks */,
+				D3E3258D1426546500924841 /* Resources */,
+				D3E3258E1426546500924841 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3E325971426546500924841 /* PBXTargetDependency */,
+			);
+			name = BBCommonTests;
+			productName = BBCommonTests;
+			productReference = D3E325901426546500924841 /* BBCommonTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3E3257A1426546400924841 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "BigBig Bomb, LLC";
+			};
+			buildConfigurationList = D3E3257D1426546400924841 /* Build configuration list for PBXProject "BBCommon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3E325781426546400924841;
+			productRefGroup = D3E325841426546400924841 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3E325821426546400924841 /* BBCommon */,
+				D3E3258F1426546500924841 /* BBCommonTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3E3258D1426546500924841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E3259E1426546500924841 /* InfoPlist.strings in Resources */,
+				D3E325A11426546500924841 /* BBCommonTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D3E3258E1426546500924841 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3E3257F1426546400924841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E3258B1426546500924841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E325A31426546500924841 /* BBCommonTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3E325971426546500924841 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3E325821426546400924841 /* BBCommon */;
+			targetProxy = D3E325961426546500924841 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3E3259C1426546500924841 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E3259D1426546500924841 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3E325A41426546500924841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D3E325A51426546500924841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D3E325A71426546500924841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BBCommon.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D3E325A81426546500924841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BBCommon.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D3E325AA1426546500924841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommonTests/BBCommonTests-Prefix.pch";
+				INFOPLIST_FILE = "BBCommonTests/BBCommonTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D3E325AB1426546500924841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommonTests/BBCommonTests-Prefix.pch";
+				INFOPLIST_FILE = "BBCommonTests/BBCommonTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3E3257D1426546400924841 /* Build configuration list for PBXProject "BBCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E325A41426546500924841 /* Debug */,
+				D3E325A51426546500924841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E325A61426546500924841 /* Build configuration list for PBXNativeTarget "BBCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E325A71426546500924841 /* Debug */,
+				D3E325A81426546500924841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D3E325A91426546500924841 /* Build configuration list for PBXNativeTarget "BBCommonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E325AA1426546500924841 /* Debug */,
+				D3E325AB1426546500924841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3E3257A1426546400924841 /* Project object */;
+}
