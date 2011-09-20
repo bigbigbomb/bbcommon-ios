@@ -350,6 +350,144 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D3C0A183142918EB00B3B6EA /* AdHoc-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = "AdHoc-Debug";
+		};
+		D3C0A184142918EB00B3B6EA /* AdHoc-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BBCommon.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "AdHoc-Debug";
+		};
+		D3C0A185142918EB00B3B6EA /* AdHoc-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommonTests/BBCommonTests-Prefix.pch";
+				INFOPLIST_FILE = "BBCommonTests/BBCommonTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "AdHoc-Debug";
+		};
+		D3C0A187142918F200B3B6EA /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = AdHoc;
+		};
+		D3C0A188142918F200B3B6EA /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BBCommon.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = AdHoc;
+		};
+		D3C0A189142918F200B3B6EA /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommonTests/BBCommonTests-Prefix.pch";
+				INFOPLIST_FILE = "BBCommonTests/BBCommonTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = AdHoc;
+		};
+		D3C0A18A142918F700B3B6EA /* AppStore_Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = AppStore_Distribution;
+		};
+		D3C0A18B142918F700B3B6EA /* AppStore_Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BBCommon.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = AppStore_Distribution;
+		};
+		D3C0A18C142918F700B3B6EA /* AppStore_Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BBCommonTests/BBCommonTests-Prefix.pch";
+				INFOPLIST_FILE = "BBCommonTests/BBCommonTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = AppStore_Distribution;
+		};
 		D3E325A41426546500924841 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -450,7 +588,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3E325A41426546500924841 /* Debug */,
+				D3C0A183142918EB00B3B6EA /* AdHoc-Debug */,
 				D3E325A51426546500924841 /* Release */,
+				D3C0A18A142918F700B3B6EA /* AppStore_Distribution */,
+				D3C0A187142918F200B3B6EA /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -459,7 +600,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3E325A71426546500924841 /* Debug */,
+				D3C0A184142918EB00B3B6EA /* AdHoc-Debug */,
 				D3E325A81426546500924841 /* Release */,
+				D3C0A18B142918F700B3B6EA /* AppStore_Distribution */,
+				D3C0A188142918F200B3B6EA /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -468,7 +612,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3E325AA1426546500924841 /* Debug */,
+				D3C0A185142918EB00B3B6EA /* AdHoc-Debug */,
 				D3E325AB1426546500924841 /* Release */,
+				D3C0A18C142918F700B3B6EA /* AppStore_Distribution */,
+				D3C0A189142918F200B3B6EA /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
