@@ -6,6 +6,10 @@
 #define DAssert(...)
 #endif
 
+#define KVO_SET(_key_, _value_) [self willChangeValueForKey:@#_key_]; \
+self._key_ = (_value_); \
+[self didChangeValueForKey:@#_key_];
+
 id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
 void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic,
     BOOL shouldCopy);
