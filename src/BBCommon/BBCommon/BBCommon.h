@@ -8,3 +8,4 @@
 #import "UIViewController+BBCommon.h"
 #import "BBQuery.h"
 #import "NSManagedObject+BBCommon.h"
+#import "NSInvocation+BBCommon.h"
