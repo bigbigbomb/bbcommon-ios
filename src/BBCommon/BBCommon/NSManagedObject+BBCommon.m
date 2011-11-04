@@ -4,7 +4,6 @@
 //
 #import "NSManagedObject+BBCommon.h"
 #import "BBQuery.h"
-#import "BBQuery.h"
 
 
 @implementation NSManagedObject(BBCommon)
