@@ -24,6 +24,8 @@
 - (BBQuery *)orderBy:(NSSortDescriptor *)sortDescriptor, ... NS_REQUIRES_NIL_TERMINATION;
 - (BBQuery *)fetchProperties:(NSString *)property, ... NS_REQUIRES_NIL_TERMINATION;
 - (BBQuery *)prefetchRelationships:(NSString *)relationshipKeyPath, ... NS_REQUIRES_NIL_TERMINATION;
+
+- (NSUInteger)count:(NSError **)error;
 - (NSArray *)findAll:(NSError **)error;
 - (id)findOne:(NSError **)error;
 
