@@ -41,6 +41,8 @@
 		D3E325E21426574900924845 /* NSInvocation+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924844 /* NSInvocation+BBCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3E325E21426574900924847 /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */; };
 		D3E325E21426574900924849 /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3E325E2142657490092484B /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092484A /* NSDate+Helpers.m */; };
+		D3E325E2142657490092484D /* NSDate+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092484C /* NSDate+Helpers.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		D3E325E21426574900924844 /* NSInvocation+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TemporaryFiles.m"; sourceTree = "<group>"; };
 		D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TemporaryFiles.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092484A /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092484C /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E2142657490092484C /* NSDate+Helpers.h */,
+				D3E325E2142657490092484A /* NSDate+Helpers.m */,
 				D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */,
 				D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */,
 				D3E325E21426574900924844 /* NSInvocation+BBCommon.h */,
@@ -221,6 +227,7 @@
 				D3E325D51426569D00924841 /* UILabel+BBCommon.h in Headers */,
 				D3E325D71426569D00924841 /* UIView+BBCommon.h in Headers */,
 				D3E325D91426569D00924841 /* UIViewController+BBCommon.h in Headers */,
+				D3E325E2142657490092484D /* NSDate+Helpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +341,7 @@
 				D3E325DA1426569D00924841 /* UIViewController+BBCommon.m in Sources */,
 				D3E325E21426574900924843 /* NSInvocation+BBCommon.m in Sources */,
 				D3E325E21426574900924847 /* NSFileManager+TemporaryFiles.m in Sources */,
+				D3E325E2142657490092484B /* NSDate+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
