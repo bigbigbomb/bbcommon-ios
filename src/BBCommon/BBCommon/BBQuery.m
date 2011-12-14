@@ -90,8 +90,13 @@
     return self;
 }
 
+- (NSUInteger)count:(NSError **)error {
+    [self.fetchRequest setFetchLimit:0];
+    return [self.context countForFetchRequest:self.fetchRequest error:error];
+}
 
 - (NSArray *)findAll:(NSError **)error {
+    [self.fetchRequest setFetchLimit:0];
     return [self.context executeFetchRequest:self.fetchRequest error:error];
 }
 
