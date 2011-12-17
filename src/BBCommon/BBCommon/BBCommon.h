@@ -9,3 +9,4 @@
 #import "BBQuery.h"
 #import "NSManagedObject+BBCommon.h"
 #import "NSInvocation+BBCommon.h"
+#import "UIColor+BBCommon.h"
