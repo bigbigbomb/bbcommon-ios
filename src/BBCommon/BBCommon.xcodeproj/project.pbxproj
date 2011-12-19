@@ -41,6 +41,12 @@
 		D3E325E21426574900924845 /* NSInvocation+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924844 /* NSInvocation+BBCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3E325E21426574900924847 /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */; };
 		D3E325E21426574900924849 /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3E325E2142657490092484F /* NSString+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092484E /* NSString+BBCommon.m */; };
+		D3E325E21426574900924851 /* NSString+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924850 /* NSString+BBCommon.h */; };
+		D3E325E21426574900924853 /* UIColor+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924852 /* UIColor+BBCommon.m */; };
+		D3E325E21426574900924855 /* UIColor+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924854 /* UIColor+BBCommon.h */; };
+		D3E325E21426574900924857 /* NSDate+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924856 /* NSDate+BBCommon.h */; };
+		D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924858 /* NSDate+BBCommon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,12 @@
 		D3E325E21426574900924844 /* NSInvocation+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TemporaryFiles.m"; sourceTree = "<group>"; };
 		D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TemporaryFiles.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092484E /* NSString+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924850 /* NSString+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924852 /* UIColor+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924854 /* UIColor+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924856 /* NSDate+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924858 /* NSDate+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BBCommon.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +164,12 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924858 /* NSDate+BBCommon.m */,
+				D3E325E21426574900924856 /* NSDate+BBCommon.h */,
+				D3E325E21426574900924854 /* UIColor+BBCommon.h */,
+				D3E325E21426574900924852 /* UIColor+BBCommon.m */,
+				D3E325E21426574900924850 /* NSString+BBCommon.h */,
+				D3E325E2142657490092484E /* NSString+BBCommon.m */,
 				D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */,
 				D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */,
 				D3E325E21426574900924844 /* NSInvocation+BBCommon.h */,
@@ -221,6 +239,9 @@
 				D3E325D51426569D00924841 /* UILabel+BBCommon.h in Headers */,
 				D3E325D71426569D00924841 /* UIView+BBCommon.h in Headers */,
 				D3E325D91426569D00924841 /* UIViewController+BBCommon.h in Headers */,
+				D3E325E21426574900924851 /* NSString+BBCommon.h in Headers */,
+				D3E325E21426574900924855 /* UIColor+BBCommon.h in Headers */,
+				D3E325E21426574900924857 /* NSDate+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +355,9 @@
 				D3E325DA1426569D00924841 /* UIViewController+BBCommon.m in Sources */,
 				D3E325E21426574900924843 /* NSInvocation+BBCommon.m in Sources */,
 				D3E325E21426574900924847 /* NSFileManager+TemporaryFiles.m in Sources */,
+				D3E325E2142657490092484F /* NSString+BBCommon.m in Sources */,
+				D3E325E21426574900924853 /* UIColor+BBCommon.m in Sources */,
+				D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
