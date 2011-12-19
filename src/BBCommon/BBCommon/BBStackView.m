@@ -84,8 +84,11 @@
 
 - (void)dealloc {
     for (UIView *view in self.subviews)
-        [self removeSubview:view];
+    {
+        [view removeObserver:self forKeyPath:@"frame"];
+    }
 
+    self.isRemovingSubview = YES;
     [super dealloc];
 }
 
