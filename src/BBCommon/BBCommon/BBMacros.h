@@ -26,3 +26,11 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
     objc_copyStruct(&dest, &source, sizeof(__typeof__(source)), YES, NO)
 #define NonatomicRetainedSetToFrom(a, b) do{if(a!=b){[a release];a=[b retain];}}while(0)
 #define NonatomicCopySetToFrom(a, b) do{if(a!=b){[a release];a=[b copy];}}while(0)
+
+#ifdef CONFIGURATION_Debug
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define DLog(...)
+#endif
+
+#define CGRectDescription(CGRECT) [NSString stringWithFormat:@"x:%f y:%f w:%f h:%f", CGRECT.origin.x, CGRECT.origin.y, CGRECT.size.width, CGRECT.size.height]
