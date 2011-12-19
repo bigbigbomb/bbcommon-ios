@@ -82,13 +82,10 @@
     [self updateLayout];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     for (UIView *view in self.subviews)
-    {
-        [view removeObserver:self forKeyPath:@"frame"];
-    }
-    self.isRemovingSubview = YES;
+        [self removeSubview:view];
+
     [super dealloc];
 }
 
@@ -115,6 +112,7 @@
 
 - (void)removeSubview:(UIView *)subview {
     self.isRemovingSubview = YES;
+    [subview removeObserver:self forKeyPath:@"frame"];
     [subview removeFromSuperview];
     self.isRemovingSubview = NO;
     [self updateLayout];
