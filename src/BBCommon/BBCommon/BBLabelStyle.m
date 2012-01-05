@@ -12,12 +12,12 @@
 @synthesize lineBreakMode = _lineBreakMode;
 @synthesize shadowColor = _shadowColor;
 @synthesize shadowOffset = _shadowOffset;
+@synthesize highlightedColor = _highlightedColor;
+
 
 - (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment {
     UILabel *label = [UILabel labelWithText:text font:self.font frame:frame lineBreakMode:self.lineBreakMode alignment:alignment];
-    label.textColor = self.color;
-    label.shadowColor = self.shadowColor;
-    label.shadowOffset = self.shadowOffset;
+    [self applyStyle:label];
     return label;
 }
 
@@ -28,6 +28,7 @@
 - (void)applyStyle:(UILabel *)label {
     label.font = self.font;
     label.textColor = self.color;
+    label.highlightedTextColor = self.highlightedColor;
     label.lineBreakMode = self.lineBreakMode;
     label.shadowColor = self.shadowColor;
     label.shadowOffset = self.shadowOffset;
@@ -37,6 +38,7 @@
     [_font release];
     [_color release];
     [_shadowColor release];
+    [_highlightedColor release];
     [super dealloc];
 }
 

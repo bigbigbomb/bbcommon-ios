@@ -4,7 +4,6 @@
 //
 #import <UIKit/UIKit.h>
 
-#define BBRnd ((arc4random()%256) / 255.0f)
 //#define BB_DEBUG_LABELS
 
 /**

@@ -103,5 +103,10 @@ typedef enum {
  */
 - (UIImage *)getScreenshot;
 
+/**
+ * Changes the background color of all subviews to add in sizing and positioning
+ */
+- (void)debugSizes;
+
 
 @end

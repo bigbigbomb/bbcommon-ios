@@ -47,6 +47,8 @@
 		D3E325E21426574900924855 /* UIColor+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924854 /* UIColor+BBCommon.h */; };
 		D3E325E21426574900924857 /* NSDate+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924856 /* NSDate+BBCommon.h */; };
 		D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924858 /* NSDate+BBCommon.m */; };
+		D3E325E2142657490092485B /* NSObject+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092485A /* NSObject+BBCommon.m */; };
+		D3E325E2142657490092485D /* NSObject+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092485C /* NSObject+BBCommon.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		D3E325E21426574900924854 /* UIColor+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924856 /* NSDate+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924858 /* NSDate+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092485A /* NSObject+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092485C /* NSObject+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BBCommon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E2142657490092485C /* NSObject+BBCommon.h */,
+				D3E325E2142657490092485A /* NSObject+BBCommon.m */,
 				D3E325E21426574900924858 /* NSDate+BBCommon.m */,
 				D3E325E21426574900924856 /* NSDate+BBCommon.h */,
 				D3E325E21426574900924854 /* UIColor+BBCommon.h */,
@@ -242,6 +248,7 @@
 				D3E325E21426574900924851 /* NSString+BBCommon.h in Headers */,
 				D3E325E21426574900924855 /* UIColor+BBCommon.h in Headers */,
 				D3E325E21426574900924857 /* NSDate+BBCommon.h in Headers */,
+				D3E325E2142657490092485D /* NSObject+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +365,7 @@
 				D3E325E2142657490092484F /* NSString+BBCommon.m in Sources */,
 				D3E325E21426574900924853 /* UIColor+BBCommon.m in Sources */,
 				D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */,
+				D3E325E2142657490092485B /* NSObject+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +404,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -413,7 +421,7 @@
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,7 +455,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -464,7 +472,7 @@
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,7 +506,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -515,7 +523,7 @@
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -552,7 +560,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -567,7 +575,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -584,7 +592,7 @@
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -599,7 +607,7 @@
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

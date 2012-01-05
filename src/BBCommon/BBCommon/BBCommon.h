@@ -10,3 +10,4 @@
 #import "NSManagedObject+BBCommon.h"
 #import "NSInvocation+BBCommon.h"
 #import "UIColor+BBCommon.h"
+#import "NSObject+BBCommon.h"

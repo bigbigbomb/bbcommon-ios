@@ -2,6 +2,7 @@
 //  Created by Lee Fastenau on 8/2/11.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 #import "UIView+BBCommon.h"
 
 @implementation UIView(BBCommon)
@@ -58,6 +59,12 @@
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return viewImage;
+}
+
+- (void)debugSizes {
+    self.backgroundColor = [UIColor colorWithRed:BBRnd green:BBRnd blue:BBRnd alpha:0.2];
+    for (UIView *subview in self.subviews)
+        [subview debugSizes];
 }
 
 @end

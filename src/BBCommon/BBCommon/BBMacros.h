@@ -34,3 +34,5 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #endif
 
 #define CGRectDescription(CGRECT) [NSString stringWithFormat:@"x:%f y:%f w:%f h:%f", CGRECT.origin.x, CGRECT.origin.y, CGRECT.size.width, CGRECT.size.height]
+
+#define BBRnd ((arc4random()%256) / 255.0f)
