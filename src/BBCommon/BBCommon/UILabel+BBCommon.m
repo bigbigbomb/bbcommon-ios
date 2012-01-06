@@ -48,4 +48,20 @@
 + (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font {
     return [self labelWithText:text font:font frame:BBEmptyRect(0, 0) lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
+
+- (CGFloat)getFrameHeightWithMaxWidth:(CGFloat)maxWidth {
+    return [UILabel getFrameHeightFromStringWithMaxHeight:self.text withFont:self.font withMaxWidth:maxWidth withMaxHeight:NSIntegerMax];
+}
+
++ (CGFloat)getFrameHeightFromStringWithMaxHeight:(NSString *)string
+						  withFont:(UIFont *)font
+					  withMaxWidth:(CGFloat)maxWidth
+					 withMaxHeight:(CGFloat)maxHeight {
+	CGSize stringSize = [string sizeWithFont:font
+						   constrainedToSize:CGSizeMake(maxWidth, maxHeight)
+							   lineBreakMode:UILineBreakModeWordWrap];
+
+	return stringSize.height;
+}
+
 @end

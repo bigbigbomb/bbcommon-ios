@@ -19,4 +19,8 @@
 + (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode;
 + (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font;
 
+- (CGFloat)getFrameHeightWithMaxWidth:(CGFloat)maxWidth;
++ (CGFloat)getFrameHeightFromStringWithMaxHeight:(NSString *)string withFont:(UIFont *)font withMaxWidth:(CGFloat)maxWidth withMaxHeight:(CGFloat)maxHeight;
+
+
 @end
