@@ -44,4 +44,5 @@
 - (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame;
 - (void)applyStyle:(UILabel *)label;
 
+- (void)applyStyleToTextField:(UITextField *)field;
 @end

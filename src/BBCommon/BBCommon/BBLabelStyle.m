@@ -34,6 +34,11 @@
     label.shadowOffset = self.shadowOffset;
 }
 
+- (void)applyStyleToTextField:(UITextField *)field {
+    field.font = self.font;
+    field.textColor = self.color;
+}
+
 - (void)dealloc {
     [_font release];
     [_color release];
