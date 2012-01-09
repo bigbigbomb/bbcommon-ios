@@ -49,6 +49,10 @@
 		D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924858 /* NSDate+BBCommon.m */; };
 		D3E325E2142657490092485B /* NSObject+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092485A /* NSObject+BBCommon.m */; };
 		D3E325E2142657490092485D /* NSObject+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092485C /* NSObject+BBCommon.h */; };
+		D3E325E2142657490092485F /* BBTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092485E /* BBTextField.m */; };
+		D3E325E21426574900924861 /* BBTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924860 /* BBTextField.h */; };
+		D3E325E21426574900924863 /* BBTextFieldStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924862 /* BBTextFieldStyle.m */; };
+		D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924864 /* BBTextFieldStyle.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +111,10 @@
 		D3E325E21426574900924858 /* NSDate+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E2142657490092485A /* NSObject+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E2142657490092485C /* NSObject+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092485E /* BBTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTextField.m; sourceTree = "<group>"; };
+		D3E325E21426574900924860 /* BBTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextField.h; sourceTree = "<group>"; };
+		D3E325E21426574900924862 /* BBTextFieldStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTextFieldStyle.m; sourceTree = "<group>"; };
+		D3E325E21426574900924864 /* BBTextFieldStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextFieldStyle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +176,10 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924864 /* BBTextFieldStyle.h */,
+				D3E325E21426574900924862 /* BBTextFieldStyle.m */,
+				D3E325E21426574900924860 /* BBTextField.h */,
+				D3E325E2142657490092485E /* BBTextField.m */,
 				D3E325E2142657490092485C /* NSObject+BBCommon.h */,
 				D3E325E2142657490092485A /* NSObject+BBCommon.m */,
 				D3E325E21426574900924858 /* NSDate+BBCommon.m */,
@@ -249,6 +261,8 @@
 				D3E325E21426574900924855 /* UIColor+BBCommon.h in Headers */,
 				D3E325E21426574900924857 /* NSDate+BBCommon.h in Headers */,
 				D3E325E2142657490092485D /* NSObject+BBCommon.h in Headers */,
+				D3E325E21426574900924861 /* BBTextField.h in Headers */,
+				D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +380,8 @@
 				D3E325E21426574900924853 /* UIColor+BBCommon.m in Sources */,
 				D3E325E21426574900924859 /* NSDate+BBCommon.m in Sources */,
 				D3E325E2142657490092485B /* NSObject+BBCommon.m in Sources */,
+				D3E325E2142657490092485F /* BBTextField.m in Sources */,
+				D3E325E21426574900924863 /* BBTextFieldStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
