@@ -36,3 +36,6 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #define CGRectDescription(CGRECT) [NSString stringWithFormat:@"x:%f y:%f w:%f h:%f", CGRECT.origin.x, CGRECT.origin.y, CGRECT.size.width, CGRECT.size.height]
 
 #define BBRnd ((arc4random()%256) / 255.0f)
+
+#define BBImageView(IMAGE_NAME) [[[UIImageView alloc] initWithImage:[UIImage imageNamed:IMAGE_NAME]] autorelease]
+#define BBImageViewWithCaps(IMAGE_NAME, LEFT_CAP_WIDTH, TOP_CAP_HEIGHT) [[[UIImageView alloc] initWithImage:[[UIImage imageNamed:IMAGE_NAME] stretchableImageWithLeftCapWidth:LEFT_CAP_WIDTH topCapHeight:TOP_CAP_HEIGHT]] autorelease]
