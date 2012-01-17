@@ -27,14 +27,14 @@
     }
 }
 
-- (void)performBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay {
+- (void)performBlock:(void (^)())block afterDelay:(NSTimeInterval)delay {
     block = [[block copy] autorelease];
     [self performSelector:@selector(fireBlockAfterDelay:)
                withObject:block
                afterDelay:delay];
 }
 
-- (void)fireBlockAfterDelay:(void (^)(void))block {
+- (void)fireBlockAfterDelay:(void (^)())block {
     block();
 }
 

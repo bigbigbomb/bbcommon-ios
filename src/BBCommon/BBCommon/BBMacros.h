@@ -38,3 +38,6 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #define BBRnd ((arc4random()%256) / 255.0f)
 
 #define RADIANS( degrees ) ( degrees * M_PI / 180 )
+
+#define BBImageView(IMAGE_NAME) [[[UIImageView alloc] initWithImage:[UIImage imageNamed:IMAGE_NAME]] autorelease]
+#define BBImageViewWithCaps(IMAGE_NAME, LEFT_CAP_WIDTH, TOP_CAP_HEIGHT) [[[UIImageView alloc] initWithImage:[[UIImage imageNamed:IMAGE_NAME] stretchableImageWithLeftCapWidth:LEFT_CAP_WIDTH topCapHeight:TOP_CAP_HEIGHT]] autorelease]
