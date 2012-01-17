@@ -8,4 +8,7 @@
 
 - (id)performSelector:(SEL)selector withObject:(id)p1 withObject:(id)p2 withObject:(id)p3 afterDelay:(NSTimeInterval)delay;
 
+- (void)performBlock:(void (^)())block afterDelay:(NSTimeInterval)delay;
+
+
 @end

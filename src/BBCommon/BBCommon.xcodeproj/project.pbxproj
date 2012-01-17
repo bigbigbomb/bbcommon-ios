@@ -55,8 +55,8 @@
 		D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924864 /* BBTextFieldStyle.h */; };
 		D3E325E21426574900924867 /* UIButton+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924866 /* UIButton+BBCommon.m */; };
 		D3E325E21426574900924869 /* UIButton+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924868 /* UIButton+BBCommon.h */; };
-		D3E325E2142657490092486B /* BBPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486A /* BBPopupController.h */; };
-		D3E325E2142657490092486D /* BBPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486C /* BBPopupController.m */; };
+		D3E325E2142657490092486B /* NSArray+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486A /* NSArray+BBCommon.h */; };
+		D3E325E2142657490092486D /* NSArray+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486C /* NSArray+BBCommon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,8 +121,8 @@
 		D3E325E21426574900924864 /* BBTextFieldStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextFieldStyle.h; sourceTree = "<group>"; };
 		D3E325E21426574900924866 /* UIButton+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E21426574900924868 /* UIButton+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E2142657490092486A /* BBPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPopupController.h; sourceTree = "<group>"; };
-		D3E325E2142657490092486C /* BBPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPopupController.m; sourceTree = "<group>"; };
+		D3E325E2142657490092486A /* NSArray+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092486C /* NSArray+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BBCommon.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,8 +184,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
-				D3E325E2142657490092486C /* BBPopupController.m */,
-				D3E325E2142657490092486A /* BBPopupController.h */,
+				D3E325E2142657490092486C /* NSArray+BBCommon.m */,
+				D3E325E2142657490092486A /* NSArray+BBCommon.h */,
 				D3E325E21426574900924868 /* UIButton+BBCommon.h */,
 				D3E325E21426574900924866 /* UIButton+BBCommon.m */,
 				D3E325E21426574900924864 /* BBTextFieldStyle.h */,
@@ -276,7 +276,7 @@
 				D3E325E21426574900924861 /* BBTextField.h in Headers */,
 				D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */,
 				D3E325E21426574900924869 /* UIButton+BBCommon.h in Headers */,
-				D3E325E2142657490092486B /* BBPopupController.h in Headers */,
+				D3E325E2142657490092486B /* NSArray+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +397,7 @@
 				D3E325E2142657490092485F /* BBTextField.m in Sources */,
 				D3E325E21426574900924863 /* BBTextFieldStyle.m in Sources */,
 				D3E325E21426574900924867 /* UIButton+BBCommon.m in Sources */,
-				D3E325E2142657490092486D /* BBPopupController.m in Sources */,
+				D3E325E2142657490092486D /* NSArray+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
