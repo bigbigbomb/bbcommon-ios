@@ -47,7 +47,6 @@
 - (void)styleUI {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.shimButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.shimButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.25];
     self.shimButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.shimButton addTarget:self action:@selector(dismissPopup:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.shimButton];
