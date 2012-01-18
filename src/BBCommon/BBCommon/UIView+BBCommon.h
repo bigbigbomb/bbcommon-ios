@@ -99,6 +99,11 @@ typedef enum {
 - (void)addSpacer:(CGSize)size;
 
 /**
+ * Adds a spacer view to this view.
+ */
+- (void)addSpacer:(CGSize)size withColor:(UIColor *)color;
+
+/**
  * Take a screenshot of the view and return it as a UIImage
  */
 - (UIImage *)getScreenshot;

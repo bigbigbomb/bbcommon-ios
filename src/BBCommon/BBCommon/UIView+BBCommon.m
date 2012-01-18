@@ -48,7 +48,12 @@
 }
 
 - (void)addSpacer:(CGSize)size {
+    [self addSpacer:size withColor:nil];
+}
+
+- (void)addSpacer:(CGSize)size withColor:(UIColor *)color{
     UIView *spacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    spacer.backgroundColor = color;
     [self addSubview:spacer];
     [spacer release];
 }
