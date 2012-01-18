@@ -7,37 +7,15 @@
 
 @implementation BBPopupController
 
-@synthesize delegate = _delegate;
 @synthesize shimButton = _shimButton;
-@synthesize currentPopup = _currentPopup;
-
-
-- (UIViewController *)getParentViewController {
-    UIView *currentView = self.delegate;
-    while (currentView != nil && [currentView.nextResponder isKindOfClass:[UIView class]]) {
-        currentView = (UIView *) currentView.nextResponder;
-    }
-    return (UIViewController *) [currentView nextResponder];
-}
+@synthesize popupView = _popupView;
 
 - (void)show {
-    UIViewController *viewController = [self getParentViewController];
-    DAssert(viewController != nil, @"BBPopupController must be a child of a ViewController");
-    
-    [viewController.view addSubview:self];
-    if (UIInterfaceOrientationIsPortrait(viewController.interfaceOrientation)) {
-        self.frame = CGRectMake(0, 0, BBW(viewController.view), BBH(viewController.view));
-    } else {
-        self.frame = CGRectMake(0, 0, BBH(viewController.view), BBW(viewController.view));
-    }
-
-    self.currentPopup = [self.delegate viewForPopupController:self];
-    [self addSubview:self.currentPopup];
+    self.hidden = NO;
 }
 
 - (void)hide {
-    [self.currentPopup removeFromSuperview];
-    [self removeFromSuperview];
+    self.hidden = YES;
 }
 
 - (void)dismissPopup:(id)dismissPopup {
@@ -45,16 +23,29 @@
 }
 
 - (void)styleUI {
-    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.hidden = YES;
+
     self.shimButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.shimButton.frame = CGRectMake(0, 0, BBW(self), BBH(self));
     self.shimButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.shimButton addTarget:self action:@selector(dismissPopup:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.shimButton];
+
+    [self addSubview:self.popupView];
 }
 
 - (id)initWithFrame:(CGRect)frame {
+    self = [self initWithFrame:frame popupView:nil];
+    if (self) {
+    }
+
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame popupView:(UIView *)popupView {
     self = [super initWithFrame:frame];
     if (self) {
+        self.popupView = popupView;
         [self styleUI];
     }
 
@@ -63,9 +54,8 @@
 
 - (void)dealloc {
     [_shimButton release];
-    [_currentPopup release];
+    [_popupView release];
     [super dealloc];
 }
-
 
 @end

@@ -4,29 +4,22 @@
 //
 #import <Foundation/Foundation.h>
 
-@protocol BBPopupControllerDelegate;
-
 
 @interface BBPopupController : UIView {
 
 @private
-    UIView <BBPopupControllerDelegate> *_delegate;
     UIButton *_shimButton;
-    UIView *_currentPopup;
+    UIView *_popupView;
 }
-
-@property(assign) UIView <BBPopupControllerDelegate> *delegate;
 
 @property(nonatomic, retain) UIButton *shimButton;
 
-@property(nonatomic, retain) UIView *currentPopup;
+@property(nonatomic, retain) UIView *popupView;
 
 - (void)show;
-@end
 
-@protocol BBPopupControllerDelegate <NSObject>
+- (void)hide;
 
-@required
-    - (UIView *)viewForPopupController:(BBPopupController *)popupController;
 
+- (id)initWithFrame:(CGRect)frame popupView:(UIView *)popupView;
 @end
