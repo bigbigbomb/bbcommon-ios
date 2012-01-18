@@ -4,8 +4,15 @@
 //
 #import <Foundation/Foundation.h>
 
+@class BBLabelStyle;
+
 @interface NSString (BBCommon)
 
 + (BOOL)isEmpty:(NSString *)string;
+
+- (CGSize)sizeWithBBLabelStyle:(BBLabelStyle *)labelStyle;
+
+- (CGSize)sizeWithBBLabelStyle:(BBLabelStyle *)labelStyle forWidth:(CGFloat)width;
+
 
 @end
