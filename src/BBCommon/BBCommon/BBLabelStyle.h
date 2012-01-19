@@ -40,8 +40,8 @@
 @property(nonatomic, retain) UIColor *shadowColor;
 @property(nonatomic) CGSize shadowOffset;
 
-- (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment; 
-- (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame;
+- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment;
+- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame;
 - (void)applyStyle:(UILabel *)label;
 
 - (void)applyStyleToTextField:(UITextField *)field;

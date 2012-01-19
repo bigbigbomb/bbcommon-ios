@@ -15,14 +15,14 @@
 @synthesize highlightedColor = _highlightedColor;
 
 
-- (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment {
+- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment {
     UILabel *label = [UILabel labelWithText:text font:self.font frame:frame lineBreakMode:self.lineBreakMode alignment:alignment];
     [self applyStyle:label];
     return label;
 }
 
-- (UILabel *)createLabelWithText:(NSString *)text frame:(CGRect)frame {
-    return [self createLabelWithText:text frame:frame alignment:UITextAlignmentLeft];
+- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame {
+    return [self labelWithText:text frame:frame alignment:UITextAlignmentLeft];
 }
 
 - (void)applyStyle:(UILabel *)label {
