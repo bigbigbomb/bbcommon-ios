@@ -86,6 +86,11 @@ typedef enum {
  */
 - (id)verticalAlignment:(BBVerticalAlignment)verticalAlignment;
 
+/**
+ * Finds the parent view controller
+ */
+- (UIViewController *)findParentViewController;
+
 // sizing helpers
 
 /**

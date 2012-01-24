@@ -37,6 +37,15 @@
     return [self verticalAlignment:verticalAlignment superview:self.superview];
 }
 
+- (UIViewController *)findParentViewController {
+    UIView *view = self;
+    while ([view.nextResponder isKindOfClass:[UIView class]])
+        view = (UIView *)view.nextResponder;
+    UIViewController *viewController = [view.nextResponder isKindOfClass:[UIViewController class]] ? (UIViewController *)view.nextResponder : nil;
+    return viewController;
+}
+
+
 - (UIView *)sizeToSubviews {
     CGSize newSize = CGSizeMake(0, 0);
     for (UIView *view in self.subviews) {
