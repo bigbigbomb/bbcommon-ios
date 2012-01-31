@@ -67,6 +67,8 @@
 }
 
 - (void)debugSizes {
+    if (self.frame.size.height <= 0 || self.frame.size.width <= 0)
+        NSLog(@"ACK! The frame width or height is 0. Width: %f Height: %f", self.frame.size.width, self.frame.size.height);
     self.backgroundColor = [UIColor colorWithRed:BBRnd green:BBRnd blue:BBRnd alpha:0.2];
     for (UIView *subview in self.subviews)
         [subview debugSizes];
