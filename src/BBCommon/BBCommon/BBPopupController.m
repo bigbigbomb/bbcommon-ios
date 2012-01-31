@@ -12,10 +12,20 @@
 
 - (void)show {
     self.hidden = NO;
+    self.alpha = 0;
+    [UIView animateWithDuration:0.25 animations:^{self.alpha = 1;}];
 }
 
 - (void)hide {
-    self.hidden = YES;
+    [UIView animateWithDuration:0.1 animations:^{self.alpha = 0;} completion:^(BOOL completion){self.hidden = YES;}];
+}
+
+- (void)toggle {
+    if (self.hidden) {
+        [self show];
+    } else {
+        [self hide];
+    }
 }
 
 - (void)dismissPopup:(id)dismissPopup {
