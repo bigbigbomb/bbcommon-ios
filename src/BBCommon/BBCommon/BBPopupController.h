@@ -22,4 +22,6 @@
 
 
 - (id)initWithFrame:(CGRect)frame popupView:(UIView *)popupView;
+
+- (void)toggle;
 @end
