@@ -16,6 +16,8 @@
 
 #define BBMoveFrame(UIVIEW,X,Y)     UIVIEW.frame = BBMoveRect(UIVIEW.frame,X,Y) /**< Sets the passed UIView's frame origin to (X,Y) without changing its size. */
 #define BBResizeFrame(UIVIEW,W,H)   UIVIEW.frame = BBResizeRect(UIVIEW.frame,W,H) /**< Sets the passed UIView's frame size to (W,H) without changing its origin. */
+#define BBMoveX(UIView,X)           UIView.frame = BBMoveRect(UIView.frame,X,BBY(UIView)) /**< Sets the passed UIView's frame origin to (X) without changing its size or Y. */
+#define BBMoveY(UIView,Y)           UIView.frame = BBMoveRect(UIView.frame,BBX(UIView),Y) /**< Sets the passed UIView's frame origin to (Y) without changing its size or X. */
 
 // BBHorizontalAlignment and BBVerticalAlignment enumerated values used in fast alignment math, do not modify enums
 // without modifying BBAlignedOrigin macro as well.
