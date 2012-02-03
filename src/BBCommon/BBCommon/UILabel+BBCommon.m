@@ -53,6 +53,10 @@
     return [UILabel getFrameHeightFromStringWithMaxHeight:self.text withFont:self.font withMaxWidth:maxWidth withMaxHeight:NSIntegerMax];
 }
 
+- (CGFloat)getFrameHeightWithMaxSize:(CGSize)maxSize {
+    return [UILabel getFrameHeightFromStringWithMaxHeight:self.text withFont:self.font withMaxWidth:maxSize.width withMaxHeight:maxSize.height];
+}
+
 + (CGFloat)getFrameHeightFromStringWithMaxHeight:(NSString *)string
 						  withFont:(UIFont *)font
 					  withMaxWidth:(CGFloat)maxWidth
