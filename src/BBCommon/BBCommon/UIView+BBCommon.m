@@ -37,6 +37,15 @@
     return [self verticalAlignment:verticalAlignment superview:self.superview];
 }
 
+- (UIViewController *)findParentViewController {
+    UIView *view = self;
+    while ([view.nextResponder isKindOfClass:[UIView class]])
+        view = (UIView *)view.nextResponder;
+    UIViewController *viewController = [view.nextResponder isKindOfClass:[UIViewController class]] ? (UIViewController *)view.nextResponder : nil;
+    return viewController;
+}
+
+
 - (UIView *)sizeToSubviews {
     CGSize newSize = CGSizeMake(0, 0);
     for (UIView *view in self.subviews) {
@@ -67,6 +76,8 @@
 }
 
 - (void)debugSizes {
+    if (self.frame.size.height <= 0 || self.frame.size.width <= 0)
+        NSLog(@"ACK! The frame width or height is 0. Width: %f Height: %f", self.frame.size.width, self.frame.size.height);
     self.backgroundColor = [UIColor colorWithRed:BBRnd green:BBRnd blue:BBRnd alpha:0.2];
     for (UIView *subview in self.subviews)
         [subview debugSizes];

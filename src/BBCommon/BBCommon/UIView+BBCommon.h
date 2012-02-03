@@ -15,7 +15,12 @@
 #define BBResizeRect(RECT,W,H)      CGRectMake(RECT.origin.x,RECT.origin.y,W,H) /**< Gets a CGRect with its size set to (W,H) and origin set to the origin of the passed CGRect. */
 
 #define BBMoveFrame(UIVIEW,X,Y)     UIVIEW.frame = BBMoveRect(UIVIEW.frame,X,Y) /**< Sets the passed UIView's frame origin to (X,Y) without changing its size. */
+#define BBMoveX(UIVIEW,X)           UIVIEW.frame = BBMoveRect(UIVIEW.frame,X,BBY(UIVIEW)) /**< Sets the passed UIView's frame origin to (X) without changing its size or Y. */
+#define BBMoveY(UIVIEW,Y)           UIVIEW.frame = BBMoveRect(UIVIEW.frame,BBX(UIVIEW),Y) /**< Sets the passed UIView's frame origin to (Y) without changing its size or X. */
+
 #define BBResizeFrame(UIVIEW,W,H)   UIVIEW.frame = BBResizeRect(UIVIEW.frame,W,H) /**< Sets the passed UIView's frame size to (W,H) without changing its origin. */
+#define BBResizeW(UIVIEW,W)         UIVIEW.frame = BBResizeRect(UIVIEW.frame,W,BBH(UIVIEW)) /**< Sets the passed UIView's frame width to (W) without changing its origin or height. */
+#define BBResizeH(UIVIEW,H)         UIVIEW.frame = BBResizeRect(UIVIEW.frame,BBW(UIVIEW),H) /**< Sets the passed UIView's frame height to (H) without changing its origin or width. */
 
 // BBHorizontalAlignment and BBVerticalAlignment enumerated values used in fast alignment math, do not modify enums
 // without modifying BBAlignedOrigin macro as well.
@@ -85,6 +90,11 @@ typedef enum {
  * @see verticalAlignment:superview:
  */
 - (id)verticalAlignment:(BBVerticalAlignment)verticalAlignment;
+
+/**
+ * Finds the parent view controller
+ */
+- (UIViewController *)findParentViewController;
 
 // sizing helpers
 
