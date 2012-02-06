@@ -10,7 +10,7 @@
 - (id)nextObject:(id)object {
     id nextObject = nil;
     NSUInteger questionIndex = [self indexOfObject:object];
-    if ([self count] - 1 >  questionIndex)
+    if (questionIndex != NSNotFound && [self count] - 1 >  questionIndex)
         nextObject = [self objectAtIndex:questionIndex + 1];
     return nextObject;
 }
@@ -18,7 +18,7 @@
 - (id)previousObject:(id)object {
     id previousObject = nil;
     NSUInteger questionIndex = [self indexOfObject:object];
-    if (questionIndex > 0)
+    if (questionIndex != NSNotFound && questionIndex > 0)
         previousObject = [self objectAtIndex:questionIndex - 1];
     return previousObject;
 }
