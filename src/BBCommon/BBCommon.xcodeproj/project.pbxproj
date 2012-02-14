@@ -61,6 +61,8 @@
 		D3E325E2142657490092486D /* NSArray+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486C /* NSArray+BBCommon.m */; };
 		D3E325E2142657490092486F /* BBPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486E /* BBPopupController.h */; };
 		D3E325E21426574900924871 /* BBPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924870 /* BBPopupController.m */; };
+		D3E325E21426574900924873 /* BBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924872 /* BBTableViewCell.m */; };
+		D3E325E21426574900924875 /* BBTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924874 /* BBTableViewCell.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,8 @@
 		D3E325E2142657490092486C /* NSArray+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E2142657490092486E /* BBPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPopupController.h; sourceTree = "<group>"; };
 		D3E325E21426574900924870 /* BBPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPopupController.m; sourceTree = "<group>"; };
+		D3E325E21426574900924872 /* BBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTableViewCell.m; sourceTree = "<group>"; };
+		D3E325E21426574900924874 /* BBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTableViewCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924874 /* BBTableViewCell.h */,
+				D3E325E21426574900924872 /* BBTableViewCell.m */,
 				D34BE4BC14C7989000A6658F /* UIScrollView+BBCommon.h */,
 				D34BE4BD14C7989000A6658F /* UIScrollView+BBCommon.m */,
 				D3E325E21426574900924870 /* BBPopupController.m */,
@@ -291,6 +297,7 @@
 				D3E325E2142657490092486B /* NSArray+BBCommon.h in Headers */,
 				D3E325E2142657490092486F /* BBPopupController.h in Headers */,
 				D34BE4BE14C7989000A6658F /* UIScrollView+BBCommon.h in Headers */,
+				D3E325E21426574900924875 /* BBTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +421,7 @@
 				D3E325E2142657490092486D /* NSArray+BBCommon.m in Sources */,
 				D3E325E21426574900924871 /* BBPopupController.m in Sources */,
 				D34BE4BF14C7989000A6658F /* UIScrollView+BBCommon.m in Sources */,
+				D3E325E21426574900924873 /* BBTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
