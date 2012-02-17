@@ -65,6 +65,8 @@
 		D3E325E21426574900924875 /* BBTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924874 /* BBTableViewCell.h */; };
 		D3E325E2142657490092487B /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092487A /* GTMNSString+HTML.m */; };
 		D3E325E2142657490092487D /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092487C /* GTMNSString+HTML.h */; };
+		D3E325E2142657490092487F /* BBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092487E /* BBTableView.m */; };
+		D3E325E21426574900924881 /* BBTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924880 /* BBTableView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		D3E325E21426574900924874 /* BBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTableViewCell.h; sourceTree = "<group>"; };
 		D3E325E2142657490092487A /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		D3E325E2142657490092487C /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092487E /* BBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTableView.m; sourceTree = "<group>"; };
+		D3E325E21426574900924880 /* BBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTableView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924880 /* BBTableView.h */,
+				D3E325E2142657490092487E /* BBTableView.m */,
 				D3E325E2142657490092487C /* GTMNSString+HTML.h */,
 				D3E325E2142657490092487A /* GTMNSString+HTML.m */,
 				D3E325E21426574900924874 /* BBTableViewCell.h */,
@@ -305,6 +311,7 @@
 				D34BE4BE14C7989000A6658F /* UIScrollView+BBCommon.h in Headers */,
 				D3E325E21426574900924875 /* BBTableViewCell.h in Headers */,
 				D3E325E2142657490092487D /* GTMNSString+HTML.h in Headers */,
+				D3E325E21426574900924881 /* BBTableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +437,7 @@
 				D34BE4BF14C7989000A6658F /* UIScrollView+BBCommon.m in Sources */,
 				D3E325E21426574900924873 /* BBTableViewCell.m in Sources */,
 				D3E325E2142657490092487B /* GTMNSString+HTML.m in Sources */,
+				D3E325E2142657490092487F /* BBTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
