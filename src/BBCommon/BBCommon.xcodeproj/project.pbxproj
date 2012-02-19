@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D34BE4BE14C7989000A6658F /* UIScrollView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D34BE4BC14C7989000A6658F /* UIScrollView+BBCommon.h */; };
 		D34BE4BF14C7989000A6658F /* UIScrollView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D34BE4BD14C7989000A6658F /* UIScrollView+BBCommon.m */; };
+		D3D3FF4B14F091F100B7D11C /* UIApplication+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D3FF4914F091F100B7D11C /* UIApplication+BBCommon.h */; };
+		D3D3FF4C14F091F100B7D11C /* UIApplication+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3FF4A14F091F100B7D11C /* UIApplication+BBCommon.m */; };
 		D3E325871426546400924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
 		D3E325921426546500924841 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325911426546500924841 /* UIKit.framework */; };
 		D3E325931426546500924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
@@ -78,6 +80,8 @@
 /* Begin PBXFileReference section */
 		D34BE4BC14C7989000A6658F /* UIScrollView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BBCommon.h"; sourceTree = "<group>"; };
 		D34BE4BD14C7989000A6658F /* UIScrollView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+BBCommon.m"; sourceTree = "<group>"; };
+		D3D3FF4914F091F100B7D11C /* UIApplication+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+BBCommon.h"; sourceTree = "<group>"; };
+		D3D3FF4A14F091F100B7D11C /* UIApplication+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325831426546400924841 /* libBBCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBBCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E325861426546400924841 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3E3258A1426546400924841 /* BBCommon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommon-Prefix.pch"; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3D3FF4914F091F100B7D11C /* UIApplication+BBCommon.h */,
+				D3D3FF4A14F091F100B7D11C /* UIApplication+BBCommon.m */,
 				D3E325E21426574900924874 /* BBTableViewCell.h */,
 				D3E325E21426574900924872 /* BBTableViewCell.m */,
 				D34BE4BC14C7989000A6658F /* UIScrollView+BBCommon.h */,
@@ -298,6 +304,7 @@
 				D3E325E2142657490092486F /* BBPopupController.h in Headers */,
 				D34BE4BE14C7989000A6658F /* UIScrollView+BBCommon.h in Headers */,
 				D3E325E21426574900924875 /* BBTableViewCell.h in Headers */,
+				D3D3FF4B14F091F100B7D11C /* UIApplication+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +429,7 @@
 				D3E325E21426574900924871 /* BBPopupController.m in Sources */,
 				D34BE4BF14C7989000A6658F /* UIScrollView+BBCommon.m in Sources */,
 				D3E325E21426574900924873 /* BBTableViewCell.m in Sources */,
+				D3D3FF4C14F091F100B7D11C /* UIApplication+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
