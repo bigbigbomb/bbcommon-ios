@@ -9,4 +9,5 @@
 }
 
 @property(nonatomic, retain) UIColor *bottomFillColor;
+
 @end

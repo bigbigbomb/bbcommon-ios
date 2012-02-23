@@ -17,8 +17,7 @@
 
     float fillHeight = BBH(self) - (self.contentSize.height - self.contentOffset.y + self.contentInset.bottom);
 
-    if (_bottomFillColor != nil && fillHeight > 0) {
-
+    if (_bottomFillColor != nil && fillHeight > 0 && self.alpha > 0) {
         CGContextSetFillColorWithColor(myContext, [_bottomFillColor CGColor]);
         CGContextFillRect(myContext, CGRectMake(0, self.contentSize.height, BBW(self), fillHeight));
     }
@@ -28,7 +27,6 @@
     [super setContentOffset:aContentOffset];
     [self setNeedsDisplay];
 }
-
 
 - (void)dealloc {
     [_bottomFillColor release];
