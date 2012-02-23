@@ -10,4 +10,5 @@
 
 @property(nonatomic, retain) UIColor *bottomFillColor;
 
+@property(nonatomic, retain) UIView *shimView;
 @end
