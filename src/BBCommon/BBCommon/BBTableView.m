@@ -6,8 +6,8 @@
 #import "UIView+BBCommon.h"
 
 @interface BBTableView ()
+@property(nonatomic, retain) UIView *bottomFillView;
 - (void)updateShim;
-
 @end
 
 @implementation BBTableView {
@@ -16,21 +16,23 @@
 }
 
 @synthesize bottomFillColor = _bottomFillColor;
-@synthesize shimView = _shimView;
+@synthesize bottomFillView = _bottomFillView;
+@synthesize bottomFillViewHidden = _bottomFillViewHidden;
+
 
 - (void)setBottomFillColor:(UIColor *)aBottomFillColor {
     NonatomicRetainedSetToFrom(_bottomFillColor, aBottomFillColor);
-    self.shimView.backgroundColor = aBottomFillColor;
+    self.bottomFillView.backgroundColor = aBottomFillColor;
 }
 
 
 - (void)updateShim {
     float fillHeight = BBH(self) - (self.contentSize.height - self.contentOffset.y + self.contentInset.bottom);
-    if (_bottomFillColor != nil && fillHeight > 0 && self.alpha > 0) {
-        self.shimView.hidden = NO;
-        self.shimView.frame = CGRectMake(0, self.contentSize.height, BBW(self), fillHeight);
+    if (fillHeight > 0) {
+        self.bottomFillView.frame = CGRectMake(0, self.contentSize.height, BBW(self), fillHeight);
+        self.bottomFillView.hidden = self.bottomFillViewHidden;
     } else {
-        self.shimView.hidden = YES;
+        self.bottomFillView.hidden = YES;
     }
 }
 
@@ -41,20 +43,22 @@
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     self = [super initWithFrame:frame style:style];
     if (self) {
+        [self addObserver:self forKeyPath:@"bottomFillViewHidden" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
-        self.shimView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)] autorelease];
-        [self addSubview:self.shimView];
+        self.bottomFillView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)] autorelease];
+        [self addSubview:self.bottomFillView];
     }
 
     return self;
 }
 
 - (void)dealloc {
+    [self removeObserver:self forKeyPath:@"bottomFillViewHidden"];
     [self removeObserver:self forKeyPath:@"contentOffset"];
     [self removeObserver:self forKeyPath:@"frame"];
     [_bottomFillColor release];
-    [_shimView release];
+    [_bottomFillView release];
     [super dealloc];
 }
 

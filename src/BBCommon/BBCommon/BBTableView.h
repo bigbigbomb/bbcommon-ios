@@ -6,9 +6,10 @@
 
 
 @interface BBTableView : UITableView {
+@private
+    BOOL _bottomFillViewHidden;
 }
 
 @property(nonatomic, retain) UIColor *bottomFillColor;
-
-@property(nonatomic, retain) UIView *shimView;
+@property(nonatomic) BOOL bottomFillViewHidden;
 @end
