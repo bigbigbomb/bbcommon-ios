@@ -15,4 +15,32 @@
 - (CGSize)sizeWithBBLabelStyle:(BBLabelStyle *)labelStyle forWidth:(CGFloat)width;
 
 
+///----------------------------------
+/// @name URL Escaping and Unescaping
+///----------------------------------
+
+/**
+ Returns a new string escaped for a URL query parameter.
+
+ The following characters are escaped: `\n\r:/=,!$&'()*+;[]@#?%`. Spaces are escaped to the `+` character. (`+` is
+ escaped to `%2B`).
+
+ @return A new string escaped for a URL query parameter.
+
+ @see stringByUnescapingFromURLQuery
+ */
+- (NSString *)stringByEscapingForURLQuery;
+
+/**
+ Returns a new string unescaped from a URL query parameter.
+
+ `+` characters are unescaped to spaces.
+
+ @return A new string escaped for a URL query parameter.
+
+ @see stringByEscapingForURLQuery
+ */
+- (NSString *)stringByUnescapingFromURLQuery;
+
+
 @end

@@ -73,6 +73,10 @@
 		D3E325E21426574900924885 /* BBRoundedRectView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924884 /* BBRoundedRectView.h */; };
 		D3E325E21426574900924887 /* UIWebView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924886 /* UIWebView+BBCommon.h */; };
 		D3E325E21426574900924889 /* UIWebView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924888 /* UIWebView+BBCommon.m */; };
+		D3E325E2142657490092488B /* NSURL+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092488A /* NSURL+BBCommon.m */; };
+		D3E325E2142657490092488D /* NSURL+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092488C /* NSURL+BBCommon.h */; };
+		D3E325E2142657490092488F /* NSDictionary+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092488E /* NSDictionary+BBCommon.m */; };
+		D3E325E21426574900924891 /* NSDictionary+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924890 /* NSDictionary+BBCommon.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +159,10 @@
 		D3E325E21426574900924884 /* BBRoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRoundedRectView.h; sourceTree = "<group>"; };
 		D3E325E21426574900924886 /* UIWebView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924888 /* UIWebView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092488A /* NSURL+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092488C /* NSURL+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092488E /* NSDictionary+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924890 /* NSDictionary+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BBCommon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +224,10 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924890 /* NSDictionary+BBCommon.h */,
+				D3E325E2142657490092488E /* NSDictionary+BBCommon.m */,
+				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
+				D3E325E2142657490092488A /* NSURL+BBCommon.m */,
 				D3E325E21426574900924888 /* UIWebView+BBCommon.m */,
 				D3E325E21426574900924886 /* UIWebView+BBCommon.h */,
 				D3FE5E5C14EC87CC00CAAC3E,
@@ -336,6 +348,8 @@
 				D3E325E21426574900924885 /* BBRoundedRectView.h in Headers */,
 				D3FE5E5C14EC87CC00CAAC3F,
 				D3E325E21426574900924887 /* UIWebView+BBCommon.h in Headers */,
+				D3E325E2142657490092488D /* NSURL+BBCommon.h in Headers */,
+				D3E325E21426574900924891 /* NSDictionary+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +480,8 @@
 				D3E325E21426574900924883 /* BBRoundedRectView.m in Sources */,
 				D3FE5E5C14EC87CC00CAAC3D,
 				D3E325E21426574900924889 /* UIWebView+BBCommon.m in Sources */,
+				D3E325E2142657490092488B /* NSURL+BBCommon.m in Sources */,
+				D3E325E2142657490092488F /* NSDictionary+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
