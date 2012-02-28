@@ -38,3 +38,6 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #define BBRnd ((arc4random()%256) / 255.0f)
 
 #define BBRndInt(low, high) ((int)low + arc4random() % (high - low + 1))
+
+#define ARC4RANDOM_MAX      0x100000000
+#define BBRndFloat(low, high) ((((float) arc4random() / ARC4RANDOM_MAX) * (high - low)) + low)
