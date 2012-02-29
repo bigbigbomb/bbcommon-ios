@@ -77,6 +77,8 @@
 		D3E325E2142657490092488D /* NSURL+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092488C /* NSURL+BBCommon.h */; };
 		D3E325E2142657490092488F /* NSDictionary+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092488E /* NSDictionary+BBCommon.m */; };
 		D3E325E21426574900924891 /* NSDictionary+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924890 /* NSDictionary+BBCommon.h */; };
+		D3E325E21426574900924893 /* UITableView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924892 /* UITableView+BBCommon.m */; };
+		D3E325E21426574900924895 /* UITableView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924894 /* UITableView+BBCommon.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +165,8 @@
 		D3E325E2142657490092488C /* NSURL+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E2142657490092488E /* NSDictionary+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E21426574900924890 /* NSDictionary+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924892 /* UITableView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924894 /* UITableView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BBCommon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E21426574900924894 /* UITableView+BBCommon.h */,
+				D3E325E21426574900924892 /* UITableView+BBCommon.m */,
 				D3E325E21426574900924890 /* NSDictionary+BBCommon.h */,
 				D3E325E2142657490092488E /* NSDictionary+BBCommon.m */,
 				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
@@ -350,6 +356,7 @@
 				D3E325E21426574900924887 /* UIWebView+BBCommon.h in Headers */,
 				D3E325E2142657490092488D /* NSURL+BBCommon.h in Headers */,
 				D3E325E21426574900924891 /* NSDictionary+BBCommon.h in Headers */,
+				D3E325E21426574900924895 /* UITableView+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +489,7 @@
 				D3E325E21426574900924889 /* UIWebView+BBCommon.m in Sources */,
 				D3E325E2142657490092488B /* NSURL+BBCommon.m in Sources */,
 				D3E325E2142657490092488F /* NSDictionary+BBCommon.m in Sources */,
+				D3E325E21426574900924893 /* UITableView+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
