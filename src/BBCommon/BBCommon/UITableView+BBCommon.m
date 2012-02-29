@@ -12,7 +12,6 @@
     [self reloadData];
     if (selectedPath != nil)
         [self selectRowAtIndexPath:selectedPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-    NSLog(@"Set the position");
 }
 
 @end
