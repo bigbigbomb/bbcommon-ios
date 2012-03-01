@@ -32,7 +32,6 @@
     float _translateMinimum;
     float _translateMaximum;
     float _durationMaximum;
-    BOOL _animationQueued;
     float _duration;
 }
 @synthesize images = _images;
@@ -62,7 +61,6 @@
 - (id)initWithFrame:(CGRect)frame andImages:(NSMutableArray *)images {
     self = [super initWithFrame:frame];
     if (self) {
-        _animationQueued = NO;
         _animating = NO;
         _durationMinimum = 7.0;
         _durationMaximum = 12.0;
@@ -78,7 +76,6 @@
 }
 
 - (void)prepareToAnimateNextImage{
-    _animationQueued = NO;
     if (_animating)
         [self animateNextImage];
 }
@@ -128,22 +125,21 @@
     _currentImage.transform = CGAffineTransformConcat(translate, scale);
     [UIView commitAnimations];
 
-    _animationQueued = YES;
-    [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 1.5];
+    if (_animating)
+        [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 1.5];
 }
 
 - (void)startAnimating {
     if (self.images != nil && [self.images count] > 0) {
         _animating = YES;
         _currentImageIndex = BBRndInt(0, [self.images count] - 1);
-        if (!_animationQueued){
-            [self animateNextImage];
-        }
+        [self animateNextImage];
     }
 }
 
 - (void)stopAnimating {
     if (self.images != nil && [self.images count] > 0) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(prepareToAnimateNextImage) object:nil];
         _animating = NO;
         [UIView animateWithDuration:0.5
                               delay:0.0
