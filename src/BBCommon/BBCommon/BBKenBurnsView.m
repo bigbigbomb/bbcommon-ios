@@ -32,6 +32,8 @@
     float _translateMinimum;
     float _translateMaximum;
     float _durationMaximum;
+    BOOL _animationQueued;
+    float _duration;
 }
 @synthesize images = _images;
 @synthesize imageA = _imageA;
@@ -60,6 +62,7 @@
 - (id)initWithFrame:(CGRect)frame andImages:(NSMutableArray *)images {
     self = [super initWithFrame:frame];
     if (self) {
+        _animationQueued = NO;
         _animating = NO;
         _durationMinimum = 7.0;
         _durationMaximum = 12.0;
@@ -75,6 +78,7 @@
 }
 
 - (void)prepareToAnimateNextImage{
+    _animationQueued = NO;
     if (_animating)
         [self animateNextImage];
 }
@@ -114,34 +118,42 @@
                      }
                      completion:nil];
 
-    float duration = BBRndFloat(self.durationMinimum, self.durationMaximum);
+    _duration = BBRndFloat(self.durationMinimum, self.durationMaximum);
     float endScale = BBRndFloat(self.scaleMinimum, self.scaleMaximum);
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:duration];
+    [UIView setAnimationDuration:_duration];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     CGAffineTransform translate = CGAffineTransformMakeTranslation(BBRndFloat(self.translateMinimum, self.translateMaximum), BBRndFloat(self.translateMinimum, self.translateMaximum));
     CGAffineTransform scale = CGAffineTransformMakeScale(endScale, endScale);
     _currentImage.transform = CGAffineTransformConcat(translate, scale);
     [UIView commitAnimations];
-    
-    [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:duration - 1.5];
+
+    _animationQueued = YES;
+    [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 1.5];
 }
 
 - (void)startAnimating {
-    _animating = YES;
-    _currentImageIndex = 0;
-    [self animateNextImage];
+    if (self.images != nil && [self.images count] > 0) {
+        _animating = YES;
+        _currentImageIndex = BBRndInt(0, [self.images count] - 1);
+        if (!_animationQueued){
+            [self animateNextImage];
+        }
+    }
 }
 
 - (void)stopAnimating {
-    _animating = NO;
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         _currentImage.alpha = 0;
-                     }
-                     completion:nil];
+    if (self.images != nil && [self.images count] > 0) {
+        _animating = NO;
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             _currentImage.alpha = 0;
+                         }
+                         completion:nil];
+    }
+
 }
 
 - (void)dealloc {
