@@ -137,7 +137,7 @@
 }
 
 - (void)startAnimating {
-    if (self.images != nil && [self.images count] > 0) {
+    if (!_animating && self.images != nil && [self.images count] > 0) {
         _animating = YES;
         _currentImageIndex = BBRndInt(0, [self.images count] - 1);
         [self animateNextImage];
@@ -145,7 +145,7 @@
 }
 
 - (void)stopAnimating {
-    if (self.images != nil && [self.images count] > 0) {
+    if (_animating && self.images != nil && [self.images count] > 0) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(prepareToAnimateNextImage) object:nil];
         _animating = NO;
         [UIView animateWithDuration:0.5
