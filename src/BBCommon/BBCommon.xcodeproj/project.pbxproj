@@ -55,6 +55,8 @@
 		D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924864 /* BBTextFieldStyle.h */; };
 		D3E325E21426574900924867 /* BBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924866 /* BBKenBurnsView.m */; };
 		D3E325E21426574900924869 /* BBKenBurnsView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E21426574900924868 /* BBKenBurnsView.h */; };
+		D3E325E2142657490092486B /* UIImage+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486A /* UIImage+BBCommon.m */; };
+		D3E325E2142657490092486D /* UIImage+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092486C /* UIImage+BBCommon.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		D3E325E21426574900924864 /* BBTextFieldStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextFieldStyle.h; sourceTree = "<group>"; };
 		D3E325E21426574900924866 /* BBKenBurnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKenBurnsView.m; sourceTree = "<group>"; };
 		D3E325E21426574900924868 /* BBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKenBurnsView.h; sourceTree = "<group>"; };
+		D3E325E2142657490092486A /* UIImage+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092486C /* UIImage+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BBCommon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E2142657490092486C /* UIImage+BBCommon.h */,
+				D3E325E2142657490092486A /* UIImage+BBCommon.m */,
 				D3E325E21426574900924868 /* BBKenBurnsView.h */,
 				D3E325E21426574900924866 /* BBKenBurnsView.m */,
 				D3E325E21426574900924864 /* BBTextFieldStyle.h */,
@@ -270,6 +276,7 @@
 				D3E325E21426574900924861 /* BBTextField.h in Headers */,
 				D3E325E21426574900924865 /* BBTextFieldStyle.h in Headers */,
 				D3E325E21426574900924869 /* BBKenBurnsView.h in Headers */,
+				D3E325E2142657490092486D /* UIImage+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +397,7 @@
 				D3E325E2142657490092485F /* BBTextField.m in Sources */,
 				D3E325E21426574900924863 /* BBTextFieldStyle.m in Sources */,
 				D3E325E21426574900924867 /* BBKenBurnsView.m in Sources */,
+				D3E325E2142657490092486B /* UIImage+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

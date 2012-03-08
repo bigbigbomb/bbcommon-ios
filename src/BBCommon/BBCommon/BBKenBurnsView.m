@@ -1,6 +1,6 @@
 //
 //  BBKenBurnsView.m
-//  tastevin
+//  BBCommon
 //
 //  Created by Lee Brenner on 2/27/12.
 //  Copyright 2012 BigBig Bomb, LLC. All rights reserved.
@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BBKenBurnsView.h"
 #import "UIView+BBCommon.h"
+#import "UIImage+BBCommon.h"
 
 
 @interface BBKenBurnsView ()
@@ -44,18 +45,24 @@
 @synthesize translateMinimum = _translateMinimum;
 @synthesize translateMaximum = _translateMaximum;
 
-
 - (void)styleUI {
     self.layer.masksToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
 
     self.imageA = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BBW(self), BBH(self))] autorelease];
-    self.imageA.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageA.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageA];
     self.imageB = [[[UIImageView alloc] initWithFrame:self.imageA.frame] autorelease];
-    self.imageB.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageB.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageB];
     _currentImage = self.imageA;
+}
+
+- (void)processImages:(NSMutableArray *)imageArray {
+    self.images = [NSMutableArray arrayWithCapacity:[imageArray count]];
+    for (UIImage *i in imageArray){
+        [self.images addObject:[i transparentBorderImage:1]];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame andImages:(NSMutableArray *)images {
@@ -68,7 +75,7 @@
         _scaleMaximum = 1.25;
         _translateMinimum = -60.0;
         _translateMaximum = 60.0;
-        self.images = images;
+        [self processImages:images];
         [self styleUI];
     }
 
@@ -84,6 +91,7 @@
     _previousImage = _currentImage;
     _currentImage = _currentImage == self.imageA ? self.imageB : self.imageA;
     _currentImage.image = (UIImage *)[self.images objectAtIndex:_currentImageIndex];
+    BBResizeFrame(_currentImage, _currentImage.image.size.width, _currentImage.image.size.height);
     //get a new random image that is not the current one
     int temp = BBRndInt(0, [self.images count] - 1);
 
@@ -98,7 +106,7 @@
     float startScale = BBRndFloat(self.scaleMinimum, self.scaleMaximum);
     CGAffineTransform startS = CGAffineTransformMakeScale(startScale, startScale);
     _currentImage.transform = CGAffineTransformConcat(startT, startS);
-    
+
     //animate!
     [UIView animateWithDuration:1.5
                           delay:0.0
