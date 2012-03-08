@@ -69,10 +69,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         _animating = NO;
-        _durationMinimum = 7.0;
-        _durationMaximum = 12.0;
+        _durationMinimum = 8.0;
+        _durationMaximum = 13.0;
         _scaleMinimum = 1.0;
-        _scaleMaximum = 1.25;
+        _scaleMaximum = 1.15;
         _translateMinimum = -60.0;
         _translateMaximum = 60.0;
         [self processImages:images];
@@ -91,7 +91,6 @@
     _previousImage = _currentImage;
     _currentImage = _currentImage == self.imageA ? self.imageB : self.imageA;
     _currentImage.image = (UIImage *)[self.images objectAtIndex:_currentImageIndex];
-    BBResizeFrame(_currentImage, _currentImage.image.size.width, _currentImage.image.size.height);
     //get a new random image that is not the current one
     int temp = BBRndInt(0, [self.images count] - 1);
 
@@ -134,7 +133,7 @@
     [UIView commitAnimations];
 
     if (_animating)
-        [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 1.5];
+        [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 2];
 }
 
 - (void)startAnimating {
