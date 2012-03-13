@@ -20,7 +20,19 @@
 + (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font;
 
 - (CGFloat)getFrameHeightWithMaxWidth:(CGFloat)maxWidth;
+- (CGFloat)getFrameHeightWithMaxSize:(CGSize)maxSize;
 + (CGFloat)getFrameHeightFromStringWithMaxHeight:(NSString *)string withFont:(UIFont *)font withMaxWidth:(CGFloat)maxWidth withMaxHeight:(CGFloat)maxHeight;
 
+- (void)frameWithOptimalFontForWidth:(float)width
+                          withOrigin:(CGPoint)origin
+                     withMaxFontSize:(float)maxFontSize
+                     withMinFontSize:(float)minFontSize
+                        withMaxLines:(int)maxLines;
+
+- (void)frameWithOptimalFontForSize:(CGSize)size
+                         withOrigin:(CGPoint)origin
+                    withMaxFontSize:(float)maxFontSize
+                    withMinFontSize:(float)minFontSize
+                       withMaxLines:(int)maxLines;
 
 @end
