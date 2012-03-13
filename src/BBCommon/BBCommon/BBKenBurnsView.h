@@ -1,6 +1,6 @@
 //
 //  BBKenBurnsView.h
-//  tastevin
+//  BBCommon
 //
 //  Created by Lee Brenner on 2/27/12.
 //  Copyright 2012 BigBig Bomb, LLC. All rights reserved.

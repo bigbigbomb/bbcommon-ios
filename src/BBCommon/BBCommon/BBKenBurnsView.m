@@ -1,6 +1,6 @@
 //
 //  BBKenBurnsView.m
-//  tastevin
+//  BBCommon
 //
 //  Created by Lee Brenner on 2/27/12.
 //  Copyright 2012 BigBig Bomb, LLC. All rights reserved.
@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BBKenBurnsView.h"
 #import "UIView+BBCommon.h"
+#import "UIImage+BBCommon.h"
 
 
 @interface BBKenBurnsView ()
@@ -32,7 +33,6 @@
     float _translateMinimum;
     float _translateMaximum;
     float _durationMaximum;
-    BOOL _animationQueued;
     float _duration;
 }
 @synthesize images = _images;
@@ -45,32 +45,37 @@
 @synthesize translateMinimum = _translateMinimum;
 @synthesize translateMaximum = _translateMaximum;
 
-
 - (void)styleUI {
     self.layer.masksToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
 
     self.imageA = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BBW(self), BBH(self))] autorelease];
-    self.imageA.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageA.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageA];
     self.imageB = [[[UIImageView alloc] initWithFrame:self.imageA.frame] autorelease];
-    self.imageB.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageB.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageB];
     _currentImage = self.imageA;
+}
+
+- (void)processImages:(NSMutableArray *)imageArray {
+    self.images = [NSMutableArray arrayWithCapacity:[imageArray count]];
+    for (UIImage *i in imageArray){
+        [self.images addObject:[i transparentBorderImage:1]];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame andImages:(NSMutableArray *)images {
     self = [super initWithFrame:frame];
     if (self) {
-        _animationQueued = NO;
         _animating = NO;
-        _durationMinimum = 7.0;
-        _durationMaximum = 12.0;
+        _durationMinimum = 8.0;
+        _durationMaximum = 13.0;
         _scaleMinimum = 1.0;
-        _scaleMaximum = 1.25;
+        _scaleMaximum = 1.15;
         _translateMinimum = -60.0;
         _translateMaximum = 60.0;
-        self.images = images;
+        [self processImages:images];
         [self styleUI];
     }
 
@@ -78,7 +83,6 @@
 }
 
 - (void)prepareToAnimateNextImage{
-    _animationQueued = NO;
     if (_animating)
         [self animateNextImage];
 }
@@ -101,7 +105,7 @@
     float startScale = BBRndFloat(self.scaleMinimum, self.scaleMaximum);
     CGAffineTransform startS = CGAffineTransformMakeScale(startScale, startScale);
     _currentImage.transform = CGAffineTransformConcat(startT, startS);
-    
+
     //animate!
     [UIView animateWithDuration:1.5
                           delay:0.0
@@ -128,22 +132,21 @@
     _currentImage.transform = CGAffineTransformConcat(translate, scale);
     [UIView commitAnimations];
 
-    _animationQueued = YES;
-    [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 1.5];
+    if (_animating)
+        [self performSelector:@selector(prepareToAnimateNextImage) withObject:nil afterDelay:_duration - 2];
 }
 
 - (void)startAnimating {
-    if (self.images != nil && [self.images count] > 0) {
+    if (!_animating && self.images != nil && [self.images count] > 0) {
         _animating = YES;
         _currentImageIndex = BBRndInt(0, [self.images count] - 1);
-        if (!_animationQueued){
-            [self animateNextImage];
-        }
+        [self animateNextImage];
     }
 }
 
 - (void)stopAnimating {
-    if (self.images != nil && [self.images count] > 0) {
+    if (_animating && self.images != nil && [self.images count] > 0) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(prepareToAnimateNextImage) object:nil];
         _animating = NO;
         [UIView animateWithDuration:0.5
                               delay:0.0
