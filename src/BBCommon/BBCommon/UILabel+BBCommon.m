@@ -106,6 +106,7 @@
     //Finally, set the fully synchronized frame based on optimized font size
     currentLineCount = MIN(maxLines, currentLineCount);
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, stringSize.height * currentLineCount);
+    self.numberOfLines = currentLineCount;
     self.font = font;
 }
 
@@ -114,8 +115,6 @@
                     withMaxFontSize:(float)maxFontSize
                     withMinFontSize:(float)minFontSize
                        withMaxLines:(int)maxLines {
-    NSLog(@"Value: %@", self.text);
-    NSLog(@"Bounds: %@", NSStringFromCGSize(size));
 
     //Similar to the width optimization method, except that it also respects height
     //First, set the initial frame to prep for optimizational synchronizingliness
@@ -131,14 +130,10 @@
     while(currentLineCount <= maxLines){
         font = [font fontWithSize:self.font.pointSize];
         stringSize = [self.text sizeWithFont:font];
-        NSLog(@"Trying linecount of: %i and starting at fontsize of: %f with minFontSize: %f", currentLineCount, font.pointSize, minFontSize);
         while ((stringSize.width / currentLineCount > self.frame.size.width - 20 || stringSize.height * currentLineCount > size.height) && font.pointSize >= minFontSize) {
             font = [font fontWithSize:font.pointSize - 1];
             stringSize = [self.text sizeWithFont:font];
-            NSLog(@"stringSize.width / currentLineCount: %f, self.frame.size.width: %f |||| stringSize.height: %f, self.frame.size.height: %f |||| font.pointSize: %f",
-                   stringSize.width / currentLineCount, self.frame.size.width, stringSize.height, self.frame.size.height, font.pointSize);
             if (stringSize.width / currentLineCount <= self.frame.size.width - 20 && stringSize.height * currentLineCount <= size.height) {
-                NSLog(@"Breaking");
                 break;
             }
         }
@@ -154,6 +149,7 @@
     //Finally, set the fully synchronized frame based on optimized font size
     currentLineCount = MIN(maxLines, currentLineCount);
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, stringSize.height * currentLineCount);
+    self.numberOfLines = currentLineCount;
     self.font = font;
 }
 
