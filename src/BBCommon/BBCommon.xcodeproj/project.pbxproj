@@ -83,6 +83,8 @@
 		D3E325E2142657490092489D /* UITableView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092489C /* UITableView+BBCommon.h */; };
 		D3E325E2142657490092489F /* UIWebView+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E2142657490092489E /* UIWebView+BBCommon.h */; };
 		D3E325E214265749009248A1 /* UIWebView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A0 /* UIWebView+BBCommon.m */; };
+		D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */; };
+		D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,19 +164,21 @@
 		D3E325E21426574900924882 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		D3E325E21426574900924884 /* NSArray+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E21426574900924886 /* NSArray+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E21426574900924888 /* NSDictionary+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+BBCommon.h"; path = "BBCommon/NSDictionary+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E2142657490092488A /* NSDictionary+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+BBCommon.m"; path = "BBCommon/NSDictionary+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E2142657490092488C /* NSURL+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+BBCommon.h"; path = "BBCommon/NSURL+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E2142657490092488E /* NSURL+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+BBCommon.m"; path = "BBCommon/NSURL+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E21426574900924890 /* UIApplication+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+BBCommon.h"; path = "BBCommon/UIApplication+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E21426574900924892 /* UIApplication+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+BBCommon.m"; path = "BBCommon/UIApplication+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E21426574900924894 /* UIButton+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+BBCommon.h"; path = "BBCommon/UIButton+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E21426574900924896 /* UIButton+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+BBCommon.m"; path = "BBCommon/UIButton+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E21426574900924898 /* UIScrollView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+BBCommon.h"; path = "BBCommon/UIScrollView+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E2142657490092489A /* UIScrollView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+BBCommon.m"; path = "BBCommon/UIScrollView+BBCommon.m"; sourceTree = "<group>"; };
-		D3E325E2142657490092489C /* UITableView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BBCommon.h"; path = "BBCommon/UITableView+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E2142657490092489E /* UIWebView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+BBCommon.h"; path = "BBCommon/UIWebView+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E214265749009248A0 /* UIWebView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+BBCommon.m"; path = "BBCommon/UIWebView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924888 /* NSDictionary+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092488A /* NSDictionary+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092488C /* NSURL+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092488E /* NSURL+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924890 /* UIApplication+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924892 /* UIApplication+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924894 /* UIButton+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E21426574900924896 /* UIButton+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E21426574900924898 /* UIScrollView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092489A /* UIScrollView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E2142657490092489C /* UITableView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E2142657490092489E /* UIWebView+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E214265749009248A0 /* UIWebView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+BBCommon.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,19 +209,6 @@
 		D3E325781426546400924841 = {
 			isa = PBXGroup;
 			children = (
-				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
-				D3E325E2142657490092489E /* UIWebView+BBCommon.h */,
-				D3E325E2142657490092489C /* UITableView+BBCommon.h */,
-				D3E325E2142657490092489A /* UIScrollView+BBCommon.m */,
-				D3E325E21426574900924898 /* UIScrollView+BBCommon.h */,
-				D3E325E21426574900924896 /* UIButton+BBCommon.m */,
-				D3E325E21426574900924894 /* UIButton+BBCommon.h */,
-				D3E325E21426574900924892 /* UIApplication+BBCommon.m */,
-				D3E325E21426574900924890 /* UIApplication+BBCommon.h */,
-				D3E325E2142657490092488E /* NSURL+BBCommon.m */,
-				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
-				D3E325E2142657490092488A /* NSDictionary+BBCommon.m */,
-				D3E325E21426574900924888 /* NSDictionary+BBCommon.h */,
 				D3E325881426546400924841 /* BBCommon */,
 				D3E325991426546500924841 /* BBCommonTests */,
 				D3E325851426546400924841 /* Frameworks */,
@@ -249,6 +240,21 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */,
+				D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */,
+				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
+				D3E325E2142657490092489E /* UIWebView+BBCommon.h */,
+				D3E325E2142657490092489C /* UITableView+BBCommon.h */,
+				D3E325E2142657490092489A /* UIScrollView+BBCommon.m */,
+				D3E325E21426574900924898 /* UIScrollView+BBCommon.h */,
+				D3E325E21426574900924896 /* UIButton+BBCommon.m */,
+				D3E325E21426574900924894 /* UIButton+BBCommon.h */,
+				D3E325E21426574900924892 /* UIApplication+BBCommon.m */,
+				D3E325E21426574900924890 /* UIApplication+BBCommon.h */,
+				D3E325E2142657490092488E /* NSURL+BBCommon.m */,
+				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
+				D3E325E2142657490092488A /* NSDictionary+BBCommon.m */,
+				D3E325E21426574900924888 /* NSDictionary+BBCommon.h */,
 				D3E325E21426574900924886 /* NSArray+BBCommon.m */,
 				D3E325E21426574900924884 /* NSArray+BBCommon.h */,
 				D3E325E21426574900924882 /* GTMNSString+HTML.m */,
@@ -368,6 +374,7 @@
 				D3E325E21426574900924899 /* UIScrollView+BBCommon.h in Headers */,
 				D3E325E2142657490092489D /* UITableView+BBCommon.h in Headers */,
 				D3E325E2142657490092489F /* UIWebView+BBCommon.h in Headers */,
+				D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +509,7 @@
 				D3E325E21426574900924897 /* UIButton+BBCommon.m in Sources */,
 				D3E325E2142657490092489B /* UIScrollView+BBCommon.m in Sources */,
 				D3E325E214265749009248A1 /* UIWebView+BBCommon.m in Sources */,
+				D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
