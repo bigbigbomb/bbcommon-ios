@@ -88,14 +88,15 @@
 
     CGRect newRect = CGRectMake(0, 0, image.size.width + borderSize * 2, image.size.height + borderSize * 2);
 
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     // Build a context that's the same dimensions as the new size
     CGContextRef bitmap = CGBitmapContextCreate(NULL,
                                                 (size_t)newRect.size.width,
                                                 (size_t)newRect.size.height,
                                                 CGImageGetBitsPerComponent(image.CGImage),
                                                 0,
-            CGColorSpaceCreateDeviceRGB(),
-            kCGImageAlphaPremultipliedLast);
+                                                colorSpace,
+                                                kCGImageAlphaPremultipliedLast);
 
     // Draw the image in the center of the context, leaving a gap around the edges
     CGRect imageLocation = CGRectMake(borderSize, borderSize, image.size.width, image.size.height);
@@ -112,6 +113,7 @@
     CGImageRelease(borderImageRef);
     CGImageRelease(maskImageRef);
     CGImageRelease(transparentBorderImageRef);
+    CGColorSpaceRelease(colorSpace);
 
     return transparentBorderImage;
 }
