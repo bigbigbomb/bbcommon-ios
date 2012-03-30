@@ -4,6 +4,11 @@
 //
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    BBPopupConstraintNone,
+    BBPopupConstraintHorizontal,
+    BBPopupConstraintVertical
+} BBPopupConstraint;
 
 @interface BBPopupController : UIView {
 
@@ -16,12 +21,21 @@
 
 @property(nonatomic, retain) UIView *popupView;
 
+@property(nonatomic, retain) UIView *relativeView;
+
+@property(nonatomic) CGPoint relativeOffset;
+
+@property(nonatomic) BBPopupConstraint constraint;
+
 - (void)show;
 
 - (void)hide;
 
 
 - (id)initWithFrame:(CGRect)frame popupView:(UIView *)popupView;
+
+- (id)initWithFrame:(CGRect)frame popupView:(UIView *)popupView relativeToView:(UIView *)relativeView constraint:(BBPopupConstraint)constraint;
+
 
 - (void)toggle;
 @end

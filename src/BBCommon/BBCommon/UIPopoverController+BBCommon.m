@@ -5,7 +5,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIPopoverController+BBCommon.h"
 
-
 @implementation UIPopoverController (BBCommon)
 
 - (void)presentPopoverWithoutInnerShadowFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)direction animated:(BOOL)animated
@@ -32,6 +31,7 @@
                         for (UIView *subviewA in popoverSubview.subviews) {
                             if ([NSStringFromClass([subviewA class]) isEqualToString:@"UILayoutContainerView"]) {
                                 subviewA.layer.cornerRadius = 0;
+                                subviewA.layer.backgroundColor = [UIColor clearColor].CGColor;
                             }
                             for (UIView *subviewB in subviewA.subviews) {
                                 if ([NSStringFromClass([subviewB class]) isEqualToString:@"UIImageView"] ) {
@@ -43,7 +43,6 @@
                 }
             }
         }
-
     }
 }
 
