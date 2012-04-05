@@ -8,8 +8,8 @@
 
 @implementation NSString (BBCommon)
 
-+ (BOOL) isEmpty:(NSString *)string{
-    return string == nil || [string isEqual:[NSNull null]] || [string length] == 0;
++ (BOOL) isEmpty:(id)string{
+    return string == nil || string == [NSNull null] || [string length] == 0;
 }
 
 - (CGSize)sizeWithBBLabelStyle:(BBLabelStyle *)labelStyle {
