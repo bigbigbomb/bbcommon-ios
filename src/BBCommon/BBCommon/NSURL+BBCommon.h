@@ -13,4 +13,11 @@
  */
 - (NSDictionary *)queryDictionary;
 
+/**
+ Adds the iCloud attribute to indicate a file should not be backed up.
+
+ @returns a value indicating whether the attribute was set properly.
+*/
+- (BOOL)addSkipBackupAttribute;
+
 @end
