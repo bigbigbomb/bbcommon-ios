@@ -75,6 +75,13 @@
     return viewImage;
 }
 
+- (UIView *)addSubview:(UIView *)subview atPoint:(CGPoint)point {
+    BBMoveFrame(subview, point.x, point.y);
+    [self addSubview:subview];
+    return subview;
+}
+
+
 - (void)debugSizes {
     if (self.frame.size.height <= 0 || self.frame.size.width <= 0)
         NSLog(@"ACK! The frame width or height is 0. Width: %f Height: %f", self.frame.size.width, self.frame.size.height);
