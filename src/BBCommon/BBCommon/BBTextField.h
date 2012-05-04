@@ -2,7 +2,6 @@
 //  Created by Lee Fastenau on 1/9/12.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
-#import <Foundation/Foundation.h>
 #import "BBLabelStyle.h"
 
 @interface BBTextField : UITextField {
