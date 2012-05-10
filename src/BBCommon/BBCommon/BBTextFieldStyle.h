@@ -3,6 +3,7 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class BBTextField;
 @class BBLabelStyle;
@@ -27,7 +28,6 @@
 @property(nonatomic) UIEdgeInsets textInsets;
 @property(nonatomic, retain) NSString *placeholder;
 
-
-
 - (BBTextField *)bbTextFieldWithFrame:(CGRect)frame;
+
 @end

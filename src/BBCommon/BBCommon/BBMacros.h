@@ -1,5 +1,11 @@
 #import <Foundation/Foundation.h>
 
+#ifdef __has_feature
+#define OBJC_ARC_ENABLED __has_feature(objc_arc)
+#else
+#define OBJC_ARC_ENABLED 0
+#endif
+
 #ifndef NS_BLOCK_ASSERTIONS
 #define DAssert(...) NSAssert(__VA_ARGS__)
 #else
@@ -40,8 +46,14 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #define RADIANS( degrees ) ( degrees * M_PI / 180 )
 #define BBRndInt(low, high) ((int)low + arc4random() % (high - low + 1))
 
+#if OBJC_ARC_ENABLED
+#define BBImageView(IMAGE_NAME) [[UIImageView alloc] initWithImage:[UIImage imageNamed:IMAGE_NAME]]
+#define BBImageViewWithCaps(IMAGE_NAME, LEFT_CAP_WIDTH, TOP_CAP_HEIGHT) [[UIImageView alloc] initWithImage:[[UIImage imageNamed:IMAGE_NAME] stretchableImageWithLeftCapWidth:LEFT_CAP_WIDTH topCapHeight:TOP_CAP_HEIGHT]]
+#else
 #define BBImageView(IMAGE_NAME) [[[UIImageView alloc] initWithImage:[UIImage imageNamed:IMAGE_NAME]] autorelease]
 #define BBImageViewWithCaps(IMAGE_NAME, LEFT_CAP_WIDTH, TOP_CAP_HEIGHT) [[[UIImageView alloc] initWithImage:[[UIImage imageNamed:IMAGE_NAME] stretchableImageWithLeftCapWidth:LEFT_CAP_WIDTH topCapHeight:TOP_CAP_HEIGHT]] autorelease]
+#endif
+
 #define ARC4RANDOM_MAX      0x100000000
 #define BBRndFloat(low, high) ((((float) arc4random() / ARC4RANDOM_MAX) * (high - low)) + low)
 
