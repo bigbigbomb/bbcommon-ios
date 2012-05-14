@@ -3,10 +3,7 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import "BBModalDialogView.h"
-#import "BBRoundedRectView.h"
 #import "BBCommon.h"
-
-#define WINDOW_CORNER_RADIUS 10
 
 @interface BBModalDialogView ()
 
@@ -31,14 +28,18 @@ static BBModalDialogView *sharedDialog = nil;
 
 
 + (void)presentDialog:(UIView *)view delay:(NSTimeInterval)delay block:(void (^)())block {
-    [[BBModalDialogView sharedDialog].overlayWindow makeKeyAndVisible];
-    [[BBModalDialogView sharedDialog] positionDialog:nil];
-    [[BBModalDialogView sharedDialog] registerNotifications];
-    [BBModalDialogView sharedDialog].contentView = view;
+    [self presentDialog:view];
 
     [self performBlock:^{
         [[BBModalDialogView sharedDialog] dismissAndPerformBlock:block];
     } afterDelay:delay];
+}
+
++ (void)presentDialog:(UIView *)view {
+    [[BBModalDialogView sharedDialog].overlayWindow makeKeyAndVisible];
+    [[BBModalDialogView sharedDialog] positionDialog:nil];
+    [[BBModalDialogView sharedDialog] registerNotifications];
+    [BBModalDialogView sharedDialog].contentView = view;
 }
 
 + (BBModalDialogView *)sharedDialog {
@@ -70,7 +71,7 @@ static BBModalDialogView *sharedDialog = nil;
 }
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated {
-    __block CGSize targetSize = CGSizeMake((contentView == nil ? 0 : BBW(contentView)) + WINDOW_CORNER_RADIUS * 2,(contentView == nil ? 0 : BBH(contentView)) + WINDOW_CORNER_RADIUS * 2);
+    __block CGSize targetSize = CGSizeMake((contentView == nil ? 0 : BBW(contentView)),(contentView == nil ? 0 : BBH(contentView)));
 
     self.oldViewScreenshot.image = [_contentView getScreenshot];
     self.oldViewScreenshot.hidden = NO;
@@ -95,7 +96,7 @@ static BBModalDialogView *sharedDialog = nil;
                          if (self.oldViewScreenshot.image) {
                              self.oldViewScreenshot.alpha = 0;
                          } else {
-                             self.windowView.frame = CGRectMake((BBW(self.superview) - targetSize.width) / 2, (BBH(self.superview) - WINDOW_CORNER_RADIUS * 2) / 2, targetSize.width, WINDOW_CORNER_RADIUS * 2);
+                             self.windowView.frame = CGRectMake((BBW(self.superview) - targetSize.width) / 2, (BBH(self.superview)) / 2, targetSize.width, 0);
                          }
                      }
                      completion:^(BOOL completion1){
@@ -134,22 +135,16 @@ static BBModalDialogView *sharedDialog = nil;
     [self.overlayWindow addSubview:self];
     self.userInteractionEnabled = YES;
 
-    self.windowView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_CORNER_RADIUS * 2, WINDOW_CORNER_RADIUS * 2)] autorelease];
+    self.windowView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
     self.windowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:self.windowView];
     [self.windowView horizontalAlignment:BBHorizontalAlignmentCenter verticalAlignment:BBVerticalAlignmentCenter];
 
-    BBRoundedRectView *roundedRect = [[[BBRoundedRectView alloc] initWithFrame:CGRectMake(0, 0, BBW(self.windowView), BBH(self.windowView))] autorelease];
-    roundedRect.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    roundedRect.color = [UIColor colorWithWhite:0 alpha:0.2];
-    roundedRect.cornerRadii = CGSizeMake(WINDOW_CORNER_RADIUS, WINDOW_CORNER_RADIUS);
-    [self.windowView addSubview:roundedRect];
-
-    self.contentContainer = [[[UIView alloc] initWithFrame:CGRectMake(WINDOW_CORNER_RADIUS, WINDOW_CORNER_RADIUS, BBW(self.windowView)-WINDOW_CORNER_RADIUS*2, BBH(self.windowView)-WINDOW_CORNER_RADIUS*2)] autorelease];
+    self.contentContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, BBW(self.windowView), BBH(self.windowView))] autorelease];
     self.contentContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.windowView addSubview:self.contentContainer];
 
-    self.oldViewScreenshot = [[[UIImageView alloc] initWithFrame:CGRectMake(WINDOW_CORNER_RADIUS, WINDOW_CORNER_RADIUS, BBW(self.windowView)-WINDOW_CORNER_RADIUS*2, BBH(self.windowView)-WINDOW_CORNER_RADIUS*2)] autorelease];
+    self.oldViewScreenshot = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BBW(self.windowView), BBH(self.windowView))] autorelease];
     self.oldViewScreenshot.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.windowView addSubview:self.oldViewScreenshot];
 }

@@ -11,6 +11,12 @@
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
+- (void)dismissAndPerformBlock:(void (^)())block;
+
+
 + (void)presentDialog:(UIView *)view delay:(NSTimeInterval)delay block:(void (^)())block;
+
++ (void)presentDialog:(UIView *)view;
+
 
 @end
