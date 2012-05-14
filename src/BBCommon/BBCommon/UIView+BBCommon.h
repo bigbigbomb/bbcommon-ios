@@ -119,6 +119,11 @@ typedef enum {
 - (UIImage *)getScreenshot;
 
 /**
+ * Add a subview at a specific position and return the subview (convenient for assigning or chaining)
+ */
+- (UIView *)addSubview:(UIView *)subview atPoint:(CGPoint)point;
+
+/**
  * Changes the background color of all subviews to add in sizing and positioning
  */
 - (void)debugSizes;
