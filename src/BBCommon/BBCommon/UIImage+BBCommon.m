@@ -28,9 +28,9 @@
         return self;
     }
 
-    CGImageRef imageRef = self.CGImage;
-    size_t width = CGImageGetWidth(imageRef);
-    size_t height = CGImageGetHeight(imageRef);
+    size_t width = CGImageGetWidth(self.CGImage);
+    size_t height = CGImageGetHeight(self.CGImage);
+    CGColorSpaceRef imageRefColorSpace = CGImageGetColorSpace(self.CGImage);
 
     // The bitsPerComponent and bitmapInfo values are hard-coded to prevent an "unsupported parameter combination" error
     CGContextRef offscreenContext = CGBitmapContextCreate(NULL,
@@ -38,17 +38,18 @@
                                                           height,
                                                           8,
                                                           0,
-                                                          CGImageGetColorSpace(imageRef),
+                                                          imageRefColorSpace,
                                                           kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
 
     // Draw the image into the context and retrieve the new image, which will now have an alpha layer
-    CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), imageRef);
+    CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), self.CGImage);
     CGImageRef imageRefWithAlpha = CGBitmapContextCreateImage(offscreenContext);
     UIImage *imageWithAlpha = [UIImage imageWithCGImage:imageRefWithAlpha];
 
     // Clean up
     CGContextRelease(offscreenContext);
     CGImageRelease(imageRefWithAlpha);
+    CGColorSpaceRelease(imageRefColorSpace);
 
     return imageWithAlpha;
 }

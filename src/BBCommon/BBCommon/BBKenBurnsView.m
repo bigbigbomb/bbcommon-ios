@@ -146,7 +146,7 @@
 
 - (void)stopAnimating {
     if (_animating && self.images != nil && [self.images count] > 0) {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(prepareToAnimateNextImage) object:nil];
+       [NSObject cancelPreviousPerformRequestsWithTarget:self];
         _animating = NO;
         [UIView animateWithDuration:0.5
                               delay:0.0
@@ -156,10 +156,10 @@
                          }
                          completion:nil];
     }
-
 }
 
 - (void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [_images release];
     [_imageA release];
     [_imageB release];

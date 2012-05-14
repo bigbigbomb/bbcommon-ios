@@ -85,8 +85,8 @@
 		D3E325E214265749009248A1 /* UIWebView+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A0 /* UIWebView+BBCommon.m */; };
 		D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */; };
 		D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */; };
-		D3E325E214265749009248A7 /* BBPassThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A6 /* BBPassThroughView.m */; };
-		D3E325E214265749009248A9 /* BBPassThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A8 /* BBPassThroughView.h */; };
+		D3E325E214265749009248A7 /* BBModalDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A6 /* BBModalDialogView.h */; };
+		D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A8 /* BBModalDialogView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,8 +181,8 @@
 		D3E325E214265749009248A0 /* UIWebView+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+BBCommon.h"; sourceTree = "<group>"; };
-		D3E325E214265749009248A6 /* BBPassThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPassThroughView.m; sourceTree = "<group>"; };
-		D3E325E214265749009248A8 /* BBPassThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPassThroughView.h; sourceTree = "<group>"; };
+		D3E325E214265749009248A6 /* BBModalDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBModalDialogView.h; sourceTree = "<group>"; };
+		D3E325E214265749009248A8 /* BBModalDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBModalDialogView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,8 +244,10 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
-				D3E325E214265749009248A8 /* BBPassThroughView.h */,
-				D3E325E214265749009248A6 /* BBPassThroughView.m */,
+				D3E325E214265749009248A8 /* BBModalDialogView.m */,
+				D3E325E214265749009248A6 /* BBModalDialogView.h */,
+				D3FE5E5C14EC87CC00CAAC2D,
+				D3FE5E5C14EC87CC00CAAC2C,
 				D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */,
 				D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */,
 				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
@@ -381,7 +383,7 @@
 				D3E325E2142657490092489D /* UITableView+BBCommon.h in Headers */,
 				D3E325E2142657490092489F /* UIWebView+BBCommon.h in Headers */,
 				D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */,
-				D3E325E214265749009248A9 /* BBPassThroughView.h in Headers */,
+				D3E325E214265749009248A7 /* BBModalDialogView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,7 +519,7 @@
 				D3E325E2142657490092489B /* UIScrollView+BBCommon.m in Sources */,
 				D3E325E214265749009248A1 /* UIWebView+BBCommon.m in Sources */,
 				D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */,
-				D3E325E214265749009248A7 /* BBPassThroughView.m in Sources */,
+				D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
