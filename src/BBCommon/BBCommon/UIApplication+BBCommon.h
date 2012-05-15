@@ -10,6 +10,8 @@
 
 +(CGRect) currentFrame;
 
++(CGRect) currentFrameWithStatusBar;
+
 +(CGSize) sizeInOrientation:(UIInterfaceOrientation)orientation;
 
 @end
