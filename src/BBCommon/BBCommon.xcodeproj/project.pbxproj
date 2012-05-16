@@ -187,6 +187,7 @@
 		D3E325E214265749009248A8 /* BBModalDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBModalDialogView.m; sourceTree = "<group>"; };
 		D3E325E214265749009248AA /* BBPassThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPassThroughView.h; sourceTree = "<group>"; };
 		D3E325E214265749009248AC /* BBPassThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPassThroughView.m; sourceTree = "<group>"; };
+		D3E325E214265749009248AE /* USStateAbbreviations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = USStateAbbreviations.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +249,7 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E214265749009248AE /* USStateAbbreviations.plist */,
 				D3E325E214265749009248AC /* BBPassThroughView.m */,
 				D3E325E214265749009248AA /* BBPassThroughView.h */,
 				D3E325E214265749009248A8 /* BBModalDialogView.m */,
