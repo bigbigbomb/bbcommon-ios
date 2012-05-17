@@ -75,12 +75,16 @@
     return viewImage;
 }
 
-- (UIView *)addSubview:(UIView *)subview atPoint:(CGPoint)point {
-    BBMoveFrame(subview, point.x, point.y);
+
+- (id)addAndReturnSubview:(UIView *)subview {
     [self addSubview:subview];
     return subview;
 }
 
+- (id)addAndReturnSubview:(UIView *)subview atPoint:(CGPoint)point {
+    BBMoveFrame(subview, point.x, point.y);
+    return [self addAndReturnSubview:subview];
+}
 
 - (void)debugSizes {
     if (self.frame.size.height <= 0 || self.frame.size.width <= 0)
