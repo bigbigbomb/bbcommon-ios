@@ -5,14 +5,12 @@
 #import "BBRoundedRectView.h"
 
 
-@implementation BBRoundedRectView {
+@implementation BBRoundedRectView
 
-@private
-    UIColor *_color;
-    CGSize _cornerRadii;
-}
 @synthesize color = _color;
 @synthesize cornerRadii = _cornerRadii;
+@synthesize roundingCorners = _roundingCorners;
+
 
 - (void)setColor:(UIColor *)aColor {
     NonatomicRetainedSetToFrom(_color, aColor);
@@ -24,8 +22,13 @@
     [self setNeedsDisplay];
 }
 
+- (void)setRoundingCorners:(UIRectCorner)aRoundingCorners {
+    _roundingCorners = aRoundingCorners;
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect {
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerAllCorners cornerRadii:self.cornerRadii];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:self.roundingCorners cornerRadii:self.cornerRadii];
     [self.color setFill];
     [path fill];
 }
@@ -37,6 +40,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.roundingCorners = UIRectCornerAllCorners;
         self.backgroundColor = [UIColor clearColor];
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     }
