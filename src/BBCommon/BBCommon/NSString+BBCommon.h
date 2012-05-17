@@ -8,6 +8,8 @@
 
 @interface NSString (BBCommon)
 
+@property (readonly) NSString *abbreviatedState;
+
 + (BOOL)isEmpty:(NSString *)string;
 
 - (CGSize)sizeWithBBLabelStyle:(BBLabelStyle *)labelStyle;

@@ -20,6 +20,18 @@
     return [self sizeWithFont:labelStyle.font forWidth:width lineBreakMode:labelStyle.lineBreakMode];
 }
 
+- (NSString *)abbreviatedState {
+    static NSDictionary *abbreviations = nil;
+
+    if (abbreviations == nil) {
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"USStateAbbreviations" ofType:@"plist"];
+        abbreviations = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    }
+
+    NSString *result = [abbreviations objectForKey:[self uppercaseString]];
+    return result ? result : self;
+}
+
 #pragma mark - URL Escaping and Unescaping
 
 - (NSString *)stringByEscapingForURLQuery {

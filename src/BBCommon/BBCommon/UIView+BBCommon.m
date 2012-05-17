@@ -8,7 +8,7 @@
 @implementation UIView(BBCommon)
 
 - (UIView *)horizontalAlignment:(BBHorizontalAlignment)horizontalAlignment verticalAlignment:(BBVerticalAlignment)verticalAlignment superview:(UIView *)superview {
-    DAssert(superview, @"superview cannot be nil when horizontally and vertically aligning a UIView [%@]", [self.class description]);
+    DAssert(superview, @"superview cannot be nil when horizontally and vertically aligning a UIView [%@]", [[self class] description]);
     BBMoveFrame(self, BBAlignedOrigin(horizontalAlignment, BBW(superview), BBW(self)), BBAlignedOrigin(verticalAlignment, BBH(superview), BBH(self)));
     return self;
 }
@@ -18,7 +18,7 @@
 }
 
 - (UIView *)horizontalAlignment:(BBHorizontalAlignment)horizontalAlignment superview:(UIView *)superview {
-    DAssert(superview, @"superview cannot be nil when horizontally aligning a UIView [%@]", [self.class description]);
+    DAssert(superview, @"superview cannot be nil when horizontally aligning a UIView [%@]", [[self class] description]);
     BBMoveFrame(self, BBAlignedOrigin(horizontalAlignment, BBW(superview), BBW(self)), BBY(self));
     return self;
 }
@@ -28,7 +28,7 @@
 }
 
 - (UIView *)verticalAlignment:(BBVerticalAlignment)verticalAlignment superview:(UIView *)superview {
-    DAssert(superview, @"superview cannot be nil when vertically aligning a UIView [%@]", [self.class description]);
+    DAssert(superview, @"superview cannot be nil when vertically aligning a UIView [%@]", [[self class] description]);
     BBMoveFrame(self, BBX(self), BBAlignedOrigin(verticalAlignment, BBH(superview), BBH(self)));
     return self;
 }
