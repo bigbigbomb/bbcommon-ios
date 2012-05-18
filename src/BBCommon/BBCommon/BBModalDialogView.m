@@ -28,7 +28,7 @@ static BBModalDialogView *sharedDialog = nil;
     [self presentDialog:view];
 
     [self performBlock:^{
-        [[BBModalDialogView sharedDialog] dismissAndPerformBlock:block];
+        [[BBModalDialogView sharedDialog] dismissAndPerformBlock:block animated:NO];
     } afterDelay:delay];
 
     return [BBModalDialogView sharedDialog];
@@ -150,29 +150,40 @@ static BBModalDialogView *sharedDialog = nil;
                                                object:nil];
 }
 
-- (void)dismiss {
-    [self dismissAndPerformBlock:nil];
+- (void)dismissAnimated:(BOOL)animated {
+    [self dismissAndPerformBlock:nil animated:animated];
 }
 
-- (void)dismissAndPerformBlock:(void (^)())block {
-    [self setContentView:nil];
+- (void)dismissAndPerformBlock:(void (^)())block animated:(BOOL)animated {
+    [UIView setAnimationsEnabled:animated];
+    self.contentContainer.hidden = NO;
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:0
+                     animations:^{
+                         self.contentContainer.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                        [self setContentView:nil];
 
-    [self performBlock:^{
-        [[NSNotificationCenter defaultCenter] removeObserver:sharedDialog];
-        [_overlayWindow release], _overlayWindow = nil;
-        [sharedDialog release], sharedDialog = nil;
+                        [self performBlock:^{
+                            [[NSNotificationCenter defaultCenter] removeObserver:sharedDialog];
+                            [_overlayWindow release], _overlayWindow = nil;
+                            [sharedDialog release], sharedDialog = nil;
 
-        // find the frontmost window that is an actual UIWindow and make it keyVisible
-         [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
-             if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
-                     [window makeKeyWindow];
-                     *stop = YES;
-             }
-         }];
+                            // find the frontmost window that is an actual UIWindow and make it keyVisible
+                             [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
+                                 if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
+                                         [window makeKeyWindow];
+                                         *stop = YES;
+                                 }
+                             }];
 
-        if (block)
-            block();
-    } afterDelay:0.4];
+                            if (block)
+                                block();
+                        } afterDelay:0.4];
+                     }];
+    [UIView setAnimationsEnabled:YES];
 }
 
 
