@@ -10,9 +10,9 @@
 @property(nonatomic, retain) UIView *contentView;
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
-- (void)dismissAndPerformBlock:(void (^)())block;
+- (void)dismissAndPerformBlock:(void (^)())block animated:(BOOL)animated;
 
-- (void)dismiss;
+- (void)dismissAnimated:(BOOL)animated;
 
 + (BBModalDialogView *)presentDialog:(UIView *)view delay:(NSTimeInterval)delay block:(void (^)())block;
 
