@@ -76,14 +76,14 @@
 }
 
 
-- (id)addAndReturnSubview:(UIView *)subview {
+- (id)addView:(UIView *)subview {
     [self addSubview:subview];
     return subview;
 }
 
-- (id)addAndReturnSubview:(UIView *)subview atPoint:(CGPoint)point {
+- (id)addView:(UIView *)subview atPoint:(CGPoint)point {
     BBMoveFrame(subview, point.x, point.y);
-    return [self addAndReturnSubview:subview];
+    return [self addView:subview];
 }
 
 - (void)debugSizes {
