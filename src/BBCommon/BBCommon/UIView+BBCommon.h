@@ -9,8 +9,8 @@
 #define BBY(UIVIEW)                 UIVIEW.frame.origin.y /**< Gets the origin.y value of the passed UIView's frame. */
 #define BBW(UIVIEW)                 UIVIEW.frame.size.width /**< Gets the size.width value of the passed UIView's frame. */
 #define BBH(UIVIEW)                 UIVIEW.frame.size.height /**< Gets the size.height value of the passed UIView's frame. */
-#define BBR(UIVIEW)                 UIVIEW.frame.origin.x + UIVIEW.frame.size.width /**< Gets the right edge location of the passed UIView's frame. */
-#define BBB(UIVIEW)                 UIVIEW.frame.origin.y + UIVIEW.frame.size.height /**< Gets the bottom edge location of the passed UIView's frame. */
+#define BBR(UIVIEW)                 (UIVIEW.frame.origin.x + UIVIEW.frame.size.width) /**< Gets the right edge location of the passed UIView's frame. */
+#define BBB(UIVIEW)                 (UIVIEW.frame.origin.y + UIVIEW.frame.size.height) /**< Gets the bottom edge location of the passed UIView's frame. */
     
 #define BBEmptyRect(X,Y)            CGRectMake(X,Y,0,0) /**< Gets a CGRect with its origin set to (X,Y) with size (0,0). */
 #define BBMoveRect(RECT,X,Y)        CGRectMake(X,Y,RECT.size.width,RECT.size.height) /**< Gets a CGRect with its origin set to (X,Y) and size set to the size of the passed CGRect. */
