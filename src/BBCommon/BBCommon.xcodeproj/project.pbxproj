@@ -89,6 +89,8 @@
 		D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A8 /* BBModalDialogView.m */; };
 		D3E325E214265749009248AB /* BBPassThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AA /* BBPassThroughView.h */; };
 		D3E325E214265749009248AD /* BBPassThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AC /* BBPassThroughView.m */; };
+		D3E325E214265749009248B0 /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AF /* BB3DTransition.m */; };
+		D3E325E214265749009248B2 /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B1 /* BB3DTransition.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,8 @@
 		D3E325E214265749009248AA /* BBPassThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPassThroughView.h; sourceTree = "<group>"; };
 		D3E325E214265749009248AC /* BBPassThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPassThroughView.m; sourceTree = "<group>"; };
 		D3E325E214265749009248AE /* USStateAbbreviations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = USStateAbbreviations.plist; sourceTree = "<group>"; };
+		D3E325E214265749009248AF /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
+		D3E325E214265749009248B1 /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E214265749009248B1 /* BB3DTransition.h */,
+				D3E325E214265749009248AF /* BB3DTransition.m */,
 				D3E325E214265749009248AE /* USStateAbbreviations.plist */,
 				D3E325E214265749009248AC /* BBPassThroughView.m */,
 				D3E325E214265749009248AA /* BBPassThroughView.h */,
@@ -393,6 +399,7 @@
 				D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */,
 				D3E325E214265749009248A7 /* BBModalDialogView.h in Headers */,
 				D3E325E214265749009248AB /* BBPassThroughView.h in Headers */,
+				D3E325E214265749009248B2 /* BB3DTransition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +537,7 @@
 				D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */,
 				D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */,
 				D3E325E214265749009248AD /* BBPassThroughView.m in Sources */,
+				D3E325E214265749009248B0 /* BB3DTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
