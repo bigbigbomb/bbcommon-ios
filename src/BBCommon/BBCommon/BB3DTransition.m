@@ -39,36 +39,58 @@
                      }];
 }
 
-+ (void)flipInFromBottom:(UIView *)view {
-    [BB3DTransition flipAnimate:view
-                      withPoint:CGPointMake(0.5, 1)
-                   withPosition:CGPointMake(view.layer.position.x, view.layer.position.y + view.frame.size.height * 0.5)
-                      withStart:RADIANS(90)
-                         andEnd:RADIANS(0)];
++ (void)setPoints:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection andStart:(float)start andEnd:(float)end {
+    switch (flipDirection) {
+        case BB3DFlipInFromBottom:
+        case BB3DFlipOutFromBottom:
+            [BB3DTransition flipAnimate:view
+                              withPoint:CGPointMake(0.5, 1)
+                           withPosition:CGPointMake(view.layer.position.x, view.layer.position.y + view.frame.size.height * 0.5)
+                              withStart:start
+                                 andEnd:end];
+            break;
+        case BB3DFlipInFromTop:
+        case BB3DFlipOutFromTop:
+            [BB3DTransition flipAnimate:view
+                              withPoint:CGPointMake(0.5, 1)
+                           withPosition:CGPointMake(view.layer.position.x, view.layer.position.y - view.frame.size.height * 0.5)
+                              withStart:start
+                                 andEnd:end];
+            break;
+        case BB3DFlipInFromLeft:
+        case BB3DFlipOutFromLeft:
+            [BB3DTransition flipAnimate:view
+                              withPoint:CGPointMake(0.5, 1)
+                           withPosition:CGPointMake(view.layer.position.x + view.frame.size.width * 0.5, view.layer.position.y)
+                              withStart:start
+                                 andEnd:end];
+            break;
+        case BB3DFlipInFromRight:
+        case BB3DFlipOutFromRight:
+            [BB3DTransition flipAnimate:view
+                              withPoint:CGPointMake(0.5, 1)
+                           withPosition:CGPointMake(view.layer.position.x - view.frame.size.width * 0.5, view.layer.position.y)
+                              withStart:start
+                                 andEnd:end];
+            break;
+    }
 }
 
-+ (void)flipInFromTop:(UIView *)view {
-    [BB3DTransition flipAnimate:view
-                      withPoint:CGPointMake(0.5, 0)
-                   withPosition:CGPointMake(view.layer.position.x, view.layer.position.y - view.frame.size.height * 0.5)
-                      withStart:RADIANS(90)
-                         andEnd:RADIANS(0)];
-}
-
-+ (void)flipOutFromBottom:(UIView *)view {
-    [BB3DTransition flipAnimate:view
-                      withPoint:CGPointMake(0.5, 1)
-                   withPosition:CGPointMake(view.layer.position.x, view.layer.position.y + view.frame.size.height * 0.5)
-                      withStart:RADIANS(0)
-                         andEnd:RADIANS(90)];
-}
-
-+ (void)flipOutFromTop:(UIView *)view {
-    [BB3DTransition flipAnimate:view
-                      withPoint:CGPointMake(0.5, 0)
-                   withPosition:CGPointMake(view.layer.position.x, view.layer.position.y - view.frame.size.height * 0.5)
-                      withStart:RADIANS(0)
-                         andEnd:RADIANS(90)];
++ (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection {
+    switch (flipDirection) {
+        case BB3DFlipInFromBottom:
+        case BB3DFlipInFromLeft:
+        case BB3DFlipInFromRight:
+        case BB3DFlipInFromTop:
+            [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(90) andEnd:RADIANS(0)];
+            break;
+        case BB3DFlipOutFromBottom:
+        case BB3DFlipOutFromLeft:
+        case BB3DFlipOutFromRight:
+        case BB3DFlipOutFromTop:
+            [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(0) andEnd:RADIANS(90)];
+            break;
+    }
 }
 
 + (void)flipFromBottom:(UIView *)fromView toView:(UIView *)toView {
