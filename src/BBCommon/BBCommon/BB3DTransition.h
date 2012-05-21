@@ -37,3 +37,10 @@ typedef enum {
 + (float)getSpinDuration;
 
 @end
+
+
+@interface BB3DTransitionResponder : NSObject
+- (id)initWithBlock:(void (^)())completionBlock;
+
+
+@end
