@@ -9,6 +9,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define RADIANS( degrees ) ( degrees * M_PI / 180 )
+#define DEGREES( radians ) ( radians * 180 / M_PI )
 
 @interface BB3DTransition : NSObject
 
