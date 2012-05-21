@@ -25,8 +25,15 @@ typedef enum {
 
 @interface BB3DTransition : NSObject
 
-+ (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection;
-+ (void)flipFromBottom:(UIView *)fromView toView:(UIView *)toView;
-+ (void)flipFromTop:(UIView *)fromView toView:(UIView *)toView;
++ (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection completion:(void(^)(BOOL finished))completion;
++ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView;
++ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView;
+
++ (void)setPerspectiveAmount:(float)amount;
++ (float)getPerspectiveAmount;
++ (void)setFlipDuration:(float)duration;
++ (float)getFlipDuration;
++ (void)setSpinDuration:(float)duration;
++ (float)getSpinDuration;
 
 @end
