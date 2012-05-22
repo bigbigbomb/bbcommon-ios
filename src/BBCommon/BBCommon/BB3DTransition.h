@@ -23,11 +23,17 @@ typedef enum {
     BB3DFlipOutFromRight
 } BB3DFlipDirection;
 
+typedef enum {
+    BB3DSpinFromTop,
+    BB3DSpinFromBottom,
+    BB3DSpinFromLeft,
+    BB3DSpinFromRight
+} BB3DSpinDirection;
+
 @interface BB3DTransition : NSObject
 
 + (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection completion:(void(^)(BOOL finished))completion;
-+ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion;
-+ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion;
++ (void)spin:(UIView *)fromView toView:(UIView *)toView spinDirection:(BB3DSpinDirection)spinDirection fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion;
 
 + (void)setPerspectiveAmount:(float)amount;
 + (float)getPerspectiveAmount;
