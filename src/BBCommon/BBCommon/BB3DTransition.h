@@ -26,8 +26,8 @@ typedef enum {
 @interface BB3DTransition : NSObject
 
 + (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection completion:(void(^)(BOOL finished))completion;
-+ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView;
-+ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView;
++ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion;
++ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion;
 
 + (void)setPerspectiveAmount:(float)amount;
 + (float)getPerspectiveAmount;
@@ -40,7 +40,7 @@ typedef enum {
 
 
 @interface BB3DTransitionResponder : NSObject
-- (id)initWithBlock:(void (^)())completionBlock;
 
+- (id)initWithBlock:(void (^)(BOOL))innerCompletion fromViewCompletion:(void (^)(BOOL))fromViewCompletion toViewCompletion:(void (^)(BOOL))toViewCompletion;
 
 @end

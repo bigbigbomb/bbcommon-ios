@@ -45,14 +45,16 @@ static float _spinDuration;
                          view.layer.transform = endT;
                      }
                      completion:^(BOOL finished){
-                         if (end != RADIANS(0)) {
-                             view.hidden = YES;
-                         }
-                         view.layer.transform = CATransform3DIdentity;
-                         view.layer.anchorPoint = oldAnchor;
-                         view.layer.position = oldPosition;
-                         if (completion){
-                             completion(finished);
+                         if (finished){
+                             if (end != RADIANS(0)) {
+                                 view.hidden = YES;
+                             }
+                             view.layer.transform = CATransform3DIdentity;
+                             view.layer.anchorPoint = oldAnchor;
+                             view.layer.position = oldPosition;
+                             if (completion){
+                                 completion(finished);
+                             }
                          }
                      }];
 }
@@ -99,13 +101,51 @@ static float _spinDuration;
     }
 }
 
-+ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView {
-    toView.hidden = YES;
-    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(void){
-        fromView.layer.transform = CATransform3DIdentity;
-        fromView.hidden = YES;
-        toView.hidden = NO;
-    }];
++ (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion {
+    if (fromView != toView){
+        toView.hidden = YES;
+    }
+    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
+        if (finished) {
+            if (fromView != toView){
+                fromView.layer.transform = CATransform3DIdentity;
+                fromView.hidden = YES;
+                toView.hidden = NO;
+            }
+
+            BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
+                if (finished)
+                    toView.layer.transform = CATransform3DIdentity;
+            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            backAnimation.delegate             = backResponder;
+            backAnimation.duration             = _spinDuration * 0.5;
+            backAnimation.repeatCount          = 0;
+            backAnimation.removedOnCompletion  = YES;
+            backAnimation.autoreverses         = NO;
+            backAnimation.fillMode             = kCAFillModeForwards;
+
+            CATransform3D tTrans2                  = CATransform3DIdentity;
+            tTrans2.m34                            = _perspectiveAmount;
+
+            backAnimation.values               = [NSArray arrayWithObjects:
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2, RADIANS(-90),1,0,0)],
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2,RADIANS(10),1,0,0)],
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2,RADIANS(0),1,0,0)],
+                                                       nil];
+            backAnimation.keyTimes             = [NSArray arrayWithObjects:
+                                                      [NSNumber numberWithFloat:0],
+                                                      [NSNumber numberWithFloat:0.7],
+                                                      [NSNumber numberWithFloat:1],
+                                                       nil];
+            backAnimation.timingFunctions      = [NSArray arrayWithObjects:
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+                                                       nil];
+            [toView.layer addAnimation:backAnimation forKey:@"transform"];
+        }
+    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -123,7 +163,7 @@ static float _spinDuration;
                                             [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(90),1,0,0)],
                                                nil];
     frontAnimation.keyTimes             = [NSArray arrayWithObjects:
-                                              [NSNumber numberWithFloat:0.0],
+                                              [NSNumber numberWithFloat:0],
                                               [NSNumber numberWithFloat:0.8],
                                               [NSNumber numberWithFloat:1],
                                                nil];
@@ -133,48 +173,56 @@ static float _spinDuration;
                                              [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                                nil];
     [fromView.layer addAnimation:frontAnimation forKey:@"transform"];
-
-    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(void){
-        toView.layer.transform = CATransform3DIdentity;
-    }];
-    CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    backAnimation.delegate             = backResponder;
-    backAnimation.duration             = _spinDuration;
-    backAnimation.repeatCount          = 0;
-    backAnimation.removedOnCompletion  = YES;
-    backAnimation.autoreverses         = NO;
-    backAnimation.fillMode             = kCAFillModeForwards;
-
-    CATransform3D tTrans2                  = CATransform3DIdentity;
-    tTrans2.m34                            = _perspectiveAmount;
-
-    backAnimation.values               = [NSArray arrayWithObjects:
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans, RADIANS(-90),1,0,0)],
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(10),1,0,0)],
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(0),1,0,0)],
-                                               nil];
-    backAnimation.keyTimes             = [NSArray arrayWithObjects:
-                                              [NSNumber numberWithFloat:0.5],
-                                              [NSNumber numberWithFloat:0.85],
-                                              [NSNumber numberWithFloat:1.0],
-                                               nil];
-    backAnimation.timingFunctions      = [NSArray arrayWithObjects:
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
-                                               nil];
-    [toView.layer addAnimation:backAnimation forKey:@"transform"];
 }
 
-+ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView {
-    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(void){
-        fromView.layer.transform = CATransform3DIdentity;
-        fromView.hidden = YES;
-        toView.hidden = NO;
-    }];
++ (void)spinFromTop:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion {
+    if (fromView != toView){
+        toView.hidden = YES;
+    }
+    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
+        if (finished) {
+            if (fromView != toView){
+                fromView.layer.transform = CATransform3DIdentity;
+                fromView.hidden = YES;
+                toView.hidden = NO;
+            }
+
+            BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
+                if (finished)
+                    toView.layer.transform = CATransform3DIdentity;
+            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            backAnimation.delegate             = backResponder;
+            backAnimation.duration             = _spinDuration* 0.5;
+            backAnimation.repeatCount          = 0;
+            backAnimation.removedOnCompletion  = YES;
+            backAnimation.autoreverses         = NO;
+            backAnimation.fillMode             = kCAFillModeForwards;
+
+            CATransform3D tTrans2                  = CATransform3DIdentity;
+            tTrans2.m34                            = _perspectiveAmount;
+
+            backAnimation.values               = [NSArray arrayWithObjects:
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2, RADIANS(90),1,0,0)],
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2,RADIANS(-10),1,0,0)],
+                                                    [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans2,RADIANS(0),1,0,0)],
+                                                       nil];
+            backAnimation.keyTimes             = [NSArray arrayWithObjects:
+                                                      [NSNumber numberWithFloat:0],
+                                                      [NSNumber numberWithFloat:0.7],
+                                                      [NSNumber numberWithFloat:1],
+                                                       nil];
+            backAnimation.timingFunctions      = [NSArray arrayWithObjects:
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
+                                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+                                                       nil];
+            [toView.layer addAnimation:backAnimation forKey:@"transform"];
+        }
+    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
-    frontAnimation.duration             = _spinDuration;
+    frontAnimation.duration             = _spinDuration * 0.5;
     frontAnimation.repeatCount          = 0;
     frontAnimation.removedOnCompletion  = YES;
     frontAnimation.autoreverses         = NO;
@@ -189,9 +237,9 @@ static float _spinDuration;
                                             [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(-90),1,0,0)],
                                                nil];
     frontAnimation.keyTimes             = [NSArray arrayWithObjects:
-                                              [NSNumber numberWithFloat:0.0],
-                                              [NSNumber numberWithFloat:0.35],
-                                              [NSNumber numberWithFloat:0.5],
+                                              [NSNumber numberWithFloat:0],
+                                              [NSNumber numberWithFloat:0.8],
+                                              [NSNumber numberWithFloat:1],
                                                nil];
     frontAnimation.timingFunctions      = [NSArray arrayWithObjects:
                                              [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
@@ -199,37 +247,6 @@ static float _spinDuration;
                                              [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                                nil];
     [fromView.layer addAnimation:frontAnimation forKey:@"transform"];
-
-    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(void){
-        toView.layer.transform = CATransform3DIdentity;
-    }];
-    CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    backAnimation.delegate             = backResponder;
-    backAnimation.duration             = _spinDuration;
-    backAnimation.repeatCount          = 0;
-    backAnimation.removedOnCompletion  = YES;
-    backAnimation.autoreverses         = NO;
-    backAnimation.fillMode             = kCAFillModeForwards;
-
-    CATransform3D tTrans2                  = CATransform3DIdentity;
-    tTrans2.m34                            = _perspectiveAmount;
-
-    backAnimation.values               = [NSArray arrayWithObjects:
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans, RADIANS(90),1,0,0)],
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(-10),1,0,0)],
-                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,RADIANS(0),1,0,0)],
-                                               nil];
-    backAnimation.keyTimes             = [NSArray arrayWithObjects:
-                                              [NSNumber numberWithFloat:0.5],
-                                              [NSNumber numberWithFloat:0.85],
-                                              [NSNumber numberWithFloat:1.0],
-                                               nil];
-    backAnimation.timingFunctions      = [NSArray arrayWithObjects:
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn],
-                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
-                                               nil];
-    [toView.layer addAnimation:backAnimation forKey:@"transform"];
 }
 
 + (void)setPerspectiveAmount:(float)amount {
@@ -261,20 +278,28 @@ static float _spinDuration;
 
 @implementation BB3DTransitionResponder {
 
-    void (^_completionBlock)(void);
-
+    void (^_innerCompletion)(BOOL);
+    void (^_fromViewCompletion)(BOOL);
+    void (^_toViewCompletion)(BOOL);
 }
 
-- (id)initWithBlock:(void (^)(void))completionBlock {
+- (id)initWithBlock:(void (^)(BOOL))innerCompletion fromViewCompletion:(void (^)(BOOL))fromViewCompletion toViewCompletion:(void (^)(BOOL))toViewCompletion {
     self = [super init];
     if (self) {
-        _completionBlock = [completionBlock copy];
+        _innerCompletion = [innerCompletion copy];
+        _fromViewCompletion = [fromViewCompletion copy];
+        _toViewCompletion = [toViewCompletion copy];
     }
     return self;
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
-    _completionBlock();
+    if (_innerCompletion)
+        _innerCompletion(flag);
+    if (_fromViewCompletion)
+        _fromViewCompletion(flag);
+    if (_toViewCompletion)
+        _toViewCompletion(flag);
 }
 
 @end
