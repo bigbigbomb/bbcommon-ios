@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15515F26156A92C80047D537 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15515F25156A92C80047D537 /* CoreText.framework */; };
+		15B6E1D5156A88420076C490 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */; };
+		15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */; };
+		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
+		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
 		D3E325871426546400924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
 		D3E325921426546500924841 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325911426546500924841 /* UIKit.framework */; };
 		D3E325931426546500924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
@@ -89,8 +94,6 @@
 		D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A8 /* BBModalDialogView.m */; };
 		D3E325E214265749009248AB /* BBPassThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AA /* BBPassThroughView.h */; };
 		D3E325E214265749009248AD /* BBPassThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AC /* BBPassThroughView.m */; };
-		D3E325E214265749009248B0 /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AF /* BB3DTransition.m */; };
-		D3E325E214265749009248B2 /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B1 /* BB3DTransition.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15515F25156A92C80047D537 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.h; sourceTree = "<group>"; };
+		15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
+		15DAE742156C38FA00C4B09C /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
+		15DAE743156C38FA00C4B09C /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
 		D3E325831426546400924841 /* libBBCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBBCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E325861426546400924841 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3E3258A1426546400924841 /* BBCommon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommon-Prefix.pch"; sourceTree = "<group>"; };
@@ -190,8 +198,6 @@
 		D3E325E214265749009248AA /* BBPassThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPassThroughView.h; sourceTree = "<group>"; };
 		D3E325E214265749009248AC /* BBPassThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPassThroughView.m; sourceTree = "<group>"; };
 		D3E325E214265749009248AE /* USStateAbbreviations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = USStateAbbreviations.plist; sourceTree = "<group>"; };
-		D3E325E214265749009248AF /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
-		D3E325E214265749009248B1 /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15515F26156A92C80047D537 /* CoreText.framework in Frameworks */,
 				D3E325E11426574900924841 /* CoreData.framework in Frameworks */,
 				D3E325E21426574900924841 /* QuartzCore.framework in Frameworks */,
 				D3E325871426546400924841 /* Foundation.framework in Frameworks */,
@@ -219,9 +226,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15B6E1D0156A88120076C490 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				15B6E1D2156A88240076C490 /* TTTAttributedLabel */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		15B6E1D2156A88240076C490 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */,
+				15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */,
+			);
+			name = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		D3E325781426546400924841 = {
 			isa = PBXGroup;
 			children = (
+				15B6E1D0156A88120076C490 /* Libraries */,
 				D3E325881426546400924841 /* BBCommon */,
 				D3E325991426546500924841 /* BBCommonTests */,
 				D3E325851426546400924841 /* Frameworks */,
@@ -241,6 +266,7 @@
 		D3E325851426546400924841 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15515F25156A92C80047D537 /* CoreText.framework */,
 				D3E325DF1426574900924841 /* CoreData.framework */,
 				D3E325E01426574900924841 /* QuartzCore.framework */,
 				D3E325861426546400924841 /* Foundation.framework */,
@@ -253,15 +279,13 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
-				D3E325E214265749009248B1 /* BB3DTransition.h */,
-				D3E325E214265749009248AF /* BB3DTransition.m */,
+				15DAE742156C38FA00C4B09C /* BB3DTransition.h */,
+				15DAE743156C38FA00C4B09C /* BB3DTransition.m */,
 				D3E325E214265749009248AE /* USStateAbbreviations.plist */,
 				D3E325E214265749009248AC /* BBPassThroughView.m */,
 				D3E325E214265749009248AA /* BBPassThroughView.h */,
 				D3E325E214265749009248A8 /* BBModalDialogView.m */,
 				D3E325E214265749009248A6 /* BBModalDialogView.h */,
-				D3FE5E5C14EC87CC00CAAC2D,
-				D3FE5E5C14EC87CC00CAAC2C,
 				D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */,
 				D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */,
 				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
@@ -399,7 +423,8 @@
 				D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */,
 				D3E325E214265749009248A7 /* BBModalDialogView.h in Headers */,
 				D3E325E214265749009248AB /* BBPassThroughView.h in Headers */,
-				D3E325E214265749009248B2 /* BB3DTransition.h in Headers */,
+				15B6E1D5156A88420076C490 /* TTTAttributedLabel.h in Headers */,
+				15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +562,8 @@
 				D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */,
 				D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */,
 				D3E325E214265749009248AD /* BBPassThroughView.m in Sources */,
-				D3E325E214265749009248B0 /* BB3DTransition.m in Sources */,
+				15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */,
+				15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
