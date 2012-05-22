@@ -134,7 +134,7 @@ static float _spinDuration;
             BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
                 if (finished)
                     toView.layer.transform = CATransform3DIdentity;
-            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            } outerCompletion:toViewCompletion];
             CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             backAnimation.delegate             = backResponder;
             backAnimation.duration             = _spinDuration * 0.5;
@@ -163,7 +163,7 @@ static float _spinDuration;
                                                        nil];
             [toView.layer addAnimation:backAnimation forKey:@"transform"];
         }
-    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+    } outerCompletion:fromViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -209,7 +209,7 @@ static float _spinDuration;
             BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
                 if (finished)
                     toView.layer.transform = CATransform3DIdentity;
-            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            } outerCompletion:toViewCompletion];
             CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             backAnimation.delegate             = backResponder;
             backAnimation.duration             = _spinDuration* 0.5;
@@ -238,7 +238,7 @@ static float _spinDuration;
                                                        nil];
             [toView.layer addAnimation:backAnimation forKey:@"transform"];
         }
-    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+    } outerCompletion:fromViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -284,7 +284,7 @@ static float _spinDuration;
             BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
                 if (finished)
                     toView.layer.transform = CATransform3DIdentity;
-            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            } outerCompletion:toViewCompletion];
             CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             backAnimation.delegate             = backResponder;
             backAnimation.duration             = _spinDuration* 0.5;
@@ -313,7 +313,7 @@ static float _spinDuration;
                                                        nil];
             [toView.layer addAnimation:backAnimation forKey:@"transform"];
         }
-    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+    } outerCompletion:fromViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -359,7 +359,7 @@ static float _spinDuration;
             BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
                 if (finished)
                     toView.layer.transform = CATransform3DIdentity;
-            } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+            } outerCompletion:toViewCompletion];
             CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             backAnimation.delegate             = backResponder;
             backAnimation.duration             = _spinDuration* 0.5;
@@ -388,7 +388,7 @@ static float _spinDuration;
                                                        nil];
             [toView.layer addAnimation:backAnimation forKey:@"transform"];
         }
-    } fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
+    } outerCompletion:fromViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -448,16 +448,14 @@ static float _spinDuration;
 @implementation BB3DTransitionResponder {
 
     void (^_innerCompletion)(BOOL);
-    void (^_fromViewCompletion)(BOOL);
-    void (^_toViewCompletion)(BOOL);
+    void (^_outerCompletion)(BOOL);
 }
 
-- (id)initWithBlock:(void (^)(BOOL))innerCompletion fromViewCompletion:(void (^)(BOOL))fromViewCompletion toViewCompletion:(void (^)(BOOL))toViewCompletion {
+- (id)initWithBlock:(void (^)(BOOL))innerCompletion outerCompletion:(void (^)(BOOL))outerCompletion {
     self = [super init];
     if (self) {
         _innerCompletion = [innerCompletion copy];
-        _fromViewCompletion = [fromViewCompletion copy];
-        _toViewCompletion = [toViewCompletion copy];
+        _outerCompletion = [outerCompletion copy];
     }
     return self;
 }
@@ -465,10 +463,8 @@ static float _spinDuration;
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     if (_innerCompletion)
         _innerCompletion(flag);
-    if (_fromViewCompletion)
-        _fromViewCompletion(flag);
-    if (_toViewCompletion)
-        _toViewCompletion(flag);
+    if (_outerCompletion)
+        _outerCompletion(flag);
 }
 
 @end
