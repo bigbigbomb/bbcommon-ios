@@ -49,7 +49,6 @@
     // Clean up
     CGContextRelease(offscreenContext);
     CGImageRelease(imageRefWithAlpha);
-    CGColorSpaceRelease(imageRefColorSpace);
 
     return imageWithAlpha;
 }
