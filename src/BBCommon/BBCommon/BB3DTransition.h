@@ -9,9 +9,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define RADIANS( degrees ) ( degrees * M_PI / 180 )
-#define DEGREES( radians ) ( radians * 180 / M_PI )
-
 typedef enum {
     BB3DFlipInFromTop,
     BB3DFlipInFromBottom,
@@ -30,8 +27,6 @@ typedef enum {
     BB3DSpinFromRight
 } BB3DSpinDirection;
 
-static float BB3DTopLeftRadianValues[] = {RADIANS(0), RADIANS(20), RADIANS(-90), RADIANS(90), RADIANS(-15), RADIANS(0)};
-static float BB3DBottomRightRadianValues[] ={RADIANS(0), RADIANS(-20), RADIANS(90), RADIANS(-90), RADIANS(15), RADIANS(0)};
 
 @interface BB3DTransition : NSObject
 
