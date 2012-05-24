@@ -119,18 +119,24 @@ static float _spinDuration;
 }
 
 + (void)fromViewAnimation:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
-    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
-        if (finished) {
+    void(^block)(BOOL)  = ^(BOOL finished){
+            if (finished) {
 
-            if (fromView != toView){
-                fromView.layer.transform = CATransform3DIdentity;
-                fromView.hidden = YES;
-                toView.hidden = NO;
+                if (fromView != toView){
+                    fromView.layer.transform = CATransform3DIdentity;
+                    fromView.hidden = YES;
+                    toView.hidden = NO;
+                }
+
+                [BB3DTransition toViewAnimation:toView toViewCompletion:toViewCompletion angleValues:angleValues effectX:effectX effectY:effectY];
             }
-
-            [BB3DTransition toViewAnimation:toView toViewCompletion:toViewCompletion angleValues:angleValues effectX:effectX effectY:effectY];
-        }
-    } outerCompletion:fromViewCompletion];
+        };
+    if (![UIView areAnimationsEnabled]){
+        fromViewCompletion(YES);
+        block(YES);
+        return;
+    }
+    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:block outerCompletion:fromViewCompletion];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -161,10 +167,15 @@ static float _spinDuration;
 }
 
 + (void)toViewAnimation:(UIView *)toView toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
-    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:^(BOOL finished){
-        if (finished)
-            toView.layer.transform = CATransform3DIdentity;
-    } outerCompletion:toViewCompletion];
+    void(^block)(BOOL)  = ^(BOOL finished){
+            if (finished)
+                toView.layer.transform = CATransform3DIdentity;
+        };
+    if (![UIView areAnimationsEnabled]){
+        block(YES);
+        return;
+    }
+    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:block outerCompletion:toViewCompletion];
     CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     backAnimation.delegate             = backResponder;
     backAnimation.duration             = _spinDuration * 0.5;
