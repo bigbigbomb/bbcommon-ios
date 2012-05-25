@@ -48,7 +48,9 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 
 #define BBRnd ((arc4random()%256) / 255.0f)
 
-#define RADIANS( degrees ) ( degrees * M_PI / 180 )
+#define RADIANS( DEGREES ) (DEGREES * M_PI / 180.0f)
+#define DEGREES( RADIANS ) (RADIANS * 180.0f / M_PI)
+
 #define BBRndInt(low, high) ((int)low + arc4random() % (high - low + 1))
 
 #if OBJC_ARC_ENABLED
