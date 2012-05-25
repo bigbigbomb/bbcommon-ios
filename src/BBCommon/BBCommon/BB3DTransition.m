@@ -13,7 +13,10 @@
 
 static float BB3DTopLeftRadianValues[] = {RADIANS(0), RADIANS(20), RADIANS(-90), RADIANS(90), RADIANS(-15), RADIANS(0)};
 static float BB3DBottomRightRadianValues[] ={RADIANS(0), RADIANS(-20), RADIANS(90), RADIANS(-90), RADIANS(15), RADIANS(0)};
-
+static char kBB3DOriginalAnchorPointXKey;
+static char kBB3DOriginalAnchorPointYKey;
+static char kBB3DOriginalPositionXKey;
+static char kBB3DOriginalPositionYKey;
 
 static float _perspectiveAmount;
 static float _flipDuration;
@@ -30,15 +33,19 @@ static float _spinDuration;
 }
 
 + (void)flipAnimate:(UIView *)view withPoint:(CGPoint)anchorPoint withPosition:(CGPoint)position withStart:(float)start andEnd:(float)end completion:(void (^)(BOOL finished))completion {
-    CGPoint oldAnchor = view.layer.anchorPoint;
-    CGPoint oldPosition = view.layer.position;
-    view.layer.anchorPoint = anchorPoint;
-    view.layer.position = position;
-    CATransform3D startT = CATransform3DIdentity;
-    startT.m34 = _perspectiveAmount;
-    startT = CATransform3DRotate(startT, start, 1.0f, 0.0f, 0.0f);
-    view.layer.transform = startT;
-    view.hidden = NO;
+    if (![view.layer animationKeys]){
+        objc_setAssociatedObject(view, &kBB3DOriginalAnchorPointXKey, [NSNumber numberWithFloat:view.layer.anchorPoint.x], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(view, &kBB3DOriginalAnchorPointYKey, [NSNumber numberWithFloat:view.layer.anchorPoint.y], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(view, &kBB3DOriginalPositionXKey, [NSNumber numberWithFloat:view.layer.position.x], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(view, &kBB3DOriginalPositionYKey, [NSNumber numberWithFloat:view.layer.position.y], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        view.layer.anchorPoint = anchorPoint;
+        view.layer.position = position;
+        CATransform3D startT = CATransform3DIdentity;
+        startT.m34 = _perspectiveAmount;
+        startT = CATransform3DRotate(startT, start, 1.0f, 0.0f, 0.0f);
+        view.layer.transform = startT;
+        view.hidden = NO;
+    }
     [UIView animateWithDuration:_flipDuration
                           delay:0
                         options:UIViewAnimationCurveEaseOut
@@ -54,8 +61,8 @@ static float _spinDuration;
                                  view.hidden = YES;
                              }
                              view.layer.transform = CATransform3DIdentity;
-                             view.layer.anchorPoint = oldAnchor;
-                             view.layer.position = oldPosition;
+                             view.layer.anchorPoint = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointYKey) floatValue]);
+                             view.layer.position = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionYKey) floatValue]);
                              if (completion){
                                  completion(finished);
                              }
