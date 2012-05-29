@@ -8,6 +8,7 @@
 @interface BBModalDialogView : UIView
 
 @property(nonatomic, retain) UIView *contentView;
+
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
 - (void)dismissAndPerformBlock:(void (^)())block animated:(BOOL)animated;
@@ -18,5 +19,6 @@
 
 + (BBModalDialogView *)presentDialog:(UIView *)view;
 
++ (BBModalDialogView *)sharedDialog;
 
 @end
