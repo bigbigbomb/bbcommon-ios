@@ -17,6 +17,7 @@
 
 @implementation BBModalDialogView
 
+@synthesize delegate = _delegate;
 @synthesize contentView = _contentView;
 @synthesize contentContainer = _contentContainer;
 @synthesize overlayWindow = _overlayWindow;
@@ -62,6 +63,7 @@ static BBModalDialogView *sharedDialog = nil;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    _delegate = nil;
     [_contentView release];
     [_contentContainer release];
     [_overlayWindow release];
@@ -78,6 +80,7 @@ static BBModalDialogView *sharedDialog = nil;
 
     [UIView setAnimationsEnabled:animated];
     self.contentContainer.hidden = NO;
+    [self.delegate willShowDialog:self  withTransitionDuration:0.3];
     [UIView animateWithDuration:0.3
                    animations:^{
                        self.contentContainer.alpha = 1;
@@ -157,8 +160,9 @@ static BBModalDialogView *sharedDialog = nil;
 - (void)dismissAndPerformBlock:(void (^)())block animated:(BOOL)animated {
     [UIView setAnimationsEnabled:animated];
     self.contentContainer.hidden = NO;
+    [self.delegate willHideDialog:self  withTransitionDuration:0.3];
     [UIView animateWithDuration:0.3
-                          delay:0.0
+                          delay:self.delegate ? [self.delegate getHideDelay] : 0.0
                         options:0
                      animations:^{
                          self.contentContainer.alpha = 0;

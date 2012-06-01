@@ -139,11 +139,13 @@ static float _spinDuration;
                     toView.hidden = NO;
                 }
 
+                if (fromViewCompletion)
+                    fromViewCompletion(finished);
+
                 [BB3DTransition toViewAnimation:toView toViewCompletion:toViewCompletion angleValues:angleValues effectX:effectX effectY:effectY];
             }
         };
     if (![UIView areAnimationsEnabled]){
-        fromViewCompletion(YES);
         block(YES);
         return;
     }
@@ -181,6 +183,9 @@ static float _spinDuration;
     void(^block)(BOOL)  = ^(BOOL finished){
             if (finished)
                 toView.layer.transform = CATransform3DIdentity;
+
+            if (toViewCompletion)
+                toViewCompletion(finished);
         };
     if (![UIView areAnimationsEnabled]){
         block(YES);
