@@ -4,10 +4,13 @@
 //
 #import <Foundation/Foundation.h>
 
+@protocol BBModalDialogViewDelegate;
 
 @interface BBModalDialogView : UIView
 
 @property(nonatomic, retain) UIView *contentView;
+
+@property(nonatomic, assign) id <BBModalDialogViewDelegate> delegate;
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
@@ -20,5 +23,12 @@
 + (BBModalDialogView *)presentDialog:(UIView *)view;
 
 + (BBModalDialogView *)sharedDialog;
+
+@end
+
+@protocol BBModalDialogViewDelegate <NSObject>
+
+- (void)willShowDialog:(BBModalDialogView *)dialogView withTransitionDuration:(float)transitionDuration;
+- (void)willHideDialog:(BBModalDialogView *)dialogView withTransitionDuration:(float)transitionDuration;
 
 @end
