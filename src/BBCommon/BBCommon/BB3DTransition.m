@@ -131,6 +131,7 @@ static float _spinDuration;
 
 + (void)fromViewAnimation:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
     void(^block)(BOOL)  = ^(BOOL finished){
+        fromView.userInteractionEnabled = YES;
             if (finished) {
 
                 if (fromView != toView){
@@ -168,7 +169,7 @@ static float _spinDuration;
                                                nil];
     frontAnimation.keyTimes             = [NSArray arrayWithObjects:
                                               [NSNumber numberWithFloat:0],
-                                              [NSNumber numberWithFloat:0.8],
+                                              [NSNumber numberWithFloat:0.7],
                                               [NSNumber numberWithFloat:1],
                                                nil];
     frontAnimation.timingFunctions      = [NSArray arrayWithObjects:
@@ -177,10 +178,12 @@ static float _spinDuration;
                                              [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                                nil];
     [fromView.layer addAnimation:frontAnimation forKey:@"transform"];
+    fromView.userInteractionEnabled = NO;
 }
 
 + (void)toViewAnimation:(UIView *)toView toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
     void(^block)(BOOL)  = ^(BOOL finished){
+        toView.userInteractionEnabled = YES;
             if (finished)
                 toView.layer.transform = CATransform3DIdentity;
 
@@ -219,6 +222,7 @@ static float _spinDuration;
                                              [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                                nil];
     [toView.layer addAnimation:backAnimation forKey:@"transform"];
+    toView.userInteractionEnabled = NO;
 }
 
 + (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion {
