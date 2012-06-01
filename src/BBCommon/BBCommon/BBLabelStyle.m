@@ -39,6 +39,11 @@
     field.textColor = self.color;
 }
 
+- (void)applyStyleToTextView:(UITextView *)view {
+    view.font = self.font;
+    view.textColor = self.color;
+}
+
 - (void)dealloc {
     [_font release];
     [_color release];
