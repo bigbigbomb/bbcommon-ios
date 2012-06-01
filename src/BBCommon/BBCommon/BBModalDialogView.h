@@ -30,5 +30,6 @@
 
 - (void)willShowDialog:(BBModalDialogView *)dialogView withTransitionDuration:(float)transitionDuration;
 - (void)willHideDialog:(BBModalDialogView *)dialogView withTransitionDuration:(float)transitionDuration;
+- (float)getHideDelay;
 
 @end

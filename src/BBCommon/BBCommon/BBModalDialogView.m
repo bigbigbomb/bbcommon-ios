@@ -162,7 +162,7 @@ static BBModalDialogView *sharedDialog = nil;
     self.contentContainer.hidden = NO;
     [self.delegate willHideDialog:self  withTransitionDuration:0.3];
     [UIView animateWithDuration:0.3
-                          delay:0.0
+                          delay:self.delegate ? [self.delegate getHideDelay] : 0.0
                         options:0
                      animations:^{
                          self.contentContainer.alpha = 0;
