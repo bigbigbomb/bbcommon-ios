@@ -45,4 +45,5 @@
 - (void)applyStyle:(UILabel *)label;
 
 - (void)applyStyleToTextField:(UITextField *)field;
+- (void)applyStyleToTextView:(UITextView *)view;
 @end

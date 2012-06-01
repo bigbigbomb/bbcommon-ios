@@ -1,0 +1,26 @@
+//
+//  Created by Brian Romanko on 6/1/12.
+//  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
+//
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@class BBTextField;
+@class BBLabelStyle;
+@class BBTextView;
+
+@interface BBTextViewStyle : NSObject {
+
+@private
+    BBLabelStyle *_textStyle;
+    UIImage *_background;
+    UIEdgeInsets _textInsets;
+}
+
+@property(nonatomic, retain) BBLabelStyle *textStyle;
+@property(nonatomic, retain) UIImage *background;
+@property(nonatomic) UIEdgeInsets textInsets;
+
+- (BBTextView *)bbTextViewWithFrame:(CGRect)frame;
+
+@end

@@ -12,6 +12,10 @@
 		15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */; };
 		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
+		D3D653B71579593B00D3A2AE /* BBTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D653B31579593B00D3A2AE /* BBTextView.h */; };
+		D3D653B81579593B00D3A2AE /* BBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D653B41579593B00D3A2AE /* BBTextView.m */; };
+		D3D653B91579593B00D3A2AE /* BBTextViewStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D653B51579593B00D3A2AE /* BBTextViewStyle.h */; };
+		D3D653BA1579593B00D3A2AE /* BBTextViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D653B61579593B00D3A2AE /* BBTextViewStyle.m */; };
 		D3E325871426546400924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
 		D3E325921426546500924841 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325911426546500924841 /* UIKit.framework */; };
 		D3E325931426546500924841 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E325861426546400924841 /* Foundation.framework */; };
@@ -112,6 +116,10 @@
 		15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		15DAE742156C38FA00C4B09C /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 		15DAE743156C38FA00C4B09C /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
+		D3D653B31579593B00D3A2AE /* BBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextView.h; sourceTree = "<group>"; };
+		D3D653B41579593B00D3A2AE /* BBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTextView.m; sourceTree = "<group>"; };
+		D3D653B51579593B00D3A2AE /* BBTextViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextViewStyle.h; sourceTree = "<group>"; };
+		D3D653B61579593B00D3A2AE /* BBTextViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTextViewStyle.m; sourceTree = "<group>"; };
 		D3E325831426546400924841 /* libBBCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBBCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E325861426546400924841 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3E3258A1426546400924841 /* BBCommon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BBCommon-Prefix.pch"; sourceTree = "<group>"; };
@@ -279,82 +287,86 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3D653B31579593B00D3A2AE /* BBTextView.h */,
+				D3D653B41579593B00D3A2AE /* BBTextView.m */,
+				D3D653B51579593B00D3A2AE /* BBTextViewStyle.h */,
+				D3D653B61579593B00D3A2AE /* BBTextViewStyle.m */,
 				15DAE742156C38FA00C4B09C /* BB3DTransition.h */,
 				15DAE743156C38FA00C4B09C /* BB3DTransition.m */,
-				D3E325E214265749009248AE /* USStateAbbreviations.plist */,
-				D3E325E214265749009248AC /* BBPassThroughView.m */,
-				D3E325E214265749009248AA /* BBPassThroughView.h */,
-				D3E325E214265749009248A8 /* BBModalDialogView.m */,
-				D3E325E214265749009248A6 /* BBModalDialogView.h */,
-				D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */,
-				D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */,
-				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
-				D3E325E2142657490092489E /* UIWebView+BBCommon.h */,
-				D3E325E2142657490092489C /* UITableView+BBCommon.h */,
-				D3E325E2142657490092489A /* UIScrollView+BBCommon.m */,
-				D3E325E21426574900924898 /* UIScrollView+BBCommon.h */,
-				D3E325E21426574900924896 /* UIButton+BBCommon.m */,
-				D3E325E21426574900924894 /* UIButton+BBCommon.h */,
-				D3E325E21426574900924892 /* UIApplication+BBCommon.m */,
-				D3E325E21426574900924890 /* UIApplication+BBCommon.h */,
-				D3E325E2142657490092488E /* NSURL+BBCommon.m */,
-				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
-				D3E325E2142657490092488A /* NSDictionary+BBCommon.m */,
-				D3E325E21426574900924888 /* NSDictionary+BBCommon.h */,
-				D3E325E21426574900924886 /* NSArray+BBCommon.m */,
-				D3E325E21426574900924884 /* NSArray+BBCommon.h */,
-				D3E325E21426574900924882 /* GTMNSString+HTML.m */,
-				D3E325E21426574900924880 /* GTMNSString+HTML.h */,
-				D3E325E2142657490092487E /* UITableView+BBCommon.m */,
-				D3E325E2142657490092487C /* BBTableViewCell.h */,
-				D3E325E2142657490092487A /* BBTableView.h */,
-				D3E325E21426574900924878 /* BBRoundedRectView.h */,
-				D3E325E21426574900924876 /* BBPopupController.h */,
-				D3E325E21426574900924874 /* BBTableViewCell.m */,
-				D3E325E21426574900924872 /* BBTableView.m */,
-				D3E325E21426574900924870 /* BBRoundedRectView.m */,
-				D3E325E2142657490092486E /* BBPopupController.m */,
-				D3E325E2142657490092486C /* UIImage+BBCommon.h */,
-				D3E325E2142657490092486A /* UIImage+BBCommon.m */,
+				D3E325B31426569D00924841 /* BBButtonStyle.h */,
+				D3E325B41426569D00924841 /* BBButtonStyle.m */,
+				D3E3258A1426546400924841 /* BBCommon-Prefix.pch */,
+				D3E325B51426569D00924841 /* BBCommon.h */,
 				D3E325E21426574900924868 /* BBKenBurnsView.h */,
 				D3E325E21426574900924866 /* BBKenBurnsView.m */,
-				D3E325E21426574900924864 /* BBTextFieldStyle.h */,
-				D3E325E21426574900924862 /* BBTextFieldStyle.m */,
+				D3E325B61426569D00924841 /* BBLabelStyle.h */,
+				D3E325B71426569D00924841 /* BBLabelStyle.m */,
+				D3E325B81426569D00924841 /* BBMacros.h */,
+				D3E325E214265749009248A6 /* BBModalDialogView.h */,
+				D3E325E214265749009248A8 /* BBModalDialogView.m */,
+				D3E325E214265749009248AA /* BBPassThroughView.h */,
+				D3E325E214265749009248AC /* BBPassThroughView.m */,
+				D3E325E21426574900924876 /* BBPopupController.h */,
+				D3E325E2142657490092486E /* BBPopupController.m */,
+				D3E325B91426569D00924841 /* BBQuery.h */,
+				D3E325BA1426569D00924841 /* BBQuery.m */,
+				D3E325E21426574900924878 /* BBRoundedRectView.h */,
+				D3E325E21426574900924870 /* BBRoundedRectView.m */,
+				D3E325BB1426569D00924841 /* BBStackView.h */,
+				D3E325BC1426569D00924841 /* BBStackView.m */,
+				D3E325E2142657490092487A /* BBTableView.h */,
+				D3E325E21426574900924872 /* BBTableView.m */,
+				D3E325E2142657490092487C /* BBTableViewCell.h */,
+				D3E325E21426574900924874 /* BBTableViewCell.m */,
 				D3E325E21426574900924860 /* BBTextField.h */,
 				D3E325E2142657490092485E /* BBTextField.m */,
-				D3E325E2142657490092485C /* NSObject+BBCommon.h */,
-				D3E325E2142657490092485A /* NSObject+BBCommon.m */,
-				D3E325E21426574900924858 /* NSDate+BBCommon.m */,
+				D3E325E21426574900924864 /* BBTextFieldStyle.h */,
+				D3E325E21426574900924862 /* BBTextFieldStyle.m */,
+				D3E325BD1426569D00924841 /* BBWrapView.h */,
+				D3E325BE1426569D00924841 /* BBWrapView.m */,
+				D3E325E21426574900924880 /* GTMNSString+HTML.h */,
+				D3E325E21426574900924882 /* GTMNSString+HTML.m */,
+				D3E325E21426574900924884 /* NSArray+BBCommon.h */,
+				D3E325E21426574900924886 /* NSArray+BBCommon.m */,
 				D3E325E21426574900924856 /* NSDate+BBCommon.h */,
-				D3E325E21426574900924854 /* UIColor+BBCommon.h */,
-				D3E325E21426574900924852 /* UIColor+BBCommon.m */,
-				D3E325E21426574900924850 /* NSString+BBCommon.h */,
-				D3E325E2142657490092484E /* NSString+BBCommon.m */,
+				D3E325E21426574900924858 /* NSDate+BBCommon.m */,
+				D3E325E21426574900924888 /* NSDictionary+BBCommon.h */,
+				D3E325E2142657490092488A /* NSDictionary+BBCommon.m */,
 				D3E325E21426574900924848 /* NSFileManager+TemporaryFiles.h */,
 				D3E325E21426574900924846 /* NSFileManager+TemporaryFiles.m */,
 				D3E325E21426574900924844 /* NSInvocation+BBCommon.h */,
 				D3E325E21426574900924842 /* NSInvocation+BBCommon.m */,
-				D3E325B31426569D00924841 /* BBButtonStyle.h */,
-				D3E325B41426569D00924841 /* BBButtonStyle.m */,
-				D3E325B51426569D00924841 /* BBCommon.h */,
-				D3E325B61426569D00924841 /* BBLabelStyle.h */,
-				D3E325B71426569D00924841 /* BBLabelStyle.m */,
-				D3E325B81426569D00924841 /* BBMacros.h */,
-				D3E325B91426569D00924841 /* BBQuery.h */,
-				D3E325BA1426569D00924841 /* BBQuery.m */,
-				D3E325BB1426569D00924841 /* BBStackView.h */,
-				D3E325BC1426569D00924841 /* BBStackView.m */,
-				D3E325BD1426569D00924841 /* BBWrapView.h */,
-				D3E325BE1426569D00924841 /* BBWrapView.m */,
 				D3E325BF1426569D00924841 /* NSManagedObject+BBCommon.h */,
 				D3E325C01426569D00924841 /* NSManagedObject+BBCommon.m */,
+				D3E325E2142657490092485C /* NSObject+BBCommon.h */,
+				D3E325E2142657490092485A /* NSObject+BBCommon.m */,
+				D3E325E21426574900924850 /* NSString+BBCommon.h */,
+				D3E325E2142657490092484E /* NSString+BBCommon.m */,
+				D3E325E2142657490092488C /* NSURL+BBCommon.h */,
+				D3E325E2142657490092488E /* NSURL+BBCommon.m */,
+				D3E325E21426574900924890 /* UIApplication+BBCommon.h */,
+				D3E325E21426574900924892 /* UIApplication+BBCommon.m */,
+				D3E325E21426574900924894 /* UIButton+BBCommon.h */,
+				D3E325E21426574900924896 /* UIButton+BBCommon.m */,
+				D3E325E21426574900924854 /* UIColor+BBCommon.h */,
+				D3E325E21426574900924852 /* UIColor+BBCommon.m */,
+				D3E325E2142657490092486C /* UIImage+BBCommon.h */,
+				D3E325E2142657490092486A /* UIImage+BBCommon.m */,
 				D3E325C11426569D00924841 /* UILabel+BBCommon.h */,
 				D3E325C21426569D00924841 /* UILabel+BBCommon.m */,
+				D3E325E214265749009248A4 /* UIPopoverController+BBCommon.h */,
+				D3E325E214265749009248A2 /* UIPopoverController+BBCommon.m */,
+				D3E325E21426574900924898 /* UIScrollView+BBCommon.h */,
+				D3E325E2142657490092489A /* UIScrollView+BBCommon.m */,
+				D3E325E2142657490092489C /* UITableView+BBCommon.h */,
+				D3E325E2142657490092487E /* UITableView+BBCommon.m */,
 				D3E325C31426569D00924841 /* UIView+BBCommon.h */,
 				D3E325C41426569D00924841 /* UIView+BBCommon.m */,
 				D3E325C51426569D00924841 /* UIViewController+BBCommon.h */,
 				D3E325C61426569D00924841 /* UIViewController+BBCommon.m */,
-				D3E3258A1426546400924841 /* BBCommon-Prefix.pch */,
+				D3E325E2142657490092489E /* UIWebView+BBCommon.h */,
+				D3E325E214265749009248A0 /* UIWebView+BBCommon.m */,
+				D3E325E214265749009248AE /* USStateAbbreviations.plist */,
 			);
 			path = BBCommon;
 			sourceTree = "<group>";
@@ -425,6 +437,8 @@
 				D3E325E214265749009248AB /* BBPassThroughView.h in Headers */,
 				15B6E1D5156A88420076C490 /* TTTAttributedLabel.h in Headers */,
 				15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */,
+				D3D653B71579593B00D3A2AE /* BBTextView.h in Headers */,
+				D3D653B91579593B00D3A2AE /* BBTextViewStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +578,8 @@
 				D3E325E214265749009248AD /* BBPassThroughView.m in Sources */,
 				15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */,
 				15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */,
+				D3D653B81579593B00D3A2AE /* BBTextView.m in Sources */,
+				D3D653BA1579593B00D3A2AE /* BBTextViewStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
