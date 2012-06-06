@@ -179,6 +179,7 @@ static float _spinDuration;
                                                nil];
     [fromView.layer addAnimation:frontAnimation forKey:@"transform"];
     fromView.userInteractionEnabled = NO;
+    [frontResponder release];
 }
 
 + (void)toViewAnimation:(UIView *)toView toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
@@ -223,6 +224,7 @@ static float _spinDuration;
                                                nil];
     [toView.layer addAnimation:backAnimation forKey:@"transform"];
     toView.userInteractionEnabled = NO;
+    [backResponder release];
 }
 
 + (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion {
@@ -308,26 +310,33 @@ static float _spinDuration;
 
 @end
 
-@implementation BB3DTransitionResponder {
+@implementation BB3DTransitionResponder
 
-    void (^_innerCompletion)(BOOL);
-    void (^_outerCompletion)(BOOL);
-}
+@synthesize innerCompletion = _innerCompletion;
+@synthesize outerCompletion = _outerCompletion;
+
 
 - (id)initWithBlock:(void (^)(BOOL))innerCompletion outerCompletion:(void (^)(BOOL))outerCompletion {
     self = [super init];
     if (self) {
-        _innerCompletion = [innerCompletion copy];
-        _outerCompletion = [outerCompletion copy];
+        self.innerCompletion = innerCompletion;
+        self.outerCompletion = outerCompletion;
     }
     return self;
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
-    if (_innerCompletion)
-        _innerCompletion(flag);
-    if (_outerCompletion)
-        _outerCompletion(flag);
+    if (self.innerCompletion)
+        self.innerCompletion(flag);
+    if (self.outerCompletion)
+        self.outerCompletion(flag);
 }
+
+- (void)dealloc {
+    [_innerCompletion release];
+    [_outerCompletion release];
+    [super dealloc];
+}
+
 
 @end
