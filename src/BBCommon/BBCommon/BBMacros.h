@@ -50,6 +50,8 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 
 #define RADIANS( DEGREES ) (DEGREES * M_PI / 180.0f)
 #define DEGREES( RADIANS ) (RADIANS * 180.0f / M_PI)
+#define kMilesPerMeter 0.000621371192
+#define kMetersPerMile 1609.344
 
 #define BBRndInt(low, high) ((int)low + arc4random() % (high - low + 1))
 
