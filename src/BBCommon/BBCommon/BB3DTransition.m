@@ -184,12 +184,12 @@ static float _spinDuration;
 + (void)toViewAnimation:(UIView *)toView toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
     void(^block)(BOOL)  = ^(BOOL finished){
         toView.userInteractionEnabled = YES;
-            if (finished)
-                toView.layer.transform = CATransform3DIdentity;
+        if (finished)
+            toView.layer.transform = CATransform3DIdentity;
 
-            if (toViewCompletion)
-                toViewCompletion(finished);
-        };
+        if (toViewCompletion)
+            toViewCompletion(finished);
+    };
     if (![UIView areAnimationsEnabled]){
         block(YES);
         return;
