@@ -98,6 +98,9 @@
 		D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248A8 /* BBModalDialogView.m */; };
 		D3E325E214265749009248AB /* BBPassThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AA /* BBPassThroughView.h */; };
 		D3E325E214265749009248AD /* BBPassThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AC /* BBPassThroughView.m */; };
+		D3E325E214265749009248B0 /* UINavigationController+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AF /* UINavigationController+BBCommon.m */; };
+		D3E325E214265749009248B2 /* UINavigationController+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */; };
+		D3E325E214265749009248B4 /* BBTransitioningViewControllerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +209,9 @@
 		D3E325E214265749009248AA /* BBPassThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPassThroughView.h; sourceTree = "<group>"; };
 		D3E325E214265749009248AC /* BBPassThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPassThroughView.m; sourceTree = "<group>"; };
 		D3E325E214265749009248AE /* USStateAbbreviations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = USStateAbbreviations.plist; sourceTree = "<group>"; };
+		D3E325E214265749009248AF /* UINavigationController+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+BBCommon.m"; sourceTree = "<group>"; };
+		D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+BBCommon.h"; sourceTree = "<group>"; };
+		D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTransitioningViewControllerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,9 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */,
+				D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */,
+				D3E325E214265749009248AF /* UINavigationController+BBCommon.m */,
 				D3D653B31579593B00D3A2AE /* BBTextView.h */,
 				D3D653B41579593B00D3A2AE /* BBTextView.m */,
 				D3D653B51579593B00D3A2AE /* BBTextViewStyle.h */,
@@ -439,6 +448,8 @@
 				15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */,
 				D3D653B71579593B00D3A2AE /* BBTextView.h in Headers */,
 				D3D653B91579593B00D3A2AE /* BBTextViewStyle.h in Headers */,
+				D3E325E214265749009248B2 /* UINavigationController+BBCommon.h in Headers */,
+				D3E325E214265749009248B4 /* BBTransitioningViewControllerProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +591,7 @@
 				15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */,
 				D3D653B81579593B00D3A2AE /* BBTextView.m in Sources */,
 				D3D653BA1579593B00D3A2AE /* BBTextViewStyle.m in Sources */,
+				D3E325E214265749009248B0 /* UINavigationController+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
