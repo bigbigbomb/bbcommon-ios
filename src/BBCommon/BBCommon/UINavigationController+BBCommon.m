@@ -7,67 +7,74 @@
 
 @implementation UINavigationController (BBCommon)
 
-- (void)transitionIn:(UIViewController *)inView from:(UIViewController *)outView action:(BBTransitionActionType)actionType animated:(BOOL)animated {
-    if ([inView respondsToSelector:@selector(transitionInFromViewController:action:)])
-        [((id<BBTransitioningViewControllerProtocol>)inView) transitionInFromViewController:outView action:actionType];
+- (BOOL)useDefaultTransitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController animated:(BOOL)animated {
+    if ([fromViewController respondsToSelector:@selector(transitionOutToViewController:action:finish:)] || [toViewController respondsToSelector:@selector(transitionInFromViewController:action:)])
+        return NO;
+    else
+        return animated;
 }
 
-- (void)transitionOut:(UIViewController *)outView to:(UIViewController *)inView action:(BBTransitionActionType)actionType animated:(BOOL)animated finish:(void(^)())finishBlock {
-    if ([outView respondsToSelector:@selector(transitionOutToViewController:action:finish:)])
-        [((id<BBTransitioningViewControllerProtocol>)outView) transitionOutToViewController:inView action:BBTransitionActionTypePush finish:finishBlock];
+- (void)transitionTo:(UIViewController *)toViewController from:(UIViewController *)fromViewController action:(BBTransitionActionType)actionType animated:(BOOL)animated {
+    if ([toViewController respondsToSelector:@selector(transitionInFromViewController:action:)])
+        [((id<BBTransitioningViewControllerProtocol>) toViewController) transitionInFromViewController:fromViewController action:actionType];
+}
+
+- (void)transitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController action:(BBTransitionActionType)actionType animated:(BOOL)animated finish:(void(^)())finishBlock {
+    if ([fromViewController respondsToSelector:@selector(transitionOutToViewController:action:finish:)])
+        [((id<BBTransitioningViewControllerProtocol>) fromViewController) transitionOutToViewController:toViewController action:BBTransitionActionTypePush finish:finishBlock];
     else
         finishBlock();
 }
 
-- (void)bbPushViewController:(UIViewController *)inView animated:(BOOL)animated {
-    UIViewController *outView = self.topViewController;
+- (void)bbPushViewController:(UIViewController *)toViewController animated:(BOOL)animated {
+    UIViewController *fromViewController = self.topViewController;
 
     void(^finishBlock)()  = ^{
-        [self pushViewController:inView animated:NO];
-        [self transitionIn:inView from:outView action:BBTransitionActionTypePush animated:animated];
+        [self pushViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController animated:animated]];
+        [self transitionTo:toViewController from:fromViewController action:BBTransitionActionTypePush animated:animated];
     };
 
-    [self transitionOut:outView to:inView action:BBTransitionActionTypePush animated:animated finish:finishBlock];
+    [self transitionFrom:fromViewController to:toViewController action:BBTransitionActionTypePush animated:animated finish:finishBlock];
 }
 
 - (void)bbPopViewControllerAnimated:(BOOL)animated {
-    UIViewController *outView = self.topViewController;
-    NSInteger inViewIndex = [self.viewControllers indexOfObject:outView] - 1;
+    UIViewController *fromViewController = self.topViewController;
+    NSInteger inViewIndex = [self.viewControllers indexOfObject:fromViewController] - 1;
 
     if (inViewIndex < 0) return; // Do nothing if at root view controller
 
-    UIViewController *inView = inViewIndex > -1 ? [self.viewControllers objectAtIndex:(NSUInteger) inViewIndex] : nil;
+    UIViewController *toViewController = inViewIndex > -1 ? [self.viewControllers objectAtIndex:(NSUInteger) inViewIndex] : nil;
 
     void(^finishBlock)()  = ^{
-        [self popViewControllerAnimated:NO];
-        [self transitionIn:inView from:outView action:BBTransitionActionTypePop animated:animated];
+        [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController animated:animated]];
+        [self transitionTo:toViewController from:fromViewController action:BBTransitionActionTypePop animated:animated];
     };
 
-    [self transitionOut:outView to:inView action:BBTransitionActionTypePop animated:animated finish:finishBlock];
+    [self transitionFrom:fromViewController to:toViewController action:BBTransitionActionTypePop animated:animated finish:finishBlock];
 }
 
-- (void)bbPopToViewController:(UIViewController *)inView animated:(BOOL)animated {
-    UIViewController *outView = self.topViewController;
+- (void)bbPopToViewController:(UIViewController *)toViewController animated:(BOOL)animated {
+    UIViewController *fromViewController = self.topViewController;
 
     void(^finishBlock)()  = ^{
-        [self popToViewController:inView animated:NO];
-        [self transitionIn:inView from:outView action:BBTransitionActionTypePop animated:animated];
+        [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController animated:animated]];
+        [self transitionTo:toViewController from:fromViewController action:BBTransitionActionTypePop animated:animated];
     };
 
-    [self transitionOut:outView to:inView action:BBTransitionActionTypePop animated:animated finish:finishBlock];
+    [self transitionFrom:fromViewController to:toViewController action:BBTransitionActionTypePop animated:animated finish:finishBlock];
 }
 
 - (void)bbPopToRootViewControllerAnimated:(BOOL)animated {
-    UIViewController *outView = self.topViewController;
-    UIViewController *inView = [self.viewControllers objectAtIndex:0];
+    UIViewController *fromViewController = self.topViewController;
+    UIViewController *toViewController = [self.viewControllers objectAtIndex:0];
 
-    if (outView == inView) return; // Do nothing if already at root view controller
+    if (fromViewController == toViewController) return; // Do nothing if already at root view controller
 
     void(^finishBlock)()  = ^{
-        [self popToRootViewControllerAnimated:NO];
-        [self transitionIn:inView from:outView action:BBTransitionActionTypePop animated:animated];
+        [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController animated:animated]];
+        [self transitionTo:toViewController from:fromViewController action:BBTransitionActionTypePop animated:animated];
     };
 
-    [self transitionOut:outView to:inView action:BBTransitionActionTypePop animated:animated finish:finishBlock];}
+    [self transitionFrom:fromViewController to:toViewController action:BBTransitionActionTypePop animated:animated finish:finishBlock];}
 
 @end
