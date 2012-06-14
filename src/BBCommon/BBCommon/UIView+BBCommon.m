@@ -123,7 +123,7 @@ UIWindow *_overlayWindow;
     [UIView setAnimationsEnabled:YES];
 }
 
-- (void)bbDismissModalView:(BOOL)animated completion:(void(^)(void))completion {
+- (void)bbDismissViewController:(BOOL)animated completion:(void(^)(void))completion {
     UIView *v = [[_overlayWindow subviews] objectAtIndex:0];
     [UIView setAnimationsEnabled:animated];
     [UIView animateWithDuration:0.3

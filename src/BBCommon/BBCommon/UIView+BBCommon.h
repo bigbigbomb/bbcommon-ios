@@ -143,6 +143,6 @@ typedef enum {
 /**
  * Dismisses the currently visible modal view
  */
-- (void)bbDismissModalView:(BOOL)animated completion:(void(^)(void))completion;
+- (void)bbDismissViewController:(BOOL)animated completion:(void(^)(void))completion;
 
 @end
