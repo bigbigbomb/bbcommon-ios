@@ -16,7 +16,7 @@ UIWindow *_overlayWindow;
     return self;
 }
 
-- (void)bbPresentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion {
+- (void)bbPresentViewController:(UIViewController *)viewControllerToPresent {
     //create an overlay window if it doesn't exist
     if (!_overlayWindow){
         _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -24,38 +24,12 @@ UIWindow *_overlayWindow;
         _overlayWindow.userInteractionEnabled = YES;
         _overlayWindow.backgroundColor = [UIColor clearColor];
     }
-    viewControllerToPresent.view.alpha = 0;
     [_overlayWindow addSubview:viewControllerToPresent.view];
     [_overlayWindow bringSubviewToFront:viewControllerToPresent.view];
-    [UIView setAnimationsEnabled:animated];
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:0
-                     animations:^{
-                         viewControllerToPresent.view.alpha = 1;
-                     }
-                     completion:^(BOOL finished) {
-                        if(finished)
-                            completion();
-                     }];
-    [UIView setAnimationsEnabled:YES];
 }
 
-+ (void)bbDismissViewController:(BOOL)animated completion:(void(^)(void))completion {
++ (void)bbDismissViewController {
     UIView *v = [[_overlayWindow subviews] objectAtIndex:0];
-    [UIView setAnimationsEnabled:animated];
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:0
-                     animations:^{
-                         v.alpha = 0;
-                     }
-                     completion:^(BOOL finished) {
-                         [v removeFromSuperview];
-                        if(finished)
-                            completion();
-                     }];
-    [UIView setAnimationsEnabled:YES];
     if ([[_overlayWindow subviews] count] == 0){
         [_overlayWindow release];
     }
