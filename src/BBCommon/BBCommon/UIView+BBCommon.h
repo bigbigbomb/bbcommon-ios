@@ -135,5 +135,14 @@ typedef enum {
  */
 - (void)debugSizes;
 
+/**
+ * Displays a model view that supports transparent backgrounds
+ */
+- (void)bbPresentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)())completion;
+
+/**
+ * Dismisses the currently visible modal view
+ */
+- (void)bbDismissModalView:(BOOL)animated completion:(void(^)(void))completion;
 
 @end
