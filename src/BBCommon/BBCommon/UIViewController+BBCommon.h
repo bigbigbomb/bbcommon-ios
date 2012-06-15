@@ -15,4 +15,14 @@
  */
 - (UIViewController *)insertScreenshotOfControllerAsBackground:(UIViewController *)viewController;
 
+/**
+ * Displays a model view that supports transparent backgrounds
+ */
+- (void)bbPresentViewController:(UIViewController *)viewControllerToPresent;
+
+/**
+ * Dismisses the currently visible modal view
+ */
++ (void)bbDismissViewController;
+
 @end
