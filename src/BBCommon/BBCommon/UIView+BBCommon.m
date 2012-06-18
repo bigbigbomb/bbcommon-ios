@@ -67,14 +67,18 @@
     [spacer release];
 }
 
-- (UIImage *)getScreenshot{
+- (UIImage *)getScreenshotDuringAnimation:(BOOL)duringAnimation {
     UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0);
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CALayer *layer = duringAnimation ? self.layer.presentationLayer : self.layer;
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return viewImage;
 }
 
+- (UIImage *)getScreenshot{
+    return [self getScreenshotDuringAnimation:NO];
+}
 
 - (id)addView:(UIView *)subview {
     [self addSubview:subview];

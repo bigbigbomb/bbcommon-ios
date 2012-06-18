@@ -116,6 +116,11 @@ typedef enum {
 - (void)addSpacer:(CGSize)size withColor:(UIColor *)color;
 
 /**
+ * Take a screenshot of the view and return it as a UIImage. Uses presentationLayer if duringAnimation set to YES.
+ */
+- (UIImage *)getScreenshotDuringAnimation:(BOOL)duringAnimation;
+
+/**
  * Take a screenshot of the view and return it as a UIImage
  */
 - (UIImage *)getScreenshot;
