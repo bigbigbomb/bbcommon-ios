@@ -4,6 +4,12 @@
 //
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    BBNavigationTypePush,
+    BBNavigationTypePop
+} BBNavigationType;
+
+
 @interface UINavigationController (BBCommon)
 
 - (void)bbPushViewController:(UIViewController *)viewController animated:(BOOL)animated; // Uses a horizontal slide transition. Has no effect if the view controller is already in the stack.

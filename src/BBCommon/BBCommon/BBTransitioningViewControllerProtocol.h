@@ -3,15 +3,12 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 
-typedef enum {
-    BBTransitionActionTypePush,
-    BBTransitionActionTypePop
-} BBTransitionActionType;
-
 @protocol BBTransitioningViewControllerProtocol <NSObject>
 
 @optional
-    - (void)transitionOutToViewController:(UIViewController *)viewController action:(BBTransitionActionType)actionType finish:(void (^)())finish;
-    - (void)transitionInFromViewController:(UIViewController *)viewController action:(BBTransitionActionType)actionType;
+    - (void)pushTransitionInFromViewController:(UIViewController *)viewController;
+    - (void)popTransitionInFromViewController:(UIViewController *)viewController;
+    - (void)pushTransitionOutToViewController:(UIViewController *)viewController finish:(void (^)())finish;
+    - (void)popTransitionOutToViewController:(UIViewController *)viewController finish:(void (^)())finish;
 
 @end
