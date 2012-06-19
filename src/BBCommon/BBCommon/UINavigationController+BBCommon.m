@@ -9,9 +9,9 @@
 
 - (SEL)fromSelectorForNavigationType:(BBNavigationType)type {
     if (type == BBNavigationTypePush) {
-        return @selector(pushTransitionOutToViewController:finish:);
+        return @selector(pushTransitionOutToViewController:completion:);
     } else {
-        return @selector(popTransitionOutToViewController:finish:);
+        return @selector(popTransitionOutToViewController:completion:);
     }
 }
 
@@ -31,6 +31,14 @@
         return animated;
 }
 
+- (BOOL)trySelector:(SEL)selector on:(id)targetObject withObject:(id)param1 {
+    if ([targetObject respondsToSelector:selector]) {
+        [targetObject performSelector:selector withObject:param1];
+        return YES;
+    }
+    return NO;
+}
+
 - (BOOL)trySelector:(SEL)selector on:(id)targetObject withObject:(id)param1 withObject:(id)param2 {
     if ([targetObject respondsToSelector:selector]) {
         [targetObject performSelector:selector withObject:param1 withObject:param2];
@@ -40,11 +48,11 @@
 }
 
 - (void)transitionTo:(UIViewController *)toViewController from:(UIViewController *)fromViewController action:(BBNavigationType)navigationType {
-    [self trySelector:[self toSelectorForNavigationType:navigationType] on:toViewController withObject:fromViewController withObject:nil];
+    [self trySelector:[self toSelectorForNavigationType:navigationType] on:toViewController withObject:fromViewController];
 }
 
 - (void)transitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController action:(BBNavigationType)navigationType finish:(void (^)())finishBlock {
-    if (![self trySelector:[self fromSelectorForNavigationType:navigationType] on:toViewController withObject:fromViewController withObject:finishBlock])
+    if (![self trySelector:[self fromSelectorForNavigationType:navigationType] on:fromViewController withObject:toViewController withObject:finishBlock])
         finishBlock();
 }
 
@@ -58,6 +66,7 @@
     } else {
         void(^finishBlock)()  = ^{
             [self pushViewController:toViewController animated:NO];
+            [toViewController view]; // Ensure view is loaded before transitioning
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
 
@@ -75,6 +84,7 @@
 
     void(^finishBlock)()  = ^{
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
@@ -86,6 +96,7 @@
 
     void(^finishBlock)()  = ^{
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
@@ -100,6 +111,7 @@
 
     void(^finishBlock)()  = ^{
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 

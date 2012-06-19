@@ -8,7 +8,7 @@
 @optional
     - (void)pushTransitionInFromViewController:(UIViewController *)viewController;
     - (void)popTransitionInFromViewController:(UIViewController *)viewController;
-    - (void)pushTransitionOutToViewController:(UIViewController *)viewController finish:(void (^)())finish;
-    - (void)popTransitionOutToViewController:(UIViewController *)viewController finish:(void (^)())finish;
+    - (void)pushTransitionOutToViewController:(UIViewController *)viewController completion:(void (^)())completion;
+    - (void)popTransitionOutToViewController:(UIViewController *)viewController completion:(void (^)())completion;
 
 @end
