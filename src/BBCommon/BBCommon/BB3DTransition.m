@@ -150,7 +150,7 @@ static float _spinDuration;
         block(YES);
         return;
     }
-    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithBlock:block outerCompletion:fromViewCompletion];
+    BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithCompletion:block];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
     frontAnimation.duration             = _spinDuration * 0.5;
@@ -195,7 +195,7 @@ static float _spinDuration;
         block(YES);
         return;
     }
-    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithBlock:block outerCompletion:toViewCompletion];
+    BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithCompletion:block];
     CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     backAnimation.delegate             = backResponder;
     backAnimation.duration             = _spinDuration * 0.5;
@@ -312,29 +312,23 @@ static float _spinDuration;
 
 @implementation BB3DTransitionResponder
 
-@synthesize innerCompletion = _innerCompletion;
-@synthesize outerCompletion = _outerCompletion;
+@synthesize completionBlock = _completionBlock;
 
-
-- (id)initWithBlock:(void (^)(BOOL))innerCompletion outerCompletion:(void (^)(BOOL))outerCompletion {
+- (id)initWithCompletion:(void (^)(BOOL))completionBlock {
     self = [super init];
     if (self) {
-        self.innerCompletion = innerCompletion;
-        self.outerCompletion = outerCompletion;
+        self.completionBlock = completionBlock;
     }
     return self;
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
-    if (self.innerCompletion)
-        self.innerCompletion(flag);
-    if (self.outerCompletion)
-        self.outerCompletion(flag);
+    if (self.completionBlock)
+        self.completionBlock(flag);
 }
 
 - (void)dealloc {
-    [_innerCompletion release];
-    [_outerCompletion release];
+    [_completionBlock release];
     [super dealloc];
 }
 

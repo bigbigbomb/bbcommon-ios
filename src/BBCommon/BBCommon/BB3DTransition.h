@@ -45,10 +45,8 @@ typedef enum {
 
 @interface BB3DTransitionResponder : NSObject
 
-@property (nonatomic, copy) void (^innerCompletion)(BOOL);
-@property (nonatomic, copy) void (^outerCompletion)(BOOL);
+@property (nonatomic, copy) void (^completionBlock)(BOOL);
 
-
-- (id)initWithBlock:(void (^)(BOOL))innerCompletion outerCompletion:(void (^)(BOOL))outerCompletion;
+- (id)initWithCompletion:(void (^)(BOOL))completionBlock;
 
 @end

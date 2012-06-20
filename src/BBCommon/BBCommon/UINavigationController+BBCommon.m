@@ -51,9 +51,9 @@
     [self trySelector:[self toSelectorForNavigationType:navigationType] on:toViewController withObject:fromViewController];
 }
 
-- (void)transitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController action:(BBNavigationType)navigationType finish:(void (^)())finishBlock {
-    if (![self trySelector:[self fromSelectorForNavigationType:navigationType] on:fromViewController withObject:toViewController withObject:finishBlock])
-        finishBlock();
+- (void)transitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController action:(BBNavigationType)navigationType completion:(void (^)(BOOL completed))completion {
+    if (![self trySelector:[self fromSelectorForNavigationType:navigationType] on:fromViewController withObject:toViewController withObject:completion])
+        completion(YES);
 }
 
 - (void)bbPushViewController:(UIViewController *)toViewController animated:(BOOL)animated {
@@ -64,13 +64,13 @@
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
     } else {
-        void(^finishBlock)()  = ^{
+        void(^completion)(BOOL)  = ^(BOOL completed){
             [self pushViewController:toViewController animated:NO];
             [toViewController view]; // Ensure view is loaded before transitioning
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
 
-        [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePush finish:finishBlock];
+        [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePush completion:completion];
     }
 }
 
@@ -82,25 +82,25 @@
 
     UIViewController *toViewController = inViewIndex > -1 ? [self.viewControllers objectAtIndex:(NSUInteger) inViewIndex] : nil;
 
-    void(^finishBlock)()  = ^{
+    void(^completion)(BOOL)  = ^(BOOL completed){
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
-    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop finish:finishBlock];
+    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
 }
 
 - (void)bbPopToViewController:(UIViewController *)toViewController animated:(BOOL)animated {
     UIViewController *fromViewController = self.topViewController;
 
-    void(^finishBlock)()  = ^{
+    void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
-    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop finish:finishBlock];
+    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
 }
 
 - (void)bbPopToRootViewControllerAnimated:(BOOL)animated {
@@ -109,12 +109,12 @@
 
     if (fromViewController == toViewController) return; // Do nothing if already at root view controller
 
-    void(^finishBlock)()  = ^{
+    void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
-    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop finish:finishBlock];}
+    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];}
 
 @end
