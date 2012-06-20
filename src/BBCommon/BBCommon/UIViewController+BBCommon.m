@@ -23,6 +23,7 @@ UIWindow *_overlayWindow;
         _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayWindow.userInteractionEnabled = YES;
         _overlayWindow.backgroundColor = [UIColor clearColor];
+        [_overlayWindow makeKeyAndVisible];
     }
     [_overlayWindow addSubview:viewControllerToPresent.view];
     [_overlayWindow bringSubviewToFront:viewControllerToPresent.view];
@@ -30,8 +31,17 @@ UIWindow *_overlayWindow;
 
 + (void)bbDismissViewController {
     UIView *v = [[_overlayWindow subviews] objectAtIndex:0];
+    [v removeFromSuperview];
     if ([[_overlayWindow subviews] count] == 0){
         [_overlayWindow release];
+        _overlayWindow = nil;
+        // find the frontmost window that is an actual UIWindow and make it keyVisible
+        [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
+            if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
+                [window makeKeyWindow];
+                *stop = YES;
+            }
+        }];
     }
 }
 
