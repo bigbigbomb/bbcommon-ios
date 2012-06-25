@@ -38,5 +38,25 @@
     block();
 }
 
+- (id)tryPerformSelector:(SEL)selector {
+    if ([self respondsToSelector:selector])
+        return [self performSelector:selector];
+    else
+        return nil;
+}
+
+- (id)tryPerformSelector:(SEL)selector withObject:(id)obj {
+    if ([self respondsToSelector:selector])
+        return [self performSelector:selector withObject:obj];
+    else
+        return nil;
+}
+
+- (id)tryPerformSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2 {
+    if ([self respondsToSelector:selector])
+        return [self performSelector:selector withObject:object1 withObject:object2];
+    else
+        return nil;
+}
 
 @end

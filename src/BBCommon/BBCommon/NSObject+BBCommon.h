@@ -10,5 +10,10 @@
 
 - (void)performBlock:(void (^)())block afterDelay:(NSTimeInterval)delay;
 
+- (id)tryPerformSelector:(SEL)selector;
+
+- (id)tryPerformSelector:(SEL)selector withObject:(id)obj;
+
+- (id)tryPerformSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2;
 
 @end
