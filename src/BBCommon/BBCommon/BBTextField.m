@@ -3,6 +3,7 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import "BBTextField.h"
+#import "NSString+BBCommon.h"
 
 
 @implementation BBTextField
