@@ -26,6 +26,7 @@
 @property(nonatomic) UIControlContentHorizontalAlignment contentHorizontalAlignment;
 @property(nonatomic) UIControlContentVerticalAlignment contentVerticalAlignment;
 @property(nonatomic) UIEdgeInsets textInsets;
+@property(nonatomic) UIEdgeInsets editingTextInsets;
 @property(nonatomic, retain) NSString *placeholder;
 
 - (BBTextField *)bbTextFieldWithFrame:(CGRect)frame;

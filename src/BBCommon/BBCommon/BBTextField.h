@@ -13,6 +13,7 @@
 
 @property(nonatomic, retain) BBLabelStyle *placeholderStyle;
 @property(nonatomic) UIEdgeInsets textInsets;
+@property(nonatomic) UIEdgeInsets editingTextInsets;
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets;
 
