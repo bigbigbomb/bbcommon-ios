@@ -303,6 +303,8 @@ static float _clockFlipDuration;
                                                nil];
     [fromView.layer addAnimation:frontAnimation forKey:@"transform"];
     fromView.userInteractionEnabled = NO;
+    fromView.layer.transform = CATransform3DRotate(tTrans,angleValues[2],effectX,effectY,0);
+
     [frontResponder release];
 }
 
@@ -348,6 +350,7 @@ static float _clockFlipDuration;
                                                nil];
     [toView.layer addAnimation:backAnimation forKey:@"transform"];
     toView.userInteractionEnabled = NO;
+    toView.layer.transform = CATransform3DRotate(tTrans2,angleValues[5],effectX,effectY,0);
     [backResponder release];
 }
 
