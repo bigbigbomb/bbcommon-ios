@@ -32,7 +32,7 @@ static float _clockFlipDuration;
     _perspectiveAmount = 1.0 / -500;
     _flipDuration = 0.2;
     _spinDuration = 0.75;
-    _clockFlipDuration = 0.5;
+    _clockFlipDuration = 0.3;
 }
 
 + (void)clockFlip:(UIView *)fromView toView:(UIView *)toView withClockFlipDirection:(BB3DClockFlipDirection)clockFlipDirection completion:(void(^)(BOOL finished))completion {
@@ -47,6 +47,7 @@ static float _clockFlipDuration;
            If flipping from bottom animate the bottom image of the fromView 90 degrees then the top of the toView 90 degrees
         5.)Remove the container and unhide the fromView
      */
+    float perspective = _perspectiveAmount * 4.0;
     UIView *parent = [fromView superview];
     UIView *container = [[UIView alloc] initWithFrame:fromView.frame];
     [parent addSubview:container];
@@ -64,7 +65,7 @@ static float _clockFlipDuration;
     fromView.hidden = YES;
 
     CATransform3D fromT = CATransform3DIdentity;
-    fromT.m34 = _perspectiveAmount;
+    fromT.m34 = perspective;
     fromT = CATransform3DRotate(fromT, RADIANS(0), 1.0f, 0.0f, 0.0f);
 
     UIImageView *toViewSection = [[UIImageView alloc] initWithImage:[toView getRegionScreenshot:CGRectMake(0, clockFlipDirection == BB3DClockFlipFromTop ? toView.frame.size.height * 0.5 : 0, toView.frame.size.width, toView.frame.size.height * 0.5)]];
@@ -74,7 +75,7 @@ static float _clockFlipDuration;
     [container addSubview:toViewSection];
 
     CATransform3D toT = CATransform3DIdentity;
-    toT.m34 = _perspectiveAmount;
+    toT.m34 = perspective;
     toT = CATransform3DRotate(toT, clockFlipDirection == BB3DClockFlipFromTop ? RADIANS(90) : RADIANS(-90), 1.0f, 0.0f, 0.0f);
     toViewSection.layer.transform = toT;
 
@@ -96,7 +97,7 @@ static float _clockFlipDuration;
                             options:UIViewAnimationCurveEaseIn
                          animations:^{
                              CATransform3D endT = CATransform3DIdentity;
-                             endT.m34 = _perspectiveAmount;
+                             endT.m34 = perspective;
                              endT = CATransform3DRotate(endT, RADIANS(-90), 1.0f, 0.0f, 0.0f);
                              fromViewTopHalf.layer.transform = endT;
                              shadow.alpha = .7;
@@ -107,7 +108,7 @@ static float _clockFlipDuration;
                                                  options:UIViewAnimationCurveEaseOut
                                               animations:^{
                                                   CATransform3D endT = CATransform3DIdentity;
-                                                  endT.m34 = _perspectiveAmount;
+                                                  endT.m34 = perspective;
                                                   endT = CATransform3DRotate(endT, RADIANS(0), 1.0f, 0.0f, 0.0f);
                                                   toViewSection.layer.transform = endT;
                                                   shine.alpha = 0;
