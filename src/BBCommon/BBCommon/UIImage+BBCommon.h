@@ -14,4 +14,5 @@
 - (BOOL)hasAlpha;
 - (UIImage *)imageWithAlpha;
 - (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
+- (UIImage *)crop:(CGRect)rect;
 @end

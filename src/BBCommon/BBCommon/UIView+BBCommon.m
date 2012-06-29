@@ -4,6 +4,7 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+BBCommon.h"
+#import "UIImage+BBCommon.h"
 
 @implementation UIView(BBCommon)
 
@@ -78,6 +79,10 @@
 
 - (UIImage *)getScreenshot{
     return [self getScreenshotDuringAnimation:NO];
+}
+
+- (UIImage *)getRegionScreenshot:(CGRect)region {
+    return [[self getScreenshotDuringAnimation:NO] crop:region];
 }
 
 - (id)addView:(UIView *)subview {

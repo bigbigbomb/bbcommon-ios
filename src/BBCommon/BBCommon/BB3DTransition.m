@@ -1,6 +1,6 @@
 //
-//  ${FILE}
-//  ${PRODUCT}
+//  BB3DTransition.m
+//  BBCommon
 //
 //  Created by leebrenner on 5/19/12.
 //  Copyright 2012 BigBig Bomb, LLC. All rights reserved
@@ -21,6 +21,7 @@ static char kBB3DOriginalPositionYKey;
 static float _perspectiveAmount;
 static float _flipDuration;
 static float _spinDuration;
+static float _clockFlipDuration;
 
 @implementation BB3DTransition
 
@@ -30,6 +31,129 @@ static float _spinDuration;
     _perspectiveAmount = 1.0 / -500;
     _flipDuration = 0.2;
     _spinDuration = 0.75;
+    _clockFlipDuration = 3.0;
+}
+
++ (void)clockFlip:(UIView *)fromView toView:(UIView *)toView withClockFlipDirection:(BB3DClockFlipDirection)clockFlipDirection completion:(void(^)(BOOL finished))completion {
+    /*
+        1.)Create a container in superview of fromView to hold the effect.
+        2.)Create top and bottom UIImageViews from the fromView, add them to the container, hide the fromView
+        3.)If flipping from top create a bottom UIImageView from the toView, add it to the container
+            - OR -
+           If flipping from bottom create a top UIImageView from the toView, ad it to the container
+        4.)If flipping from top animate the top image of the fromView 90 degrees, then animate the bottom of the toView 90 degrees
+            - OR -
+           If flipping from bottom animate the bottom image of the fromView 90 degrees then the top of the toView 90 degrees
+        5.)Remove the container and unhide the fromView
+     */
+    UIView *parent = [fromView superview];
+    UIView *container = [[UIView alloc] initWithFrame:fromView.frame];
+    [parent addSubview:container];
+
+    UIImageView *fromViewTopHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, 0, fromView.frame.size.width, fromView.frame.size.height * 0.5)]];
+    fromViewTopHalf.frame = CGRectMake(0, 0, fromView.frame.size.width, fromView.frame.size.height * 0.5);
+    fromViewTopHalf.layer.anchorPoint = CGPointMake(.5, 1);
+    fromViewTopHalf.layer.position = CGPointMake(fromViewTopHalf.layer.position.x, fromViewTopHalf.layer.position.y + fromViewTopHalf.frame.size.height * 0.5);
+    UIImageView *fromViewBottomHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, fromView.frame.size.height * 0.5, fromView.frame.size.width, fromView.frame.size.height * 0.5)]];
+    fromViewBottomHalf.frame = CGRectMake(0, fromView.frame.size.height * 0.5, fromView.frame.size.width, fromView.frame.size.height * 0.5);
+    fromViewBottomHalf.layer.position = CGPointMake(fromViewBottomHalf.layer.position.x, fromViewBottomHalf.layer.position.y - fromViewBottomHalf.frame.size.height * 0.5);
+    fromViewBottomHalf.layer.anchorPoint = CGPointMake(.5, 0);
+    [container addSubview:fromViewTopHalf];
+    [container addSubview:fromViewBottomHalf];
+    fromView.hidden = YES;
+
+    CATransform3D fromT = CATransform3DIdentity;
+    fromT.m34 = _perspectiveAmount;
+    fromT = CATransform3DRotate(fromT, 0, 1.0f, 0.0f, 0.0f);
+    fromViewTopHalf.layer.transform = fromT;
+
+    UIImageView *toViewSection = [[UIImageView alloc] initWithImage:[toView getRegionScreenshot:CGRectMake(0, clockFlipDirection == BB3DClockFlipFromTop ? toView.frame.size.height * 0.5 : 0, toView.frame.size.width, toView.frame.size.height * 0.5)]];
+    toViewSection.frame = CGRectMake(0, clockFlipDirection == BB3DClockFlipFromTop ? toView.frame.size.height * 0.5 : 0, toView.frame.size.width, toView.frame.size.height * 0.5);
+    toViewSection.layer.anchorPoint = CGPointMake(.5, clockFlipDirection == BB3DClockFlipFromTop ? 0 : 1);
+    toViewSection.layer.position = CGPointMake(toViewSection.layer.position.x, toViewSection.layer.position.y + clockFlipDirection == BB3DClockFlipFromTop ? -toViewSection.layer.position.y * 0.5 : toViewSection.layer.position.y * 0.5);
+    [container addSubview:toViewSection];
+
+    CATransform3D toT = CATransform3DIdentity;
+    toT.m34 = _perspectiveAmount;
+    toT = CATransform3DRotate(toT, 90, 1.0f, 0.0f, 0.0f);
+    toViewSection.layer.transform = toT;
+
+    [UIView animateWithDuration:_clockFlipDuration * 0.5
+                          delay:0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         CATransform3D endT = CATransform3DIdentity;
+                         endT.m34 = _perspectiveAmount;
+                         endT = CATransform3DRotate(endT, -90, 1.0f, 0.0f, 0.0f);
+                         fromViewTopHalf.layer.transform = endT;
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:_clockFlipDuration * 0.5
+                                               delay:0
+                                             options:UIViewAnimationCurveEaseOut
+                                          animations:^{
+                                              CATransform3D endT = CATransform3DIdentity;
+                                              endT.m34 = _perspectiveAmount;
+                                              endT = CATransform3DRotate(endT, 0, 1.0f, 0.0f, 0.0f);
+                                              toViewSection.layer.transform = endT;
+                                          }
+                                          completion:^(BOOL finished){
+                                              [container removeFromSuperview];
+                                              if (completion)
+                                                  completion(finished);
+                                          }];
+                     }];
+
+//    void(^block)(BOOL)  = ^(BOOL finished){
+//        fromView.userInteractionEnabled = YES;
+//        if (finished) {
+//            fromView.layer.transform = CATransform3DIdentity;
+//            fromView.layer.anchorPoint = CGPointMake([(NSNumber *)objc_getAssociatedObject(fromView, &kBB3DOriginalAnchorPointXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(fromView, &kBB3DOriginalAnchorPointYKey) floatValue]);
+//            fromView.layer.position = CGPointMake([(NSNumber *)objc_getAssociatedObject(fromView, &kBB3DOriginalPositionXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(fromView, &kBB3DOriginalPositionYKey) floatValue]);
+//        }
+//
+//        if (completion)
+//            completion(finished);
+//    };
+//    if (![UIView areAnimationsEnabled]){
+//        block(YES);
+//        return;
+//    }
+//    BB3DTransitionResponder *responder = [[BB3DTransitionResponder alloc] initWithCompletion:block];
+//
+//    objc_setAssociatedObject(fromView, &kBB3DOriginalAnchorPointXKey, [NSNumber numberWithFloat:fromView.layer.anchorPoint.x], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(fromView, &kBB3DOriginalAnchorPointYKey, [NSNumber numberWithFloat:fromView.layer.anchorPoint.y], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(fromView, &kBB3DOriginalPositionXKey, [NSNumber numberWithFloat:fromView.layer.position.x], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(fromView, &kBB3DOriginalPositionYKey, [NSNumber numberWithFloat:fromView.layer.position.y], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    fromView.layer.anchorPoint = CGPointMake(0.5, clockFlipDirection == BB3DClockFlipFromTop ? 1 : 0);
+//    fromView.layer.position = CGPointMake(fromView.layer.position.x, fromView.layer.position.y + clockFlipDirection == BB3DClockFlipFromTop ? fromView.frame.size.height * 0.5 : -fromView.frame.size.height * 0.5);
+//
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+//    animation.delegate             = responder;
+//    animation.duration             = _clockFlipDuration;
+//    animation.repeatCount          = 0;
+//    animation.removedOnCompletion  = YES;
+//    animation.autoreverses         = NO;
+//    animation.fillMode             = kCAFillModeForwards;
+//
+//    CATransform3D tTrans                  = CATransform3DIdentity;
+//    tTrans.m34                            = _perspectiveAmount;
+//
+//    animation.values               = [NSArray arrayWithObjects:
+//                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,0,1,0,0)],
+//                                            [NSValue valueWithCATransform3D:CATransform3DRotate(tTrans,-90,1,0,0)],
+//                                               nil];
+//    animation.keyTimes             = [NSArray arrayWithObjects:
+//                                              [NSNumber numberWithFloat:0],
+//                                              [NSNumber numberWithFloat:1],
+//                                               nil];
+//    animation.timingFunctions      = [NSArray arrayWithObjects:
+//                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+//                                             [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+//                                               nil];
+//    [fromView.layer addAnimation:animation forKey:@"transform"];
+//    fromView.userInteractionEnabled = NO;
+//    [responder release];
 }
 
 + (void)flipAnimate:(UIView *)view withPoint:(CGPoint)anchorPoint withPosition:(CGPoint)position withStart:(float)start andEnd:(float)end completion:(void (^)(BOOL finished))completion {
@@ -307,6 +431,13 @@ static float _spinDuration;
     return _spinDuration;
 }
 
++ (void)setClockFlipDuration:(float)duration {
+    _clockFlipDuration = duration;
+}
+
++ (float)getClockFlipDuration {
+    return _clockFlipDuration;
+}
 
 @end
 
