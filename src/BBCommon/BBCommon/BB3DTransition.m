@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <objc/runtime.h>
 #import "BB3DTransition.h"
+#import "UIView+BBCommon.h"
 
 static float BB3DTopLeftRadianValues[] = {RADIANS(0), RADIANS(20), RADIANS(-90), RADIANS(90), RADIANS(-15), RADIANS(0)};
 static float BB3DBottomRightRadianValues[] ={RADIANS(0), RADIANS(-20), RADIANS(90), RADIANS(-90), RADIANS(15), RADIANS(0)};
@@ -31,7 +32,7 @@ static float _clockFlipDuration;
     _perspectiveAmount = 1.0 / -500;
     _flipDuration = 0.2;
     _spinDuration = 0.75;
-    _clockFlipDuration = 3.0;
+    _clockFlipDuration = 0.5;
 }
 
 + (void)clockFlip:(UIView *)fromView toView:(UIView *)toView withClockFlipDirection:(BB3DClockFlipDirection)clockFlipDirection completion:(void(^)(BOOL finished))completion {
@@ -64,45 +65,96 @@ static float _clockFlipDuration;
 
     CATransform3D fromT = CATransform3DIdentity;
     fromT.m34 = _perspectiveAmount;
-    fromT = CATransform3DRotate(fromT, 0, 1.0f, 0.0f, 0.0f);
-    fromViewTopHalf.layer.transform = fromT;
+    fromT = CATransform3DRotate(fromT, RADIANS(0), 1.0f, 0.0f, 0.0f);
 
     UIImageView *toViewSection = [[UIImageView alloc] initWithImage:[toView getRegionScreenshot:CGRectMake(0, clockFlipDirection == BB3DClockFlipFromTop ? toView.frame.size.height * 0.5 : 0, toView.frame.size.width, toView.frame.size.height * 0.5)]];
     toViewSection.frame = CGRectMake(0, clockFlipDirection == BB3DClockFlipFromTop ? toView.frame.size.height * 0.5 : 0, toView.frame.size.width, toView.frame.size.height * 0.5);
     toViewSection.layer.anchorPoint = CGPointMake(.5, clockFlipDirection == BB3DClockFlipFromTop ? 0 : 1);
-    toViewSection.layer.position = CGPointMake(toViewSection.layer.position.x, toViewSection.layer.position.y + clockFlipDirection == BB3DClockFlipFromTop ? -toViewSection.layer.position.y * 0.5 : toViewSection.layer.position.y * 0.5);
+    toViewSection.layer.position = CGPointMake(toViewSection.layer.position.x, toViewSection.layer.position.y + clockFlipDirection == BB3DClockFlipFromTop ? -toView.frame.size.height * 0.5 : toView.frame.size.height * 0.5);
     [container addSubview:toViewSection];
 
     CATransform3D toT = CATransform3DIdentity;
     toT.m34 = _perspectiveAmount;
-    toT = CATransform3DRotate(toT, 90, 1.0f, 0.0f, 0.0f);
+    toT = CATransform3DRotate(toT, clockFlipDirection == BB3DClockFlipFromTop ? RADIANS(90) : RADIANS(-90), 1.0f, 0.0f, 0.0f);
     toViewSection.layer.transform = toT;
 
-    [UIView animateWithDuration:_clockFlipDuration * 0.5
-                          delay:0
-                        options:UIViewAnimationCurveEaseIn
-                     animations:^{
-                         CATransform3D endT = CATransform3DIdentity;
-                         endT.m34 = _perspectiveAmount;
-                         endT = CATransform3DRotate(endT, -90, 1.0f, 0.0f, 0.0f);
-                         fromViewTopHalf.layer.transform = endT;
-                     }
-                     completion:^(BOOL finished){
-                         [UIView animateWithDuration:_clockFlipDuration * 0.5
-                                               delay:0
-                                             options:UIViewAnimationCurveEaseOut
-                                          animations:^{
-                                              CATransform3D endT = CATransform3DIdentity;
-                                              endT.m34 = _perspectiveAmount;
-                                              endT = CATransform3DRotate(endT, 0, 1.0f, 0.0f, 0.0f);
-                                              toViewSection.layer.transform = endT;
-                                          }
-                                          completion:^(BOOL finished){
-                                              [container removeFromSuperview];
-                                              if (completion)
-                                                  completion(finished);
-                                          }];
-                     }];
+    UIView *shine = [[UIView alloc] init];
+    shine.backgroundColor = [UIColor whiteColor];
+    UIView *shadow = [[UIView alloc] init];
+    shadow.backgroundColor = [UIColor blackColor];
+
+    if (clockFlipDirection == BB3DClockFlipFromTop) {
+        fromViewTopHalf.layer.transform = fromT;
+        [fromViewTopHalf insertSubview:shadow atIndex:0];
+        shadow.frame = CGRectMake(0, 0, BBW(fromViewTopHalf), BBH(fromViewTopHalf));
+        shadow.alpha = 0;
+        [toViewSection insertSubview:shine atIndex:0];
+        shine.frame = CGRectMake(0, 0, toViewSection.bounds.size.width, toViewSection.bounds.size.height);
+        shine.alpha = .7;
+        [UIView animateWithDuration:_clockFlipDuration * 0.5
+                              delay:0
+                            options:UIViewAnimationCurveEaseIn
+                         animations:^{
+                             CATransform3D endT = CATransform3DIdentity;
+                             endT.m34 = _perspectiveAmount;
+                             endT = CATransform3DRotate(endT, RADIANS(-90), 1.0f, 0.0f, 0.0f);
+                             fromViewTopHalf.layer.transform = endT;
+                             shadow.alpha = .7;
+                         }
+                         completion:^(BOOL finished){
+                             [UIView animateWithDuration:_clockFlipDuration * 0.5
+                                                   delay:0
+                                                 options:UIViewAnimationCurveEaseOut
+                                              animations:^{
+                                                  CATransform3D endT = CATransform3DIdentity;
+                                                  endT.m34 = _perspectiveAmount;
+                                                  endT = CATransform3DRotate(endT, RADIANS(0), 1.0f, 0.0f, 0.0f);
+                                                  toViewSection.layer.transform = endT;
+                                                  shine.alpha = 0;
+                                              }
+                                              completion:^(BOOL finished){
+                                                  [container removeFromSuperview];
+                                                  if (completion)
+                                                      completion(finished);
+                                              }];
+                         }];
+    }
+    else {
+        fromViewBottomHalf.layer.transform = fromT;
+        [fromViewBottomHalf insertSubview:shine atIndex:0];
+        shine.frame = CGRectMake(0, 0, BBW(fromViewBottomHalf), BBH(fromViewBottomHalf));
+        shine.alpha = 0;
+        [toViewSection insertSubview:shadow atIndex:0];
+        shadow.frame = CGRectMake(0, 0, toViewSection.bounds.size.width, toViewSection.bounds.size.height);
+        shadow.alpha = .7;
+        [UIView animateWithDuration:_clockFlipDuration * 0.5
+                              delay:0
+                            options:UIViewAnimationCurveEaseIn
+                         animations:^{
+                             CATransform3D endT = CATransform3DIdentity;
+                             endT.m34 = _perspectiveAmount;
+                             endT = CATransform3DRotate(endT, RADIANS(90), 1.0f, 0.0f, 0.0f);
+                             fromViewBottomHalf.layer.transform = endT;
+                             shine.alpha = .7;
+                         }
+                         completion:^(BOOL finished){
+                             [UIView animateWithDuration:_clockFlipDuration * 0.5
+                                                   delay:0
+                                                 options:UIViewAnimationCurveEaseOut
+                                              animations:^{
+                                                  CATransform3D endT = CATransform3DIdentity;
+                                                  endT.m34 = _perspectiveAmount;
+                                                  endT = CATransform3DRotate(endT, RADIANS(0), 1.0f, 0.0f, 0.0f);
+                                                  toViewSection.layer.transform = endT;
+                                                  shadow.alpha = 0;
+                                              }
+                                              completion:^(BOOL finished){
+                                                  [container removeFromSuperview];
+                                                  if (completion)
+                                                      completion(finished);
+                                              }];
+                         }];
+    }
 
 //    void(^block)(BOOL)  = ^(BOOL finished){
 //        fromView.userInteractionEnabled = YES;
