@@ -3,34 +3,41 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import "BBTextField.h"
+#import "NSString+BBCommon.h"
 
 
 @implementation BBTextField
 @synthesize placeholderStyle = _placeholderStyle;
 @synthesize textInsets = _textInsets;
+@synthesize editingTextInsets = _editingTextInsets;
+
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets {
     self = [super initWithFrame:frame];
     if (self) {
         self.textInsets = insets;
+        self.editingTextInsets = insets;
     }
 
     return self;
 }
 
-- (CGRect)newBounds:(CGRect)bounds {
-    return CGRectMake(bounds.origin.x + self.textInsets.left,
-            bounds.origin.y + self.textInsets.top,
-            bounds.size.width - self.textInsets.left - self.textInsets.right,
-            bounds.size.height - self.textInsets.top - self.textInsets.bottom);
+- (CGRect)newBounds:(CGRect)bounds insets:(UIEdgeInsets)insets {
+    return CGRectMake(bounds.origin.x + insets.left,
+            bounds.origin.y + insets.top,
+            bounds.size.width - insets.left - insets.right,
+            bounds.size.height - insets.top - insets.bottom);
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    return [self newBounds:bounds];
+    return [self newBounds:bounds insets:self.textInsets];
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return [self newBounds:bounds];
+    if (![NSString isEmpty:self.text])
+        return [self newBounds:bounds insets:self.editingTextInsets];
+    else
+        return [self newBounds:bounds insets:self.textInsets];
 }
 
 - (void)drawPlaceholderInRect:(CGRect)rect {

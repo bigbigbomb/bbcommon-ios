@@ -6,7 +6,9 @@
 #import "BBTextField.h"
 
 
-@implementation BBTextFieldStyle
+@implementation BBTextFieldStyle {
+    BOOL _setEditingInsets;
+}
 
 @synthesize textStyle = _textStyle;
 @synthesize placeholderStyle = _placeholderStyle;
@@ -15,6 +17,8 @@
 @synthesize contentVerticalAlignment = _contentVerticalAlignment;
 @synthesize textInsets = _textInsets;
 @synthesize placeholder = _placeholder;
+@synthesize editingTextInsets = _editingTextInsets;
+
 
 - (id)init {
     self = [super init];
@@ -26,8 +30,15 @@
     return self;
 }
 
+- (void)setEditingTextInsets:(UIEdgeInsets)anEditingTextInsets {
+    _editingTextInsets = anEditingTextInsets;
+    _setEditingInsets = YES;
+}
+
 - (BBTextField *)bbTextFieldWithFrame:(CGRect)frame {
     BBTextField *field = [[[BBTextField alloc] initWithFrame:frame andInsets:self.textInsets] autorelease];
+    if (_setEditingInsets)
+        field.editingTextInsets = self.editingTextInsets;
     [self.textStyle applyStyleToTextField:field];
     field.contentVerticalAlignment = self.contentVerticalAlignment;
     field.contentHorizontalAlignment = self.contentHorizontalAlignment;
