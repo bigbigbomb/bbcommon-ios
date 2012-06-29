@@ -118,4 +118,18 @@
     return transparentBorderImage;
 }
 
+- (UIImage *)crop:(CGRect)rect {
+
+    CGFloat scale = [[UIScreen mainScreen] scale];
+
+    if (scale>1.0) {
+        rect = CGRectMake(rect.origin.x*scale , rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
+    }
+
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
+    UIImage *result = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return result;
+}
+
 @end

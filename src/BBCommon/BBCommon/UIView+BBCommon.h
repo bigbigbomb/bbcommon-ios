@@ -126,6 +126,11 @@ typedef enum {
 - (UIImage *)getScreenshot;
 
 /**
+ * Returns a screenshot of the specified region of the UIView
+ */
+- (UIImage *)getRegionScreenshot:(CGRect)region;
+
+/**
  * Add and return a subview (convenient for assigning or chaining)
  */
 - (id)addView:(UIView *)subview;
