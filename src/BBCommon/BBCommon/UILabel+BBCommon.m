@@ -2,6 +2,7 @@
 //  Created by Lee Fastenau on 8/3/11.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
+#import <CoreGraphics/CoreGraphics.h>
 #import "UILabel+BBCommon.h"
 #import "UIView+BBCommon.h"
 
@@ -151,6 +152,11 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, stringSize.height * currentLineCount);
     self.numberOfLines = currentLineCount;
     self.font = font;
+}
+
+- (void)resizeFrameToSizeThatFitsText {
+    CGSize size = [self.text sizeWithFont:self.font];
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
 }
 
 @end

@@ -35,4 +35,7 @@
                     withMinFontSize:(float)minFontSize
                        withMaxLines:(int)maxLines;
 
+- (void)resizeFrameToSizeThatFitsText;
+
+
 @end
