@@ -26,9 +26,9 @@
 - (BOOL)useDefaultTransitionFrom:(UIViewController *)fromViewController to:(UIViewController *)toViewController navigationType:(BBNavigationType)navigationType animated:(BOOL)animated {
     if ([fromViewController respondsToSelector:[self fromSelectorForNavigationType:navigationType]] ||
         [toViewController respondsToSelector:[self toSelectorForNavigationType:navigationType]])
-        return NO;
+        return !animated;
     else
-        return animated;
+        return YES;
 }
 
 - (BOOL)trySelector:(SEL)selector on:(id)targetObject withObject:(id)param1 {
@@ -70,7 +70,11 @@
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
 
-        [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePush completion:completion];
+        if (fromViewController.isViewLoaded) {
+            [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePush completion:completion];
+        } else {
+            completion(YES);
+        }
     }
 }
 
