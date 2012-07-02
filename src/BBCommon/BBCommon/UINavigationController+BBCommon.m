@@ -7,6 +7,14 @@
 
 @implementation UINavigationController (BBCommon)
 
+- (void)logNavigationStack {
+    NSLog(@"Navigation Stack Log");
+    NSUInteger count = [self.viewControllers count];
+    for (NSInteger i = count-1; i >= 0; i--) {
+        NSLog(@"%d) %@", i, [self.viewControllers objectAtIndex:(NSUInteger) i]);
+    }
+}
+
 - (SEL)fromSelectorForNavigationType:(BBNavigationType)type {
     if (type == BBNavigationTypePush) {
         return @selector(pushTransitionOutToViewController:completion:);
@@ -63,9 +71,11 @@
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
+        [self logNavigationStack];
     } else {
         void(^completion)(BOOL)  = ^(BOOL completed){
             [self pushViewController:toViewController animated:NO];
+            [self logNavigationStack];
             [toViewController view]; // Ensure view is loaded before transitioning
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
@@ -88,6 +98,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -100,6 +111,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -115,6 +127,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
