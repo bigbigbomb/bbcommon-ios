@@ -18,8 +18,11 @@
 }
 
 @property(nonatomic, retain) BBLabelStyle *textStyle;
+@property(nonatomic, retain) BBLabelStyle *placeholderStyle;
 @property(nonatomic, retain) UIImage *background;
 @property(nonatomic) UIEdgeInsets textInsets;
+
+@property(copy) void (^textViewCustomizer)(BBTextView *, BBTextViewStyle *);
 
 - (BBTextView *)bbTextViewWithFrame:(CGRect)frame;
 

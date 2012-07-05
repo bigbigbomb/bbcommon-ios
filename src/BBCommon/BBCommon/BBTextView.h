@@ -4,13 +4,11 @@
 //
 #import "BBLabelStyle.h"
 
-@interface BBTextView : UITextView {
+@interface BBTextView : UITextView
 
-@private
-    UIEdgeInsets _textInsets;
-}
+@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, retain) BBLabelStyle *placeholderStyle;
 
-@property(nonatomic) UIEdgeInsets textInsets;
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets;
 
