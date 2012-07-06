@@ -101,6 +101,8 @@
 		D3E325E214265749009248B0 /* UINavigationController+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248AF /* UINavigationController+BBCommon.m */; };
 		D3E325E214265749009248B2 /* UINavigationController+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */; };
 		D3E325E214265749009248B4 /* BBTransitioningViewControllerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */; };
+		D3E325E214265749009248B6 /* UILabel+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B5 /* UILabel+Animation.m */; };
+		D3E325E214265749009248B8 /* UILabel+Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E325E214265749009248B7 /* UILabel+Animation.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,8 @@
 		D3E325E214265749009248AF /* UINavigationController+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+BBCommon.m"; sourceTree = "<group>"; };
 		D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+BBCommon.h"; sourceTree = "<group>"; };
 		D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTransitioningViewControllerProtocol.h; sourceTree = "<group>"; };
+		D3E325E214265749009248B5 /* UILabel+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Animation.m"; sourceTree = "<group>"; };
+		D3E325E214265749009248B7 /* UILabel+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Animation.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +297,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D3E325E214265749009248B7 /* UILabel+Animation.h */,
+				D3E325E214265749009248B5 /* UILabel+Animation.m */,
 				D3E325E214265749009248B3 /* BBTransitioningViewControllerProtocol.h */,
 				D3E325E214265749009248B1 /* UINavigationController+BBCommon.h */,
 				D3E325E214265749009248AF /* UINavigationController+BBCommon.m */,
@@ -450,6 +456,7 @@
 				D3D653B91579593B00D3A2AE /* BBTextViewStyle.h in Headers */,
 				D3E325E214265749009248B2 /* UINavigationController+BBCommon.h in Headers */,
 				D3E325E214265749009248B4 /* BBTransitioningViewControllerProtocol.h in Headers */,
+				D3E325E214265749009248B8 /* UILabel+Animation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +599,7 @@
 				D3D653B81579593B00D3A2AE /* BBTextView.m in Sources */,
 				D3D653BA1579593B00D3A2AE /* BBTextViewStyle.m in Sources */,
 				D3E325E214265749009248B0 /* UINavigationController+BBCommon.m in Sources */,
+				D3E325E214265749009248B6 /* UILabel+Animation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

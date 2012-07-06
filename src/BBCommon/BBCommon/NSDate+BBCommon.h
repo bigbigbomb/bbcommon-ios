@@ -13,6 +13,6 @@
 
 - (NSString *)stringForTimeIntervalSinceNowIncludingSeconds:(BOOL)includeSeconds;
 
-- (NSString *)stringForTimeInterval:(NSTimeInterval)interval includeSeconds:(BOOL)includeSeconds;
++ (NSString *)stringForTimeInterval:(NSTimeInterval)interval includeSeconds:(BOOL)includeSeconds;
 
 @end

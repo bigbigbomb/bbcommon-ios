@@ -31,10 +31,10 @@
 }
 
 - (NSString *)stringForTimeIntervalSinceNowIncludingSeconds:(BOOL)includeSeconds {
-	return [self stringForTimeInterval:[self timeIntervalSinceNow] includeSeconds:includeSeconds];
+	return [NSDate stringForTimeInterval:[self timeIntervalSinceNow] includeSeconds:includeSeconds];
 }
 
-- (NSString *)stringForTimeInterval:(NSTimeInterval)interval includeSeconds:(BOOL)includeSeconds {
++ (NSString *)stringForTimeInterval:(NSTimeInterval)interval includeSeconds:(BOOL)includeSeconds {
     NSTimeInterval intervalInSeconds = fabs(interval);
     double intervalInMinutes = round(intervalInSeconds / 60.0);
 
