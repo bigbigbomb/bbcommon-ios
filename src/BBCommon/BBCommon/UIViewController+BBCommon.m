@@ -5,7 +5,7 @@
 #import "UIViewController+BBCommon.h"
 #import "UIView+BBCommon.h"
 
-UIWindow *_overlayWindow;
+static UIWindow *_overlayWindow = nil;
 
 @implementation UIViewController(BBCommon)
 
@@ -29,9 +29,8 @@ UIWindow *_overlayWindow;
     [_overlayWindow bringSubviewToFront:viewControllerToPresent.view];
 }
 
-+ (void)bbDismissViewController {
-    UIView *v = [[_overlayWindow subviews] objectAtIndex:0];
-    [v removeFromSuperview];
+- (void)bbDismissViewController {
+    [self.view removeFromSuperview];
     if ([[_overlayWindow subviews] count] == 0){
         [_overlayWindow release];
         _overlayWindow = nil;

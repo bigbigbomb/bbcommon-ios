@@ -21,8 +21,8 @@
 - (void)bbPresentViewController:(UIViewController *)viewControllerToPresent;
 
 /**
- * Dismisses the currently visible modal view
+ * Dismisses the modal view
  */
-+ (void)bbDismissViewController;
+- (void)bbDismissViewController;
 
 @end
