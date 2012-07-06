@@ -8,6 +8,6 @@
 
 @interface UILabel (Animation)
 
-- (void)animateNumericValueFrom:(NSNumber *)from to:(NSNumber *)to duration:(NSTimeInterval)duration formatString:(NSString *)formatString;
+- (void)animateNumericValueFrom:(NSNumber *)from to:(NSNumber *)to duration:(NSTimeInterval)duration formatBlock:(NSString * (^)(double))formatBlock;
 
 @end
