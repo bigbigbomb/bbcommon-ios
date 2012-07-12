@@ -42,7 +42,7 @@
 
 - (void)drawPlaceholderInRect:(CGRect)rect {
     [self.placeholderStyle.color setFill];
-    [self.placeholder drawInRect:rect withFont:self.placeholderStyle.font];
+    [self.placeholder drawInRect:rect withFont:self.placeholderStyle.font lineBreakMode:UILineBreakModeWordWrap alignment:self.textAlignment];
 }
 
 - (void)dealloc {
