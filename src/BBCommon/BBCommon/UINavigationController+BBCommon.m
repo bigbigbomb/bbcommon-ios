@@ -71,12 +71,12 @@
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
-        [self logNavigationStack];
+//        [self logNavigationStack];
     } else {
         [toViewController view]; // Ensure view is loaded before transitioning
         void(^completion)(BOOL)  = ^(BOOL completed){
             [self pushViewController:toViewController animated:NO];
-            [self logNavigationStack];
+//            [self logNavigationStack];
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
 
@@ -98,7 +98,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-        [self logNavigationStack];
+//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -111,7 +111,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-        [self logNavigationStack];
+//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -127,7 +127,7 @@
 
     void(^completion)(BOOL)  = ^(BOOL completed){
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-        [self logNavigationStack];
+//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
