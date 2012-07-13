@@ -5,7 +5,6 @@
 #import "BBTextField.h"
 #import "NSString+BBCommon.h"
 
-
 @implementation BBTextField
 @synthesize placeholderStyle = _placeholderStyle;
 @synthesize textInsets = _textInsets;
@@ -14,6 +13,10 @@
 @synthesize styleAsInvalid = _styleAsInvalid;
 @synthesize styleAsValid = _styleAsValid;
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [self initWithFrame:frame andInsets:UIEdgeInsetsZero];
+    return  self;
+}
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets {
     self = [super initWithFrame:frame];
