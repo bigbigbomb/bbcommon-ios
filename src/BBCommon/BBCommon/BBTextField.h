@@ -17,6 +17,11 @@
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets;
 
+- (void)applyValidStyle;
+
+- (void)applyInvalidStyle;
+
+
 @end
 
 @protocol BBTextFieldValidationDelegate <NSObject>

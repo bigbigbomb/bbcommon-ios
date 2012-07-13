@@ -37,6 +37,16 @@
     [super dealloc];
 }
 
+- (void)applyValidStyle {
+    if (self.styleAsValid != nil)
+        self.styleAsValid(self);
+}
+
+- (void)applyInvalidStyle {
+    if (self.styleAsInvalid != nil)
+        self.styleAsInvalid(self);
+}
+
 - (CGRect)newBounds:(CGRect)bounds insets:(UIEdgeInsets)insets {
     return CGRectMake(bounds.origin.x + insets.left,
             bounds.origin.y + insets.top,
@@ -65,11 +75,9 @@
     if (![self.validationDelegate respondsToSelector:@selector(bbTextField:validateText:)]) return;
 
     if ([self.validationDelegate bbTextField:self validateText:self.text]) {
-        if (self.styleAsValid != nil)
-            self.styleAsValid(self);
+        [self applyValidStyle];
     } else {
-        if (self.styleAsInvalid != nil)
-            self.styleAsInvalid(self);
+        [self applyInvalidStyle];
     }
 }
 
