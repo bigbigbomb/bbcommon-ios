@@ -10,6 +10,9 @@
 @synthesize placeholderStyle = _placeholderStyle;
 @synthesize textInsets = _textInsets;
 @synthesize editingTextInsets = _editingTextInsets;
+@synthesize validationDelegate = _validationDelegate;
+@synthesize styleAsInvalid = _styleAsInvalid;
+@synthesize styleAsValid = _styleAsValid;
 
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets {
@@ -17,9 +20,21 @@
     if (self) {
         self.textInsets = insets;
         self.editingTextInsets = insets;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndEditing) name:UITextFieldTextDidEndEditingNotification object:nil];
     }
 
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+    _validationDelegate = nil;
+
+    [_placeholderStyle release];
+    [_styleAsInvalid release];
+    [_styleAsValid release];
+    [super dealloc];
 }
 
 - (CGRect)newBounds:(CGRect)bounds insets:(UIEdgeInsets)insets {
@@ -45,9 +60,17 @@
     [self.placeholder drawInRect:rect withFont:self.placeholderStyle.font lineBreakMode:UILineBreakModeWordWrap alignment:self.textAlignment];
 }
 
-- (void)dealloc {
-    [_placeholderStyle release];
-    [super dealloc];
+
+- (void)didEndEditing {
+    if (![self.validationDelegate respondsToSelector:@selector(bbTextField:validateText:)]) return;
+
+    if ([self.validationDelegate bbTextField:self validateText:self.text]) {
+        if (self.styleAsValid != nil)
+            self.styleAsValid(self);
+    } else {
+        if (self.styleAsInvalid != nil)
+            self.styleAsInvalid(self);
+    }
 }
 
 @end

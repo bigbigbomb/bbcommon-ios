@@ -4,17 +4,23 @@
 //
 #import "BBLabelStyle.h"
 
-@interface BBTextField : UITextField {
+@protocol BBTextFieldValidationDelegate;
 
-@private
-    BBLabelStyle *_placeholderStyle;
-    UIEdgeInsets _textInsets;
-}
+@interface BBTextField : UITextField
 
 @property(nonatomic, retain) BBLabelStyle *placeholderStyle;
 @property(nonatomic) UIEdgeInsets textInsets;
 @property(nonatomic) UIEdgeInsets editingTextInsets;
+@property(nonatomic, assign) id<BBTextFieldValidationDelegate> validationDelegate;
+@property(nonatomic, copy) void (^styleAsValid)(BBTextField *);
+@property(nonatomic, copy) void (^styleAsInvalid)(BBTextField *);
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets;
+
+@end
+
+@protocol BBTextFieldValidationDelegate <NSObject>
+
+- (BOOL)bbTextField:(BBTextField *)bbTextField validateText:(NSString *)text;
 
 @end

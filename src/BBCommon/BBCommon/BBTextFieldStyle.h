@@ -8,17 +8,7 @@
 @class BBTextField;
 @class BBLabelStyle;
 
-@interface BBTextFieldStyle : NSObject {
-
-@private
-    BBLabelStyle *_textStyle;
-    BBLabelStyle *_placeholderStyle;
-    UIImage *_background;
-    UIControlContentHorizontalAlignment _contentHorizontalAlignment;
-    UIControlContentVerticalAlignment _contentVerticalAlignment;
-    UIEdgeInsets _textInsets;
-    NSString *_placeholder;
-}
+@interface BBTextFieldStyle : NSObject
 
 @property(nonatomic, retain) BBLabelStyle *textStyle;
 @property(nonatomic, retain) BBLabelStyle *placeholderStyle;
@@ -28,6 +18,8 @@
 @property(nonatomic) UIEdgeInsets textInsets;
 @property(nonatomic) UIEdgeInsets editingTextInsets;
 @property(nonatomic, retain) NSString *placeholder;
+@property(nonatomic, copy) void (^styleAsValid)(BBTextField *);
+@property(nonatomic, copy) void (^styleAsInvalid)(BBTextField *);
 
 - (BBTextField *)bbTextFieldWithFrame:(CGRect)frame;
 

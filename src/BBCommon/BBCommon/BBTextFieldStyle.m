@@ -18,6 +18,8 @@
 @synthesize textInsets = _textInsets;
 @synthesize placeholder = _placeholder;
 @synthesize editingTextInsets = _editingTextInsets;
+@synthesize styleAsValid = _styleAsValid;
+@synthesize styleAsInvalid = _styleAsInvalid;
 
 
 - (id)init {
@@ -45,6 +47,8 @@
     field.placeholderStyle = self.placeholderStyle;
     field.background = self.background;
     field.placeholder = self.placeholder;
+    field.styleAsValid = self.styleAsValid;
+    field.styleAsInvalid = self.styleAsInvalid;
     return field;
 }
 
@@ -53,6 +57,8 @@
     [_placeholderStyle release];
     [_background release];
     [_placeholder release];
+    [_styleAsValid release];
+    [_styleAsInvalid release];
     [super dealloc];
 }
 @end
