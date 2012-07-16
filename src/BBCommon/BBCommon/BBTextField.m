@@ -70,8 +70,7 @@
     [self.placeholder drawInRect:rect withFont:self.placeholderStyle.font lineBreakMode:UILineBreakModeWordWrap alignment:self.textAlignment];
 }
 
-
-- (void)didEndEditing {
+- (void)validate {
     if (![self.validationDelegate respondsToSelector:@selector(bbTextField:validateText:)]) return;
 
     if ([self.validationDelegate bbTextField:self validateText:self.text]) {
@@ -79,6 +78,10 @@
     } else {
         [self applyInvalidStyle];
     }
+}
+
+- (void)didEndEditing {
+    [self validate];
 }
 
 @end
