@@ -24,7 +24,7 @@
         self.textInsets = insets;
         self.editingTextInsets = insets;
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndEditing) name:UITextFieldTextDidEndEditingNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndEditing) name:UITextFieldTextDidEndEditingNotification object:self];
     }
 
     return self;
