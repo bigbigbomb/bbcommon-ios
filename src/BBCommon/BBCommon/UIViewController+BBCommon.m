@@ -17,6 +17,8 @@ static UIWindow *_overlayWindow = nil;
 }
 
 - (void)bbPresentViewController:(UIViewController *)viewControllerToPresent {
+    [self.view endEditing:YES];
+
     //create an overlay window if it doesn't exist
     if (!_overlayWindow){
         _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
