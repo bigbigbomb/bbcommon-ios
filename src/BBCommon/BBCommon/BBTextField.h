@@ -21,7 +21,7 @@
 
 - (void)applyInvalidStyle;
 
-- (void)validate;
+- (BOOL)validate;
 
 
 @end

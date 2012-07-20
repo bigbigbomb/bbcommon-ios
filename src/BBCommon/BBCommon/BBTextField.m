@@ -73,13 +73,15 @@
     [self.placeholder drawInRect:rect withFont:self.placeholderStyle.font lineBreakMode:UILineBreakModeWordWrap alignment:self.textAlignment];
 }
 
-- (void)validate {
-    if (![self.validationDelegate respondsToSelector:@selector(bbTextField:validateText:)]) return;
+- (BOOL)validate {
+    if (![self.validationDelegate respondsToSelector:@selector(bbTextField:validateText:)]) return YES;
 
     if ([self.validationDelegate bbTextField:self validateText:self.text]) {
         [self applyValidStyle];
+        return YES;
     } else {
         [self applyInvalidStyle];
+        return NO;
     }
 }
 
