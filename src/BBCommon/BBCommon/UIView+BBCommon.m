@@ -95,6 +95,28 @@
     return [self addView:subview];
 }
 
+- (void)makeTopRoundedCornerMask:(float)cornerRadius {
+    [self makeRoundedCornerMaskCore:cornerRadius corners:(UIRectCornerTopLeft | UIRectCornerTopRight)];
+}
+
+- (void)makeBottomRoundedCornerMask:(float)cornerRadius {
+    [self makeRoundedCornerMaskCore:cornerRadius corners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)];
+}
+
+- (void)makeRoundedCornerMaskCore:(float)cornerRadius corners:(UIRectCorner)corners {
+    CGRect bounds = self.layer.bounds;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds
+                                                   byRoundingCorners:corners
+                                                         cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bounds;
+    maskLayer.path = maskPath.CGPath;
+
+    [self.layer addSublayer:maskLayer];
+    self.layer.mask = maskLayer;
+}
+
 - (void)debugSizes {
     if (self.frame.size.height <= 0 || self.frame.size.width <= 0)
         NSLog(@"ACK! The frame width or height is 0. Width: %f Height: %f", self.frame.size.width, self.frame.size.height);

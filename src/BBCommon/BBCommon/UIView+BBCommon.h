@@ -141,6 +141,16 @@ typedef enum {
 - (id)addView:(UIView *)subview atPoint:(CGPoint)point;
 
 /**
+ * Masks the view with round corners at top
+ */
+- (void)makeTopRoundedCornerMask:(float)cornerRadius;
+
+/*
+ * Masks the view with rounded corners on the bottom
+ */
+- (void)makeBottomRoundedCornerMask:(float)cornerRadius;
+
+/**
  * Changes the background color of all subviews to add in sizing and positioning
  */
 - (void)debugSizes;
