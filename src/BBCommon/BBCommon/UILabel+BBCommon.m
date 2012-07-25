@@ -2,19 +2,17 @@
 //  Created by Lee Fastenau on 8/3/11.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
-#import <CoreGraphics/CoreGraphics.h>
-#import "UILabel+BBCommon.h"
-#import "UIView+BBCommon.h"
+
+#import "BBCommon.h"
 
 @implementation UILabel(BBCommon)
 
-+ (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
-    UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
++ (void)labelWithTextCommon:(UILabel *)label text:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
     label.text = text;
     label.font = font;
     label.lineBreakMode = lineBreakMode;
     label.textAlignment = alignment;
-        
+
     // resize
     if (frame.size.width == 0 || frame.size.height == 0) {
         if (frame.size.width == 0) {
@@ -26,19 +24,23 @@
         [label sizeToFit];
         BBResizeFrame(label, frame.size.width == 0 ? BBW(label) : frame.size.width, frame.size.height == 0 ? BBH(label) : frame.size.height);
     }
-    
+
     // adjust alignment
     if (BBW(label) != frame.size.width && alignment != UITextAlignmentLeft) {
         float xDelta = (frame.size.width - BBW(label)) / (alignment == UITextAlignmentCenter ? 2.0f : 1.0f);
         BBMoveFrame(label, BBX(label) + xDelta, BBY(label));
     }
-    
+
 #ifndef BB_DEBUG_LABELS
     label.backgroundColor = [UIColor clearColor];
 #else
     label.backgroundColor = [UIColor colorWithRed:BBRnd green:BBRnd blue:BBRnd alpha:0.2];
 #endif
+}
 
++ (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
+    UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
+    [self labelWithTextCommon:label text:text font:font frame:frame lineBreakMode:lineBreakMode alignment:alignment];
     return label;
 }
 
@@ -157,6 +159,25 @@
 - (void)resizeFrameToSizeThatFitsText {
     CGSize size = [self.text sizeWithFont:self.font];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+}
+
+@end
+
+
+@implementation BBLabel(BBCommon)
+
++ (BBLabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
+    BBLabel *label = [[[BBLabel alloc] initWithFrame:frame] autorelease];
+    [self labelWithTextCommon:label text:text font:font frame:frame lineBreakMode:lineBreakMode alignment:alignment];
+    return label;
+}
+
++ (BBLabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode {
+    return [self labelWithText:text font:font frame:frame lineBreakMode:lineBreakMode alignment:UITextAlignmentLeft];
+}
+
++ (BBLabel *)labelWithText:(NSString *)text font:(UIFont *)font {
+    return [self labelWithText:text font:font frame:BBEmptyRect(0, 0) lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
 @end

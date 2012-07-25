@@ -4,6 +4,8 @@
 //
 #import <UIKit/UIKit.h>
 
+@class BBLabel;
+
 #define BBLabelStyleDefinitionExt(NAME, FONT_NAME, FONT_SIZE, FONT_COLOR, FONT_LINEBREAKMODE, FONT_SHADOWCOLOR,  FONT_SHADOWOFFSET, FONT_HIGHLIGHT_COLOR) \
 + (BBLabelStyle *)NAME {                                                                                                               \
     static BBLabelStyle *style = nil;                                                                                                  \
@@ -40,8 +42,8 @@
 @property(nonatomic, retain) UIColor *shadowColor;
 @property(nonatomic) CGSize shadowOffset;
 
-- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment;
-- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame;
+- (BBLabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment;
+- (BBLabel *)labelWithText:(NSString *)text frame:(CGRect)frame;
 - (void)applyStyle:(UILabel *)label;
 
 - (void)applyStyleToTextField:(UITextField *)field;

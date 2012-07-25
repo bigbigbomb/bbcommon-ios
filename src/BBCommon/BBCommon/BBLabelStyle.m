@@ -1,10 +1,9 @@
+#import "BBCommon.h"
+
 //
 //  Created by Lee Fastenau on 8/5/11.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
-#import "BBLabelStyle.h"
-#import "UILabel+BBCommon.h"
-
 @implementation BBLabelStyle
 
 @synthesize font = _font;
@@ -15,13 +14,13 @@
 @synthesize highlightedColor = _highlightedColor;
 
 
-- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment {
-    UILabel *label = [UILabel labelWithText:text font:self.font frame:frame lineBreakMode:self.lineBreakMode alignment:alignment];
+- (BBLabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment {
+    BBLabel *label = [BBLabel labelWithText:text font:self.font frame:frame lineBreakMode:self.lineBreakMode alignment:alignment];
     [self applyStyle:label];
     return label;
 }
 
-- (UILabel *)labelWithText:(NSString *)text frame:(CGRect)frame {
+- (BBLabel *)labelWithText:(NSString *)text frame:(CGRect)frame {
     return [self labelWithText:text frame:frame alignment:UITextAlignmentLeft];
 }
 
