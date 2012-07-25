@@ -150,6 +150,11 @@ typedef enum {
  */
 - (void)makeBottomRoundedCornerMask:(float)cornerRadius;
 
+/*
+ * Masks the view with rounded corners
+ */
+- (void)makeRoundedCornerMask:(float)cornerRadius corners:(UIRectCorner)corners;
+
 /**
  * Changes the background color of all subviews to add in sizing and positioning
  */

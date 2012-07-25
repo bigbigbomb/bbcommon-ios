@@ -96,14 +96,14 @@
 }
 
 - (void)makeTopRoundedCornerMask:(float)cornerRadius {
-    [self makeRoundedCornerMaskCore:cornerRadius corners:(UIRectCornerTopLeft | UIRectCornerTopRight)];
+    [self makeRoundedCornerMask:cornerRadius corners:(UIRectCornerTopLeft | UIRectCornerTopRight)];
 }
 
 - (void)makeBottomRoundedCornerMask:(float)cornerRadius {
-    [self makeRoundedCornerMaskCore:cornerRadius corners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)];
+    [self makeRoundedCornerMask:cornerRadius corners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)];
 }
 
-- (void)makeRoundedCornerMaskCore:(float)cornerRadius corners:(UIRectCorner)corners {
+- (void)makeRoundedCornerMask:(float)cornerRadius corners:(UIRectCorner)corners {
     CGRect bounds = self.layer.bounds;
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds
                                                    byRoundingCorners:corners
