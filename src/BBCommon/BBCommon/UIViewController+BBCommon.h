@@ -25,7 +25,7 @@
  */
 - (void)bbDismissViewController;
 
-- (BOOL)hasDialogOfType:(Class)class;
+- (BOOL)hasDialogWithTag:(int)tag;
 
 
 @end
