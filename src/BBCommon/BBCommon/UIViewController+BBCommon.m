@@ -46,4 +46,12 @@ static UIWindow *_overlayWindow = nil;
     }
 }
 
+- (BOOL)hasDialogOfType:(Class)class {
+    for (UIView *view in [_overlayWindow subviews]) {
+        if ([view isKindOfClass:class])
+            return YES;
+    }
+    return NO;
+}
+
 @end
