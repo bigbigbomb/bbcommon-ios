@@ -4,6 +4,8 @@
 //
 #import <UIKit/UIKit.h>
 
+@protocol BBViewControllerDelegate;
+
 /**
  * Category helper methods for UIViewController. Most of these methods support fluent programming or method chaining.
  */
@@ -25,7 +27,18 @@
  */
 - (void)bbDismissViewController;
 
-- (BOOL)hasDialogWithTag:(int)tag;
+
+@property (nonatomic, assign) id<BBViewControllerDelegate> bbViewControllerDelegate;
+
+@end
+
+@protocol BBViewControllerDelegate <NSObject>
+
+@optional
+- (void)viewControllerWillBePresented:(UIViewController *)viewController;
+- (void)viewControllerDidGetPresented:(UIViewController *)viewController;
+- (void)viewControllerWillBeDismissed:(UIViewController *)viewController;
+- (void)viewControllerDidGetDismissed:(UIViewController *)viewController;
 
 
 @end
