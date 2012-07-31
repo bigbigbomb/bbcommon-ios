@@ -204,6 +204,7 @@ static float _clockFlipDuration;
                              view.layer.transform = CATransform3DIdentity;
                              view.layer.anchorPoint = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointYKey) floatValue]);
                              view.layer.position = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionYKey) floatValue]);
+                             objc_removeAssociatedObjects(view);
                              if (completion){
                                  completion(finished);
                              }
@@ -287,14 +288,14 @@ static float _clockFlipDuration;
                 [BB3DTransition toViewAnimation:toView toViewCompletion:toViewCompletion angleValues:angleValues effectX:effectX effectY:effectY];
             }
         };
+    float duration = _spinDuration * 0.5;
     if (![UIView areAnimationsEnabled]){
-        block(YES);
-        return;
+        duration = 0;
     }
     BB3DTransitionResponder *frontResponder = [[BB3DTransitionResponder alloc] initWithCompletion:block];
     CAKeyframeAnimation *frontAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     frontAnimation.delegate             = frontResponder;
-    frontAnimation.duration             = _spinDuration * 0.5;
+    frontAnimation.duration             = duration;
     frontAnimation.repeatCount          = 0;
     frontAnimation.removedOnCompletion  = YES;
     frontAnimation.autoreverses         = NO;
@@ -334,14 +335,14 @@ static float _clockFlipDuration;
         if (toViewCompletion)
             toViewCompletion(finished);
     };
+    float duration = _spinDuration * 0.5;
     if (![UIView areAnimationsEnabled]){
-        block(YES);
-        return;
+        duration = 0;
     }
     BB3DTransitionResponder *backResponder = [[BB3DTransitionResponder alloc] initWithCompletion:block];
     CAKeyframeAnimation *backAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     backAnimation.delegate             = backResponder;
-    backAnimation.duration             = _spinDuration * 0.5;
+    backAnimation.duration             = duration;
     backAnimation.repeatCount          = 0;
     backAnimation.removedOnCompletion  = YES;
     backAnimation.autoreverses         = NO;
