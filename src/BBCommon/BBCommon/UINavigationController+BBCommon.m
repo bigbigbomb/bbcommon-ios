@@ -73,9 +73,9 @@
         [self pushViewController:toViewController animated:animated];
 //        [self logNavigationStack];
     } else {
-        [toViewController view]; // Ensure view is loaded before transitioning
         void(^completion)(BOOL)  = ^(BOOL completed){
             [self pushViewController:toViewController animated:NO];
+            [toViewController view]; // Ensure view is loaded before transitioning
 //            [self logNavigationStack];
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
         };
