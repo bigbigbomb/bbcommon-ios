@@ -73,14 +73,16 @@
         [self pushViewController:toViewController animated:animated];
 //        [self logNavigationStack];
     } else {
-        void(^completion)(BOOL)  = ^(BOOL completed){
+        void(^completion)(BOOL) = ^(BOOL completed){
             [self pushViewController:toViewController animated:NO];
             [toViewController view]; // Ensure view is loaded before transitioning
 //            [self logNavigationStack];
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
+            fromViewController.view.userInteractionEnabled = YES;
         };
 
         if (fromViewController.isViewLoaded) {
+            fromViewController.view.userInteractionEnabled = NO;
             [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePush completion:completion];
         } else {
             completion(YES);
@@ -103,6 +105,7 @@
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
+    fromViewController.view.userInteractionEnabled = NO;
     [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
 }
 
@@ -116,6 +119,7 @@
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
+    fromViewController.view.userInteractionEnabled = NO;
     [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
 }
 
@@ -132,6 +136,8 @@
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
 
-    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];}
+    fromViewController.view.userInteractionEnabled = NO;
+    [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
+}
 
 @end
