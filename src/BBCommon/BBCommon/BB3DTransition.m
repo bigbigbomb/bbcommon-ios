@@ -52,11 +52,11 @@ static float _clockFlipDuration;
     UIView *container = [[UIView alloc] initWithFrame:fromView.frame];
     [parent addSubview:container];
 
-    UIImageView *fromViewTopHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]];
+    UIImageView *fromViewTopHalf = [[[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]] autorelease];
     fromViewTopHalf.frame = CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5));
     fromViewTopHalf.layer.anchorPoint = CGPointMake(.5, 1);
     fromViewTopHalf.layer.position = CGPointMake(fromViewTopHalf.layer.position.x, floorf(fromViewTopHalf.layer.position.y + fromViewTopHalf.frame.size.height * 0.5));
-    UIImageView *fromViewBottomHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]];
+    UIImageView *fromViewBottomHalf = [[[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]] autorelease];
     fromViewBottomHalf.frame = CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5));
     fromViewBottomHalf.layer.position = CGPointMake(fromViewBottomHalf.layer.position.x, floorf(fromViewBottomHalf.layer.position.y - fromViewBottomHalf.frame.size.height * 0.5));
     fromViewBottomHalf.layer.anchorPoint = CGPointMake(.5, 0);

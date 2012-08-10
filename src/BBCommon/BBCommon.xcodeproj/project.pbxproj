@@ -519,7 +519,7 @@
 		D3E3257A1426546400924841 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "BigBig Bomb, LLC";
 			};
 			buildConfigurationList = D3E3257D1426546400924841 /* Build configuration list for PBXProject "BBCommon" */;

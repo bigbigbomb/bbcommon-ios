@@ -16,7 +16,7 @@
 
 
 - (BBTextView *)bbTextViewWithFrame:(CGRect)frame {
-    BBTextView *view = [[BBTextView alloc] initWithFrame:frame andInsets:self.textInsets];
+    BBTextView *view = [[[BBTextView alloc] initWithFrame:frame andInsets:self.textInsets] autorelease];
     [self.textStyle applyStyleToTextView:view];
     view.backgroundColor = [UIColor colorWithPatternImage:self.background];
     view.placeholderStyle = self.placeholderStyle;
