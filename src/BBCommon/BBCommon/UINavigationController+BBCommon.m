@@ -71,12 +71,18 @@
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
-//        [self logNavigationStack];
     } else {
+        __block BOOL completionExecuted = NO;
+
         void(^completion)(BOOL) = ^(BOOL completed){
+            if (completionExecuted) {
+                NSLog(@"Hey!!! You called this completion block more than once! Stop it!");
+                return;
+            } else {
+                completionExecuted = YES;
+            }
             [self pushViewController:toViewController animated:NO];
             [toViewController view]; // Ensure view is loaded before transitioning
-//            [self logNavigationStack];
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
             fromViewController.view.userInteractionEnabled = YES;
         };
@@ -98,9 +104,16 @@
 
     UIViewController *toViewController = inViewIndex > -1 ? [self.viewControllers objectAtIndex:(NSUInteger) inViewIndex] : nil;
 
+    __block BOOL completionExecuted = NO;
+
     void(^completion)(BOOL)  = ^(BOOL completed){
+        if (completionExecuted) {
+            NSLog(@"Hey!!! You called this completion block more than once! Stop it!");
+            return;
+        } else {
+            completionExecuted = YES;
+        }
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -112,9 +125,16 @@
 - (void)bbPopToViewController:(UIViewController *)toViewController animated:(BOOL)animated {
     UIViewController *fromViewController = self.topViewController;
 
+    __block BOOL completionExecuted = NO;
+
     void(^completion)(BOOL)  = ^(BOOL completed){
+        if (completionExecuted) {
+            NSLog(@"Hey!!! You called this completion block more than once! Stop it!");
+            return;
+        } else {
+            completionExecuted = YES;
+        }
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -129,9 +149,16 @@
 
     if (fromViewController == toViewController) return; // Do nothing if already at root view controller
 
+    __block BOOL completionExecuted = NO;
+
     void(^completion)(BOOL)  = ^(BOOL completed){
+        if (completionExecuted) {
+            NSLog(@"Hey!!! You called this completion block more than once! Stop it!");
+            return;
+        } else {
+            completionExecuted = YES;
+        }
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
-//        [self logNavigationStack];
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
