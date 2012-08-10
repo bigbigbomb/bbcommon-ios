@@ -26,9 +26,15 @@
         placeholderStyle.color = [UIColor lightGrayColor];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
         [placeholderStyle release];
+
     }
 
     return self;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder {
+    NonatomicCopySetToFrom(_placeholder, placeholder);
+    [self setNeedsLayout];
 }
 
 - (void)textChanged:(NSNotification *)notification {
@@ -46,7 +52,7 @@
     [self textChanged:nil];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)layoutSubviews {
     if ([[self placeholder] length] > 0) {
         if (self.placeholderLabel == nil) {
             UILabel *placeholder = [[UILabel alloc] initWithFrame:CGRectMake(11, 9,
@@ -61,7 +67,7 @@
             [self addSubview:self.placeholderLabel];
             [placeholder release];
         }
-
+        self.placeholderLabel.frame = CGRectMake(11, 9, self.bounds.size.width - 18, 0);
         self.placeholderLabel.text = self.placeholder;
         [self.placeholderLabel sizeToFit];
         [self sendSubviewToBack:self.placeholderLabel];
@@ -70,8 +76,6 @@
     if ([[self text] length] == 0 && [[self placeholder] length] > 0) {
         [self.placeholderLabel setAlpha:1];
     }
-
-    [super drawRect:rect];
 }
 
 - (void)dealloc {
