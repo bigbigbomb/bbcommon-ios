@@ -23,8 +23,8 @@ typedef enum {
 typedef enum {
     BB3DSpinFromTop,
     BB3DSpinFromBottom,
-    BB3DSpinFromLeft,
-    BB3DSpinFromRight
+    BB3DSpinFromRight,
+    BB3DSpinFromLeft
 } BB3DSpinDirection;
 
 

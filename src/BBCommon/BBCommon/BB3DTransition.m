@@ -259,10 +259,10 @@ static float _clockFlipDuration;
         case BB3DSpinFromBottom:
             [BB3DTransition spinFromBottom:fromView toView:toView fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
             break;
-        case BB3DSpinFromLeft:
+        case BB3DSpinFromRight:
             [BB3DTransition spinFromLeft:fromView toView:toView fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
             break;
-        case BB3DSpinFromRight:
+        case BB3DSpinFromLeft:
             [BB3DTransition spinFromRight:fromView toView:toView fromViewCompletion:fromViewCompletion toViewCompletion:toViewCompletion];
             break;
         case BB3DSpinFromTop:
