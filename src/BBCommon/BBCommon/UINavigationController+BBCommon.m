@@ -5,6 +5,9 @@
 #import "UINavigationController+BBCommon.h"
 #import "BBTransitioningViewControllerProtocol.h"
 
+
+// #define DISABLE_CUSTOM_TRANSITIONS
+
 @implementation UINavigationController (BBCommon)
 
 - (void)logNavigationStack {
@@ -65,9 +68,13 @@
 }
 
 - (void)bbPushViewController:(UIViewController *)toViewController animated:(BOOL)animated {
+#ifdef DISABLE_CUSTOM_TRANSITIONS
+    [self pushViewController:toViewController animated:animated];
+#else
     UIViewController *fromViewController = self.topViewController;
 
     if (fromViewController == toViewController) return;
+    [toViewController view];
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
@@ -94,9 +101,14 @@
             completion(YES);
         }
     }
+#endif
 }
 
 - (void)bbPopViewControllerAnimated:(BOOL)animated {
+#ifdef DISABLE_CUSTOM_TRANSITIONS
+    [self popViewControllerAnimated:animated];
+#else
+
     UIViewController *fromViewController = self.topViewController;
     NSInteger inViewIndex = [self.viewControllers indexOfObject:fromViewController] - 1;
 
@@ -120,9 +132,14 @@
 
     fromViewController.view.userInteractionEnabled = NO;
     [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
+#endif
 }
 
 - (void)bbPopToViewController:(UIViewController *)toViewController animated:(BOOL)animated {
+#ifdef DISABLE_CUSTOM_TRANSITIONS
+    [self popToViewController:toViewController animated:animated];
+#else
+
     UIViewController *fromViewController = self.topViewController;
 
     __block BOOL completionExecuted = NO;
@@ -141,9 +158,14 @@
 
     fromViewController.view.userInteractionEnabled = NO;
     [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
+#endif
 }
 
 - (void)bbPopToRootViewControllerAnimated:(BOOL)animated {
+#ifdef DISABLE_CUSTOM_TRANSITIONS
+    [self popToRootViewControllerAnimated:animated];
+#else
+
     UIViewController *fromViewController = self.topViewController;
     UIViewController *toViewController = [self.viewControllers objectAtIndex:0];
 
@@ -165,6 +187,7 @@
 
     fromViewController.view.userInteractionEnabled = NO;
     [self transitionFrom:fromViewController to:toViewController action:BBNavigationTypePop completion:completion];
+#endif
 }
 
 @end
