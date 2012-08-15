@@ -197,6 +197,7 @@ static float _clockFlipDuration;
                          view.layer.transform = endT;
                      }
                      completion:^(BOOL finished){
+                         NSLog(@"flip completion, finished? %@", finished ? @"YES" : @"NO");
                          if (finished){
                              if (end != RADIANS(0)) {
                                  view.hidden = YES;
@@ -205,9 +206,9 @@ static float _clockFlipDuration;
                              view.layer.anchorPoint = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalAnchorPointYKey) floatValue]);
                              view.layer.position = CGPointMake([(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionXKey) floatValue], [(NSNumber *)objc_getAssociatedObject(view, &kBB3DOriginalPositionYKey) floatValue]);
                              objc_removeAssociatedObjects(view);
-                             if (completion){
-                                 completion(finished);
-                             }
+                         }
+                         if (completion){
+                             completion(finished);
                          }
                      }];
 }
@@ -282,11 +283,12 @@ static float _clockFlipDuration;
                     toView.hidden = NO;
                 }
 
-                if (fromViewCompletion)
-                    fromViewCompletion(finished);
-
                 [BB3DTransition toViewAnimation:toView toViewCompletion:toViewCompletion angleValues:angleValues effectX:effectX effectY:effectY];
             }
+
+            if (fromViewCompletion)
+                fromViewCompletion(finished);
+
         };
     float duration = _spinDuration * 0.5;
     if (![UIView areAnimationsEnabled]){
