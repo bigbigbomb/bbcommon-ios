@@ -6,10 +6,12 @@
 #import "BBTransitioningViewControllerProtocol.h"
 
 
-// #define DISABLE_CUSTOM_TRANSITIONS
+#define DISABLE_CUSTOM_TRANSITIONS 0
+#define LOG_NAVIGATION_STACK       0
 
 @implementation UINavigationController (BBCommon)
 
+#if LOG_NAVIGATION_STACK
 - (void)logNavigationStack {
     NSLog(@"Navigation Stack Log");
     NSUInteger count = [self.viewControllers count];
@@ -17,6 +19,7 @@
         NSLog(@"%d) %@", i, [self.viewControllers objectAtIndex:(NSUInteger) i]);
     }
 }
+#endif
 
 - (SEL)fromSelectorForNavigationType:(BBNavigationType)type {
     if (type == BBNavigationTypePush) {
@@ -68,17 +71,23 @@
 }
 
 - (void)bbPushViewController:(UIViewController *)toViewController animated:(BOOL)animated {
-#ifdef DISABLE_CUSTOM_TRANSITIONS
+#if DISABLE_CUSTOM_TRANSITIONS
     [self pushViewController:toViewController animated:animated];
+#if LOG_NAVIGATION_STACK
+    [self logNavigationStack];
+#endif
 #else
     UIViewController *fromViewController = self.topViewController;
 
     if (fromViewController == toViewController) return;
-    [toViewController view];
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
         [self pushViewController:toViewController animated:animated];
+#if LOG_NAVIGATION_STACK
+        [self logNavigationStack];
+#endif
     } else {
+        [toViewController view];
         __block BOOL completionExecuted = NO;
 
         void(^completion)(BOOL) = ^(BOOL completed){
@@ -89,6 +98,9 @@
                 completionExecuted = YES;
             }
             [self pushViewController:toViewController animated:NO];
+#if LOG_NAVIGATION_STACK
+            [self logNavigationStack];
+#endif
             [toViewController view]; // Ensure view is loaded before transitioning
             [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePush];
             fromViewController.view.userInteractionEnabled = YES;
@@ -105,8 +117,11 @@
 }
 
 - (void)bbPopViewControllerAnimated:(BOOL)animated {
-#ifdef DISABLE_CUSTOM_TRANSITIONS
+#if DISABLE_CUSTOM_TRANSITIONS
     [self popViewControllerAnimated:animated];
+#if LOG_NAVIGATION_STACK
+    [self logNavigationStack];
+#endif
 #else
 
     UIViewController *fromViewController = self.topViewController;
@@ -126,6 +141,9 @@
             completionExecuted = YES;
         }
         [self popViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+#if LOG_NAVIGATION_STACK
+        [self logNavigationStack];
+#endif
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -136,8 +154,11 @@
 }
 
 - (void)bbPopToViewController:(UIViewController *)toViewController animated:(BOOL)animated {
-#ifdef DISABLE_CUSTOM_TRANSITIONS
+#if DISABLE_CUSTOM_TRANSITIONS
     [self popToViewController:toViewController animated:animated];
+#if LOG_NAVIGATION_STACK
+    [self logNavigationStack];
+#endif
 #else
 
     UIViewController *fromViewController = self.topViewController;
@@ -152,6 +173,9 @@
             completionExecuted = YES;
         }
         [self popToViewController:toViewController animated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+#if LOG_NAVIGATION_STACK
+        [self logNavigationStack];
+#endif
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
@@ -162,8 +186,11 @@
 }
 
 - (void)bbPopToRootViewControllerAnimated:(BOOL)animated {
-#ifdef DISABLE_CUSTOM_TRANSITIONS
+#if DISABLE_CUSTOM_TRANSITIONS
     [self popToRootViewControllerAnimated:animated];
+#if LOG_NAVIGATION_STACK
+    [self logNavigationStack];
+#endif
 #else
 
     UIViewController *fromViewController = self.topViewController;
@@ -181,6 +208,9 @@
             completionExecuted = YES;
         }
         [self popToRootViewControllerAnimated:[self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePop animated:animated]];
+#if LOG_NAVIGATION_STACK
+        [self logNavigationStack];
+#endif
         [toViewController view]; // Ensure view is loaded before transitioning
         [self transitionTo:toViewController from:fromViewController action:BBNavigationTypePop];
     };
