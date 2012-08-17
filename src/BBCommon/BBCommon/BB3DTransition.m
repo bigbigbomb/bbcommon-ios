@@ -211,7 +211,6 @@ static float _clockFlipDuration;
                          view.layer.transform = endT;
                      }
                      completion:^(BOOL finished){
-                         NSLog(@"flip completion, finished? %@", finished ? @"YES" : @"NO");
                          if (finished){
                              if (end != RADIANS(0)) {
                                  view.hidden = YES;
