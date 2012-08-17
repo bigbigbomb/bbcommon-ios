@@ -6,8 +6,13 @@
 
 #define BBPredicate(...) [NSPredicate predicateWithFormat:__VA_ARGS__]
 
+#if !__has_feature(objc_arc)
 #define BBSortAscending(KEY) [[[NSSortDescriptor alloc] initWithKey:KEY ascending:YES] autorelease]
 #define BBSortDescending(KEY) [[[NSSortDescriptor alloc] initWithKey:KEY ascending:NO] autorelease]
+#else
+#define BBSortAscending(KEY) [[NSSortDescriptor alloc] initWithKey:KEY ascending:YES]
+#define BBSortDescending(KEY) [[NSSortDescriptor alloc] initWithKey:KEY ascending:NO]
+#endif
 
 @interface BBQuery : NSObject {
 
