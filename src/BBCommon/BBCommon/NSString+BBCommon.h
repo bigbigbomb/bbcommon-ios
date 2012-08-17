@@ -44,5 +44,11 @@
  */
 - (NSString *)stringByUnescapingFromURLQuery;
 
+/**
+* Returns a shortened string version of the provided number.
+* i.e. - 6000 becomes 6k
+*/
++ (NSString *)shortDisplayForNumber:(double)number;
+
 
 @end

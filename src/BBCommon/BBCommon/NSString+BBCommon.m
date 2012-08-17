@@ -59,6 +59,30 @@
     return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
++ (NSString *)shortDisplayForNumber:(double)number {
+    double questionCount = number;
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    if (questionCount > 1000000) {
+        // 1.2m
+        questionCount = questionCount / 1000000.0;
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter.maximumFractionDigits = 1;
+        formatter.positiveSuffix = @"m";
+    } else if (questionCount > 10000) {
+        // 10k, 100k
+        questionCount = questionCount / 1000.0;
+        formatter.positiveSuffix = @"k";
+    } else if (questionCount > 1000) {
+        // 1.6k
+        questionCount = questionCount / 1000.0;
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter.maximumFractionDigits = 1;
+        formatter.positiveSuffix = @"k";
+    }
+    NSString *output = [formatter stringFromNumber:[NSNumber numberWithDouble:questionCount]];
+    [formatter release];
+    return output;
+}
 
 
 @end
