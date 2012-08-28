@@ -182,7 +182,7 @@ static float _clockFlipDuration;
     objc_setAssociatedObject(view, &kBB3DIsFlipping, [NSNumber numberWithBool:val], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+ (void)flipAnimate:(UIView *)view withPoint:(CGPoint)anchorPoint withPosition:(CGPoint)position withStart:(float)start andEnd:(float)end completion:(void (^)(BOOL finished))completion {
++ (void)flipAnimate:(UIView *)view withPoint:(CGPoint)anchorPoint withPosition:(CGPoint)position withStart:(float)start andEnd:(float)end onXAxis:(BOOL)onXAxis completion:(void (^)(BOOL finished))completion {
     if (![self isFlipping:view]){
         [self setFlipping:view value:YES];
         objc_setAssociatedObject(view, &kBB3DOriginalAnchorPointXKey, [NSNumber numberWithFloat:view.layer.anchorPoint.x], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -195,14 +195,14 @@ static float _clockFlipDuration;
 
     CATransform3D startT = CATransform3DIdentity;
     startT.m34 = _perspectiveAmount;
-    startT = CATransform3DRotate(startT, start, 1.0f, 0.0f, 0.0f);
+    startT = CATransform3DRotate(startT, start, onXAxis ? 1.0f : 0.0f, onXAxis ? 0.0f : 1.0f, 0.0f);
 
     view.layer.transform = startT;
     view.hidden = NO;
 
     CATransform3D endT = CATransform3DIdentity;
     endT.m34 = _perspectiveAmount;
-    endT = CATransform3DRotate(endT, end, 1.0f, 0.0f, 0.0f);
+    endT = CATransform3DRotate(endT, end, onXAxis ? 1.0f : 0.0f, onXAxis ? 0.0f : 1.0f, 0.0f);
 
     [UIView animateWithDuration:_flipDuration
                           delay:0
@@ -230,37 +230,37 @@ static float _clockFlipDuration;
     switch (flipDirection) {
         case BB3DFlipInFromBottom:
         case BB3DFlipOutFromBottom:
-            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0.5, 1) withPosition:CGPointMake(view.layer.position.x, view.layer.position.y + view.frame.size.height * 0.5) withStart:start andEnd:end completion:completion];
+            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0.5, 1) withPosition:CGPointMake(view.layer.position.x, view.layer.position.y + view.frame.size.height * 0.5) withStart:start andEnd:end onXAxis:YES completion:completion];
             break;
         case BB3DFlipInFromTop:
         case BB3DFlipOutFromTop:
-            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0.5, 0) withPosition:CGPointMake(view.layer.position.x, view.layer.position.y - view.frame.size.height * 0.5) withStart:start andEnd:end completion:completion];
+            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0.5, 0) withPosition:CGPointMake(view.layer.position.x, view.layer.position.y - view.frame.size.height * 0.5) withStart:start andEnd:end onXAxis:YES completion:completion];
             break;
         case BB3DFlipInFromLeft:
         case BB3DFlipOutFromLeft:
-            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0, 0.5) withPosition:CGPointMake(view.layer.position.x - view.frame.size.width * 0.5, view.layer.position.y) withStart:start andEnd:end completion:completion];
+            [BB3DTransition flipAnimate:view withPoint:CGPointMake(0, 0.5) withPosition:CGPointMake(view.layer.position.x - view.frame.size.width * 0.5, view.layer.position.y) withStart:start andEnd:end onXAxis:NO completion:completion];
             break;
         case BB3DFlipInFromRight:
         case BB3DFlipOutFromRight:
-            [BB3DTransition flipAnimate:view withPoint:CGPointMake(1, 0.5) withPosition:CGPointMake(view.layer.position.x + view.frame.size.width * 0.5, view.layer.position.y) withStart:start andEnd:end completion:completion];
+            [BB3DTransition flipAnimate:view withPoint:CGPointMake(1, 0.5) withPosition:CGPointMake(view.layer.position.x + view.frame.size.width * 0.5, view.layer.position.y) withStart:start andEnd:end onXAxis:NO completion:completion];
             break;
     }
 }
 
 + (void)flip:(UIView *)view withFlipDirection:(BB3DFlipDirection)flipDirection completion:(void(^)(BOOL finished))completion {
     switch (flipDirection) {
+        case BB3DFlipInFromLeft:
         case BB3DFlipInFromBottom:
             [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(90) andEnd:RADIANS(0) completion:completion];
             break;
-        case BB3DFlipInFromLeft:
         case BB3DFlipInFromRight:
         case BB3DFlipInFromTop:
             [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(-90) andEnd:RADIANS(0) completion:completion];
             break;
+        case BB3DFlipOutFromLeft:
         case BB3DFlipOutFromBottom:
             [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(0) andEnd:RADIANS(90) completion:completion];
             break;
-        case BB3DFlipOutFromLeft:
         case BB3DFlipOutFromRight:
         case BB3DFlipOutFromTop:
             [BB3DTransition setPoints:view withFlipDirection:flipDirection andStart:RADIANS(0) andEnd:RADIANS(-90) completion:completion];
