@@ -79,21 +79,50 @@
     [super dealloc];
 }
 
-
 #pragma mark - Private
 
 - (void)accessoryEditingDidBegin:(id)sender {
-    UISegmentedControl *segmented = (UISegmentedControl *) [self buttonWithTag:kNextPreviousTag].customView;
+    NSLog(@"AccessoryEditingDidBegin");
+    id sendingControl = sender;
+    if ([sender isKindOfClass:[NSNotification class]])
+        sendingControl = ((NSNotification *)sender).object;
 
-    if (sender == [self.controls objectAtIndex:0]) {
+    NSInteger indexOfSender = [self.controls indexOfObject:sendingControl];
+    BOOL previousControlIsEnabled = YES;
+    BOOL nextControlIsEnabled = YES;
+    if (indexOfSender > 0) {
+        id previousControl = [self.controls objectAtIndex:(NSUInteger) (indexOfSender - 1)];
+        if ([previousControl respondsToSelector:@selector(isEnabled)]) {
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                    [[previousControl class] instanceMethodSignatureForSelector:@selector(isEnabled)]];
+            [invocation setSelector:@selector(isEnabled)];
+            [invocation setTarget:previousControl];
+            [invocation invoke];
+            [invocation getReturnValue:&previousControlIsEnabled];
+        }
+    }
+    if (indexOfSender < self.controls.count - 1) {
+        id nextControl = [self.controls objectAtIndex:(NSUInteger) (indexOfSender + 1)];
+        if ([nextControl respondsToSelector:@selector(isEnabled)]) {
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                    [[nextControl class] instanceMethodSignatureForSelector:@selector(isEnabled)]];
+            [invocation setSelector:@selector(isEnabled)];
+            [invocation setTarget:nextControl];
+            [invocation invoke];
+            [invocation getReturnValue:&nextControlIsEnabled];
+        }
+    }
+
+    UISegmentedControl *segmented = (UISegmentedControl *) [self buttonWithTag:kNextPreviousTag].customView;
+    if (indexOfSender == 0) {
         [segmented setEnabled:NO forSegmentAtIndex:0];
-        [segmented setEnabled:YES forSegmentAtIndex:1];
-    } else if (sender == [self.controls lastObject]) {
-        [segmented setEnabled:YES forSegmentAtIndex:0];
+        [segmented setEnabled:nextControlIsEnabled forSegmentAtIndex:1];
+    } else if (indexOfSender == self.controls.count - 1) {
+        [segmented setEnabled:previousControlIsEnabled forSegmentAtIndex:0];
         [segmented setEnabled:NO forSegmentAtIndex:1];
     } else {
-        [segmented setEnabled:YES forSegmentAtIndex:0];
-        [segmented setEnabled:YES forSegmentAtIndex:1];
+        [segmented setEnabled:previousControlIsEnabled forSegmentAtIndex:0];
+        [segmented setEnabled:nextControlIsEnabled forSegmentAtIndex:1];
     }
 }
 
