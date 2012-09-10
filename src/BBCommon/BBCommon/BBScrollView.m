@@ -32,6 +32,8 @@
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
 }
 
 -(id)initWithFrame:(CGRect)frame {
@@ -98,7 +100,7 @@
 
     // Shrink view's inset by the keyboard's height, and scroll to show the text field/view being edited
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+    [UIView setAnimationCurve:(UIViewAnimationCurve) [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
 
     self.contentInset = [self contentInsetForKeyboard];
@@ -116,12 +118,18 @@
 
     // Restore dimensions to prior size
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+    [UIView setAnimationCurve:(UIViewAnimationCurve) [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
     self.contentInset = _priorInset;
     [self setScrollIndicatorInsets:self.contentInset];
     _priorInsetSaved = NO;
     [UIView commitAnimations];
+}
+
+- (void)textViewDidBeginEditing:(NSNotification *)notification {
+    if (![notification.object isDescendantOfView:self]) return;
+
+    [self adjustOffsetToIdealIfNeeded];
 }
 
 - (UIView*)findFirstResponderBeneathView:(UIView*)view {
