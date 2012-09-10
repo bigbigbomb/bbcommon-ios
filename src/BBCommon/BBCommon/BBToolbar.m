@@ -53,7 +53,7 @@
         if (![control respondsToSelector:@selector(setInputAccessoryView:)])
             continue;
 
-        [toolbar removeTargetsForControl:control];
+        [BBToolbar removeToolbar:control];
 
         [control performSelector:@selector(setInputAccessoryView:) withObject:toolbar];
         if ([control respondsToSelector:@selector(addTarget:action:forControlEvents:)])
@@ -64,6 +64,10 @@
             if (text.returnKeyType == UIReturnKeyNext)
                 [control addTarget:toolbar action:@selector(accessoryEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         }
+
+        if ([control respondsToSelector:@selector(isEnabled)]) {
+            [control addObserver:toolbar forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
+        }
     }
     [[NSNotificationCenter defaultCenter] addObserver:toolbar selector:@selector(accessoryEditingDidBegin:) name:UITextViewTextDidBeginEditingNotification object:nil];
 
@@ -73,7 +77,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:nil];
     for (id control in self.controls)
-        [self removeTargetsForControl:control];
+        [BBToolbar removeToolbar:control];
 
     [_controls release];
     [super dealloc];
@@ -81,8 +85,34 @@
 
 #pragma mark - Private
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    NSInteger indexOfSender = [self.controls indexOfObject:object];
+
+    NSInteger indexOfFirstResponder = -1;
+    for (NSUInteger i = 0; i < self.controls.count; i++) {
+        id control = [self.controls objectAtIndex:i];
+        if (![control respondsToSelector:@selector(isFirstResponder)]) continue;
+
+        BOOL isFirstResponder = NO;
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                [[control class] instanceMethodSignatureForSelector:@selector(isFirstResponder)]];
+        [invocation setSelector:@selector(isFirstResponder)];
+        [invocation setTarget:control];
+        [invocation invoke];
+        [invocation getReturnValue:&isFirstResponder];
+
+        if (isFirstResponder) {
+            indexOfFirstResponder = i;
+            break;
+        }
+    }
+
+    // If the changed control is either previous or next, refresh the buttons
+    if ((indexOfFirstResponder >= 0) && ((indexOfFirstResponder == indexOfSender - 1) || (indexOfFirstResponder == indexOfSender + 1)))
+        [self accessoryEditingDidBegin:[self.controls objectAtIndex:(NSUInteger) indexOfFirstResponder]];
+}
+
 - (void)accessoryEditingDidBegin:(id)sender {
-    NSLog(@"AccessoryEditingDidBegin");
     id sendingControl = sender;
     if ([sender isKindOfClass:[NSNotification class]])
         sendingControl = ((NSNotification *)sender).object;
@@ -186,15 +216,26 @@
     return control;
 }
 
-- (void)removeTargetsForControl:(id)control {
++ (void)removeToolbar:(id)control {
     if (![control respondsToSelector:@selector(setInputAccessoryView:)]) return;
 
-    UIToolbar *existing = [control performSelector:@selector(inputAccessoryView)];
-    if (existing != nil) {
+    BBToolbar *existing = [control performSelector:@selector(inputAccessoryView)];
+    if (existing != nil && [existing isKindOfClass:[BBToolbar class]]) {
         if ([control respondsToSelector:@selector(removeTarget:action:forControlEvents:)]) {
             [control removeTarget:existing action:@selector(accessoryEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
             [control removeTarget:existing action:@selector(accessoryEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         }
+
+        if ([control respondsToSelector:@selector(isEnabled)]) {
+            [control removeObserver:existing forKeyPath:@"enabled"];
+        }
+
+        NSMutableArray *newControls = [existing.controls mutableCopy];
+        [newControls removeObject:control];
+        existing.controls = newControls;
+        [newControls release];
+
+        [control performSelector:@selector(setInputAccessoryView:) withObject:nil];
     }
 }
 
