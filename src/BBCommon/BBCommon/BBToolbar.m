@@ -68,6 +68,9 @@
         if ([control respondsToSelector:@selector(isEnabled)]) {
             [control addObserver:toolbar forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
         }
+        if ([control respondsToSelector:@selector(isHidden)]) {
+            [control addObserver:toolbar forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
+        }
     }
     [[NSNotificationCenter defaultCenter] addObserver:toolbar selector:@selector(accessoryEditingDidBegin:) name:UITextViewTextDidBeginEditingNotification object:nil];
 
@@ -85,6 +88,15 @@
 
 #pragma mark - Private
 
++ (void)invokeSelector:(SEL)selector target:(id)target returnValue:(void *)returnValue {
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+            [[target class] instanceMethodSignatureForSelector:selector]];
+    [invocation setSelector:selector];
+    [invocation setTarget:target];
+    [invocation invoke];
+    [invocation getReturnValue:returnValue];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     NSInteger indexOfSender = [self.controls indexOfObject:object];
 
@@ -94,13 +106,7 @@
         if (![control respondsToSelector:@selector(isFirstResponder)]) continue;
 
         BOOL isFirstResponder = NO;
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-                [[control class] instanceMethodSignatureForSelector:@selector(isFirstResponder)]];
-        [invocation setSelector:@selector(isFirstResponder)];
-        [invocation setTarget:control];
-        [invocation invoke];
-        [invocation getReturnValue:&isFirstResponder];
-
+        [BBToolbar invokeSelector:@selector(isFirstResponder) target:control returnValue:&isFirstResponder];
         if (isFirstResponder) {
             indexOfFirstResponder = i;
             break;
@@ -120,39 +126,34 @@
     NSInteger indexOfSender = [self.controls indexOfObject:sendingControl];
     BOOL previousControlIsEnabled = YES;
     BOOL nextControlIsEnabled = YES;
+    BOOL previousControlIsHidden = NO;
+    BOOL nextControlIsHidden = NO;
     if (indexOfSender > 0) {
         id previousControl = [self.controls objectAtIndex:(NSUInteger) (indexOfSender - 1)];
-        if ([previousControl respondsToSelector:@selector(isEnabled)]) {
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-                    [[previousControl class] instanceMethodSignatureForSelector:@selector(isEnabled)]];
-            [invocation setSelector:@selector(isEnabled)];
-            [invocation setTarget:previousControl];
-            [invocation invoke];
-            [invocation getReturnValue:&previousControlIsEnabled];
-        }
+        if ([previousControl respondsToSelector:@selector(isEnabled)])
+            [BBToolbar invokeSelector:@selector(isEnabled) target:previousControl returnValue:&previousControlIsEnabled];
+        if ([previousControl respondsToSelector:@selector(isHidden)])
+            [BBToolbar invokeSelector:@selector(isHidden) target:previousControl returnValue:&previousControlIsHidden];
     }
     if (indexOfSender < self.controls.count - 1) {
         id nextControl = [self.controls objectAtIndex:(NSUInteger) (indexOfSender + 1)];
-        if ([nextControl respondsToSelector:@selector(isEnabled)]) {
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-                    [[nextControl class] instanceMethodSignatureForSelector:@selector(isEnabled)]];
-            [invocation setSelector:@selector(isEnabled)];
-            [invocation setTarget:nextControl];
-            [invocation invoke];
-            [invocation getReturnValue:&nextControlIsEnabled];
-        }
+        if ([nextControl respondsToSelector:@selector(isEnabled)])
+            [BBToolbar invokeSelector:@selector(isEnabled) target:nextControl returnValue:&nextControlIsEnabled];
+        if ([nextControl respondsToSelector:@selector(isHidden)])
+            [BBToolbar invokeSelector:@selector(isHidden) target:nextControl returnValue:&nextControlIsHidden];
+
     }
 
     UISegmentedControl *segmented = (UISegmentedControl *) [self buttonWithTag:kNextPreviousTag].customView;
     if (indexOfSender == 0) {
         [segmented setEnabled:NO forSegmentAtIndex:0];
-        [segmented setEnabled:nextControlIsEnabled forSegmentAtIndex:1];
+        [segmented setEnabled:nextControlIsEnabled &&!nextControlIsHidden forSegmentAtIndex:1];
     } else if (indexOfSender == self.controls.count - 1) {
-        [segmented setEnabled:previousControlIsEnabled forSegmentAtIndex:0];
+        [segmented setEnabled:previousControlIsEnabled && !previousControlIsHidden forSegmentAtIndex:0];
         [segmented setEnabled:NO forSegmentAtIndex:1];
     } else {
-        [segmented setEnabled:previousControlIsEnabled forSegmentAtIndex:0];
-        [segmented setEnabled:nextControlIsEnabled forSegmentAtIndex:1];
+        [segmented setEnabled:previousControlIsEnabled && !previousControlIsHidden forSegmentAtIndex:0];
+        [segmented setEnabled:nextControlIsEnabled && !nextControlIsHidden forSegmentAtIndex:1];
     }
 }
 
@@ -228,6 +229,9 @@
 
         if ([control respondsToSelector:@selector(isEnabled)]) {
             [control removeObserver:existing forKeyPath:@"enabled"];
+        }
+        if ([control respondsToSelector:@selector(isHidden)]) {
+            [control removeObserver:existing forKeyPath:@"hidden"];
         }
 
         NSMutableArray *newControls = [existing.controls mutableCopy];
