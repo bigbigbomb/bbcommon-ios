@@ -3,8 +3,9 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 
+#import "NSString+BBCommon.h"
+#import "BBLabelStyle.h"
 #import "MF_Base32Additions.h"
-
 
 @implementation NSString (BBCommon)
 
