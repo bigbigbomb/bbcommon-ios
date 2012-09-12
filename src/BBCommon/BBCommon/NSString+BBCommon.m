@@ -113,7 +113,7 @@ unsigned char strToChar (char a, char b)
     return result;
 }
 
-- (NSString *)convertToBase32String {
+- (NSString *)convertFromBase16StringToBase32String {
     NSData *data = [self decodeFromHexidecimal];
     return [MF_Base32Codec base32StringFromData:data];
 }

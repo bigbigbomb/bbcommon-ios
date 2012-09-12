@@ -58,6 +58,6 @@
 /**
 * Given a hex string, returns a base 32 string
 */
-- (NSString *)convertToBase32String;
+- (NSString *)convertFromBase16StringToBase32String;
 
 @end
