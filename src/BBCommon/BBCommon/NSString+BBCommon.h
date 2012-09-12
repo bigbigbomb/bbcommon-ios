@@ -50,5 +50,14 @@
 */
 + (NSString *)shortDisplayForNumber:(double)number;
 
+/**
+* Decodes a base 16 string and returns as NSData
+*/
+- (NSData *) decodeFromHexidecimal;
+
+/**
+* Given a hex string, returns a base 32 string
+*/
+- (NSString *)convertToBase32String;
 
 @end

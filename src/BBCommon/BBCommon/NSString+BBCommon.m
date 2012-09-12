@@ -2,8 +2,8 @@
 //  Created by Brian Romanko on 12/16/11.
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
-#import "NSString+BBCommon.h"
-#import "BBLabelStyle.h"
+
+#import "MF_Base32Additions.h"
 
 
 @implementation NSString (BBCommon)
@@ -84,5 +84,37 @@
     return output;
 }
 
+unsigned char strToChar (char a, char b)
+{
+    char encoder[3] = {'\0','\0','\0'};
+    encoder[0] = a;
+    encoder[1] = b;
+    return (char) strtol(encoder,NULL,16);
+}
+
+- (NSData *) decodeFromHexidecimal;
+{
+    const char * bytes = [self cStringUsingEncoding: NSUTF8StringEncoding];
+    NSUInteger length = strlen(bytes);
+    unsigned char * r = (unsigned char *) malloc(length / 2 + 1);
+    unsigned char * index = r;
+
+    while ((*bytes) && (*(bytes +1))) {
+        *index = strToChar(*bytes, *(bytes +1));
+        index++;
+        bytes+=2;
+    }
+    *index = '\0';
+
+    NSData * result = [NSData dataWithBytes: r length: length / 2];
+    free(r);
+
+    return result;
+}
+
+- (NSString *)convertToBase32String {
+    NSData *data = [self decodeFromHexidecimal];
+    return [MF_Base32Codec base32StringFromData:data];
+}
 
 @end
