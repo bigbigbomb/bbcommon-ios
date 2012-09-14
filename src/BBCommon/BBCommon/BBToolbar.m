@@ -71,14 +71,13 @@
         if ([control respondsToSelector:@selector(isHidden)]) {
             [control addObserver:toolbar forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
         }
+        [[NSNotificationCenter defaultCenter] addObserver:toolbar selector:@selector(accessoryEditingDidBegin:) name:UITextViewTextDidBeginEditingNotification object:control];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:toolbar selector:@selector(accessoryEditingDidBegin:) name:UITextViewTextDidBeginEditingNotification object:nil];
 
     return toolbar;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:nil];
     for (id control in self.controls)
         [BBToolbar removeToolbar:control];
 
@@ -233,6 +232,8 @@
         if ([control respondsToSelector:@selector(isHidden)]) {
             [control removeObserver:existing forKeyPath:@"hidden"];
         }
+
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:control];
 
         NSMutableArray *newControls = [existing.controls mutableCopy];
         [newControls removeObject:control];
