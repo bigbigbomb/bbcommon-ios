@@ -6,6 +6,8 @@
 
 @class BBLabel;
 
+#define BBLabelStyleReference(NAME, REF_STYLE) + (BBLabelStyle *)NAME { return [self REF_STYLE]; }
+
 #define BBLabelStyleDefinitionExt(NAME, FONT_NAME, FONT_SIZE, FONT_COLOR, FONT_LINEBREAKMODE, FONT_SHADOWCOLOR,  FONT_SHADOWOFFSET, FONT_HIGHLIGHT_COLOR) \
 + (BBLabelStyle *)NAME {                                                                                                               \
     static BBLabelStyle *style = nil;                                                                                                  \
@@ -13,14 +15,14 @@
         style = [[BBLabelStyle alloc] init];                                                                                           \
         style.font = [UIFont fontWithName:FONT_NAME size:FONT_SIZE];                                                                   \
         style.color = FONT_COLOR;                                                                                                      \
-        style.highlightedColor = FONT_HIGHLIGHT_COLOR;                                                                                   \
+        style.highlightedColor = FONT_HIGHLIGHT_COLOR;                                                                                 \
         if (FONT_LINEBREAKMODE) style.lineBreakMode = FONT_LINEBREAKMODE;                                                              \
         style.shadowColor = FONT_SHADOWCOLOR;                                                                                          \
         style.shadowOffset = FONT_SHADOWOFFSET;                                                                                        \
     }                                                                                                                                  \
     return style;                                                                                                                      \
-}                                           
-                                           
+}
+
 #define BBLabelStyleDefinition(NAME, FONT_NAME, FONT_SIZE, FONT_COLOR)                                                                 \
     BBLabelStyleDefinitionExt(NAME, FONT_NAME, FONT_SIZE, FONT_COLOR, UILineBreakModeTailTruncation, nil, CGSizeZero, nil)
 
