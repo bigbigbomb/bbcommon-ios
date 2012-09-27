@@ -3,6 +3,7 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import <CoreGraphics/CoreGraphics.h>
+#import <CoreLocation/CoreLocation.h>
 #import "UIApplication+BBCommon.h"
 
 
@@ -41,5 +42,18 @@
     }
     return size;
 }
+
+- (void)openMapsWithDirectionsFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
+    NSMutableString *mapURL;
+    if ([[UIDevice currentDevice] majorVersion] < 6) {
+        mapURL = [NSMutableString stringWithString:@"http://maps.google.com/maps?"];
+    } else {
+        mapURL = [NSMutableString stringWithString:@"Maps://?"];
+    }
+    [mapURL appendFormat:@"saddr=%f,%f", from.latitude, from.longitude];
+    [mapURL appendFormat:@"&daddr=%f,%f", to.latitude, to.longitude];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapURL]];
+}
+
 
 @end

@@ -14,10 +14,12 @@
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
 		59A6824C2B6E015A599423CF /* BBScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A68B29144DB18C664CE941 /* BBScrollView.h */; };
 		59A683A89751222458A5F67A /* BBToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6878D606A30C5AF7F27CC /* BBToolbar.m */; };
+		59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A68FCE077F3211B3D83DE9 /* UIDevice+BBCommon.h */; };
 		59A688592900AE0E706B1F6A /* BBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A68237F5ABE463A1F6F680 /* BBLabel.h */; };
 		59A68A03B9C90EC218A20EE8 /* BBToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A6874E94BB43AA87DD7282 /* BBToolbar.h */; };
 		59A68D03DEAA2FC4D08E9686 /* BBScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A680BECF51D402AE541981 /* BBScrollView.m */; };
 		59A68FF66EABEEF418A387F8 /* BBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A68B65B0F35D0561A8EF90 /* BBLabel.m */; };
+		59A68FF8E9B964BC3075D427 /* UIDevice+BBCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A68755605F544DD28BFFDA /* UIDevice+BBCommon.m */; };
 		924044089E1FB0E54B28FFEE /* MF_Base32Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9240460EB33F511F79841477 /* MF_Base32Additions.m */; };
 		92404C649AA9AEEABDEF7190 /* MF_Base32Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 92404E18D39062191BDD7B85 /* MF_Base32Additions.h */; };
 		D3D653B71579593B00D3A2AE /* BBTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D653B31579593B00D3A2AE /* BBTextView.h */; };
@@ -132,9 +134,11 @@
 		59A680BECF51D402AE541981 /* BBScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBScrollView.m; sourceTree = "<group>"; };
 		59A68237F5ABE463A1F6F680 /* BBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLabel.h; sourceTree = "<group>"; };
 		59A6874E94BB43AA87DD7282 /* BBToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBToolbar.h; sourceTree = "<group>"; };
+		59A68755605F544DD28BFFDA /* UIDevice+BBCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+BBCommon.m"; sourceTree = "<group>"; };
 		59A6878D606A30C5AF7F27CC /* BBToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBToolbar.m; sourceTree = "<group>"; };
 		59A68B29144DB18C664CE941 /* BBScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBScrollView.h; sourceTree = "<group>"; };
 		59A68B65B0F35D0561A8EF90 /* BBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLabel.m; sourceTree = "<group>"; };
+		59A68FCE077F3211B3D83DE9 /* UIDevice+BBCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+BBCommon.h"; sourceTree = "<group>"; };
 		9240460EB33F511F79841477 /* MF_Base32Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base32Additions.m; sourceTree = "<group>"; };
 		92404E18D39062191BDD7B85 /* MF_Base32Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base32Additions.h; sourceTree = "<group>"; };
 		D3D653B31579593B00D3A2AE /* BBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTextView.h; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 		D3E325881426546400924841 /* BBCommon */ = {
 			isa = PBXGroup;
 			children = (
+				59A68FCE077F3211B3D83DE9 /* UIDevice+BBCommon.h */,
+				59A68755605F544DD28BFFDA /* UIDevice+BBCommon.m */,
 				59A6874E94BB43AA87DD7282 /* BBToolbar.h */,
 				59A6878D606A30C5AF7F27CC /* BBToolbar.m */,
 				59A680BECF51D402AE541981 /* BBScrollView.m */,
@@ -493,6 +499,7 @@
 				59A6824C2B6E015A599423CF /* BBScrollView.h in Headers */,
 				59A68A03B9C90EC218A20EE8 /* BBToolbar.h in Headers */,
 				92404C649AA9AEEABDEF7190 /* MF_Base32Additions.h in Headers */,
+				59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +647,7 @@
 				59A68D03DEAA2FC4D08E9686 /* BBScrollView.m in Sources */,
 				59A683A89751222458A5F67A /* BBToolbar.m in Sources */,
 				924044089E1FB0E54B28FFEE /* MF_Base32Additions.m in Sources */,
+				59A68FF8E9B964BC3075D427 /* UIDevice+BBCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

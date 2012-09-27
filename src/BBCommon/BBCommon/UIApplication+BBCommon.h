@@ -3,6 +3,9 @@
 //  Copyright 2011 BigBig Bomb, LLC. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+
+@class CLLocation;
 
 @interface UIApplication (BBCommon)
 
@@ -13,5 +16,7 @@
 +(CGRect) currentFrameWithStatusBar;
 
 +(CGSize) sizeInOrientation:(UIInterfaceOrientation)orientation;
+
+-(void) openMapsWithDirectionsFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to;
 
 @end

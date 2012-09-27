@@ -17,3 +17,5 @@
 #import "NSURL+BBCommon.h"
 #import "NSString+BBCommon.h"
 #import "NSDate+BBCommon.h"
+#import "UIDevice+BBCommon.h"
+#import "UIApplication+BBCommon.h"
