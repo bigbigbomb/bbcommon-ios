@@ -12,6 +12,8 @@
 		15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */; };
 		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
+		4209C38FA316737990DEA5B2 /* DSFingerTipWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 4209C66B267BE8F96D905B38 /* DSFingerTipWindow.h */; };
+		4209C3F78746BB33C89368F1 /* DSFingerTipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4209C9F880943201AAED02E6 /* DSFingerTipWindow.m */; };
 		59A6824C2B6E015A599423CF /* BBScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A68B29144DB18C664CE941 /* BBScrollView.h */; };
 		59A683A89751222458A5F67A /* BBToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A6878D606A30C5AF7F27CC /* BBToolbar.m */; };
 		59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A68FCE077F3211B3D83DE9 /* UIDevice+BBCommon.h */; };
@@ -131,6 +133,8 @@
 		15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		15DAE742156C38FA00C4B09C /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 		15DAE743156C38FA00C4B09C /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
+		4209C66B267BE8F96D905B38 /* DSFingerTipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSFingerTipWindow.h; sourceTree = "<group>"; };
+		4209C9F880943201AAED02E6 /* DSFingerTipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSFingerTipWindow.m; sourceTree = "<group>"; };
 		59A680BECF51D402AE541981 /* BBScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBScrollView.m; sourceTree = "<group>"; };
 		59A68237F5ABE463A1F6F680 /* BBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLabel.h; sourceTree = "<group>"; };
 		59A6874E94BB43AA87DD7282 /* BBToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBToolbar.h; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				15B6E1D2156A88240076C490 /* TTTAttributedLabel */,
+				4209CCD80C398D330C2F43B0 /* DSFingerTipWindow */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -279,6 +284,15 @@
 				15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */,
 			);
 			name = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
+		4209CCD80C398D330C2F43B0 /* DSFingerTipWindow */ = {
+			isa = PBXGroup;
+			children = (
+				4209C66B267BE8F96D905B38 /* DSFingerTipWindow.h */,
+				4209C9F880943201AAED02E6 /* DSFingerTipWindow.m */,
+			);
+			name = DSFingerTipWindow;
 			sourceTree = "<group>";
 		};
 		92404271D6E9311C555D845A /* MF_Base32Additions */ = {
@@ -500,6 +514,7 @@
 				59A68A03B9C90EC218A20EE8 /* BBToolbar.h in Headers */,
 				92404C649AA9AEEABDEF7190 /* MF_Base32Additions.h in Headers */,
 				59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */,
+				4209C38FA316737990DEA5B2 /* DSFingerTipWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +663,7 @@
 				59A683A89751222458A5F67A /* BBToolbar.m in Sources */,
 				924044089E1FB0E54B28FFEE /* MF_Base32Additions.m in Sources */,
 				59A68FF8E9B964BC3075D427 /* UIDevice+BBCommon.m in Sources */,
+				4209C3F78746BB33C89368F1 /* DSFingerTipWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
