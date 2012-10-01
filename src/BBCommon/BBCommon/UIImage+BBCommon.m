@@ -125,13 +125,13 @@
     UIGraphicsBeginImageContext(self.size);
     CGContextRef context=(UIGraphicsGetCurrentContext());
     if (self.imageOrientation == UIImageOrientationRight) {
-        CGContextRotateCTM (context, 90/180*M_PI) ;
+        CGContextRotateCTM (context, (CGFloat) RADIANS(90)) ;
     } else if (self.imageOrientation == UIImageOrientationLeft) {
-        CGContextRotateCTM (context, -90/180*M_PI);
+        CGContextRotateCTM (context, (CGFloat) RADIANS(-90));
     } else if (self.imageOrientation == UIImageOrientationDown) {
         // NOTHING
     } else if (self.imageOrientation == UIImageOrientationUp) {
-        CGContextRotateCTM (context, 90/180*M_PI);
+        CGContextRotateCTM (context, (CGFloat) RADIANS(90));
     }
     [self drawAtPoint:CGPointMake(0, 0)];
     UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
