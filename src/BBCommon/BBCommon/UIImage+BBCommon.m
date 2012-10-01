@@ -119,17 +119,36 @@
 }
 
 - (UIImage *)crop:(CGRect)rect {
-
-    CGFloat scale = [[UIScreen mainScreen] scale];
-
-    if (scale>1.0) {
-        rect = CGRectMake(rect.origin.x*scale , rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    }
-
     CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
     UIImage *result = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return result;
+}
+
+- (UIImage *)resizePreservingAspect:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+
+    float widthRatio = self.size.width / size.width;
+    float heightRatio = self.size.height / size.height;
+    float divisor = widthRatio > heightRatio ? widthRatio : heightRatio;
+
+    size.width = self.size.width / divisor;
+    size.height = self.size.height / divisor;
+
+    rect.size.width  = size.width;
+    rect.size.height = size.height;
+
+    if(size.height < size.width)
+        rect.origin.y = size.height / 3;
+
+    [self drawInRect: rect];
+
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+
+    return resizedImage;
 }
 
 @end

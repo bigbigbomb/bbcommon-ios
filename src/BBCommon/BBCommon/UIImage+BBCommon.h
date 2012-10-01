@@ -15,4 +15,5 @@
 - (UIImage *)imageWithAlpha;
 - (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
 - (UIImage *)crop:(CGRect)rect;
+- (UIImage *)resizePreservingAspect:(CGSize)size;
 @end
