@@ -119,10 +119,28 @@
 }
 
 - (UIImage *)crop:(CGRect)rect {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
-    UIImage *result = [UIImage imageWithCGImage:imageRef];
+    //The camera embeds orientation.
+    //Need to rotate the image before taking a crop of it
+    //otherwise the crop will be in the wrong place
+    UIGraphicsBeginImageContext(self.size);
+    CGContextRef context=(UIGraphicsGetCurrentContext());
+    if (self.imageOrientation == UIImageOrientationRight) {
+        CGContextRotateCTM (context, 90/180*M_PI) ;
+    } else if (self.imageOrientation == UIImageOrientationLeft) {
+        CGContextRotateCTM (context, -90/180*M_PI);
+    } else if (self.imageOrientation == UIImageOrientationDown) {
+        // NOTHING
+    } else if (self.imageOrientation == UIImageOrientationUp) {
+        CGContextRotateCTM (context, 90/180*M_PI);
+    }
+    [self drawAtPoint:CGPointMake(0, 0)];
+    UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    CGImageRef imageRef = CGImageCreateWithImageInRect(rotatedImage.CGImage, rect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
-    return result;
+    return croppedImage;
 }
 
 - (UIImage *)resizePreservingAspect:(CGSize)size {
