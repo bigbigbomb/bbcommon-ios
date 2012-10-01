@@ -118,7 +118,7 @@
     return transparentBorderImage;
 }
 
-- (UIImage *)crop:(CGRect)rect {
+- (UIImage *)orientUpright {
     //The camera embeds orientation.
     //Need to rotate the image before taking a crop of it
     //otherwise the crop will be in the wrong place
@@ -136,34 +136,24 @@
     [self drawAtPoint:CGPointMake(0, 0)];
     UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return rotatedImage;
+}
 
+- (UIImage *)crop:(CGRect)rect {
+    UIImage *rotatedImage = [self orientUpright];
     CGImageRef imageRef = CGImageCreateWithImageInRect(rotatedImage.CGImage, rect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return croppedImage;
 }
 
-- (UIImage *)resizePreservingAspect:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+- (UIImage *)resizePreservingAspect:(CGFloat)size {
+    CGFloat changeRatio = 1 - (self.size.width > self.size.height ? (self.size.width - size) / self.size.width : (self.size.height - size) / self.size.height);
+    CGRect rect = CGRectMake(0, 0, self.size.width > self.size.height ? size : self.size.width * changeRatio, self.size.width > self.size.height ? self.size.height * changeRatio : size);
 
-    float widthRatio = self.size.width / size.width;
-    float heightRatio = self.size.height / size.height;
-    float divisor = widthRatio > heightRatio ? widthRatio : heightRatio;
-
-    size.width = self.size.width / divisor;
-    size.height = self.size.height / divisor;
-
-    rect.size.width  = size.width;
-    rect.size.height = size.height;
-
-    if(size.height < size.width)
-        rect.origin.y = size.height / 3;
-
+    UIGraphicsBeginImageContext(rect.size);
     [self drawInRect: rect];
-
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-
     UIGraphicsEndImageContext();
 
     return resizedImage;
