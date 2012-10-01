@@ -5,6 +5,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
 #import "UIApplication+BBCommon.h"
+#import "UIDevice+BBCommon.h"
 
 
 @implementation UIApplication (BBCommon)
