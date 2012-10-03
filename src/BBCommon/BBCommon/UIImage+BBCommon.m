@@ -124,15 +124,10 @@
     //otherwise the crop will be in the wrong place
     UIGraphicsBeginImageContext(self.size);
     CGContextRef context=(UIGraphicsGetCurrentContext());
-    if (self.imageOrientation == UIImageOrientationRight) {
+    if (self.imageOrientation == UIImageOrientationRight)
         CGContextRotateCTM (context, (CGFloat) RADIANS(90)) ;
-    } else if (self.imageOrientation == UIImageOrientationLeft) {
+    else if (self.imageOrientation == UIImageOrientationLeft)
         CGContextRotateCTM (context, (CGFloat) RADIANS(-90));
-    } else if (self.imageOrientation == UIImageOrientationDown) {
-        // NOTHING
-    } else if (self.imageOrientation == UIImageOrientationUp) {
-        CGContextRotateCTM (context, (CGFloat) RADIANS(90));
-    }
     [self drawAtPoint:CGPointMake(0, 0)];
     UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -140,7 +135,9 @@
 }
 
 - (UIImage *)crop:(CGRect)rect {
-    UIImage *rotatedImage = [self orientUpright];
+    UIImage *rotatedImage = self;
+    if (self.imageOrientation != UIImageOrientationUp)
+        rotatedImage = [self orientUpright];
     CGImageRef imageRef = CGImageCreateWithImageInRect(rotatedImage.CGImage, rect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
