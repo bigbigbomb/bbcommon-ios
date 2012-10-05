@@ -38,7 +38,7 @@ void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic,
 #define NonatomicCopySetToFrom(a, b) do{if(a!=b){a=[b copy];}}while(0)
 #endif
 
-#ifdef CONFIGURATION_Debug
+#if defined(CONFIGURATION_Debug) || defined(DEBUG)
 #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
 #define DLog(...)
