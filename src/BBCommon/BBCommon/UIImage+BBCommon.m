@@ -118,26 +118,101 @@
     return transparentBorderImage;
 }
 
-- (UIImage *)orientUpright {
-    //The camera embeds orientation.
-    //Need to rotate the image before taking a crop of it
-    //otherwise the crop will be in the wrong place
-    UIGraphicsBeginImageContext(self.size);
-    CGContextRef context=(UIGraphicsGetCurrentContext());
-    if (self.imageOrientation == UIImageOrientationRight)
-        CGContextRotateCTM (context, (CGFloat) RADIANS(90)) ;
-    else if (self.imageOrientation == UIImageOrientationLeft)
-        CGContextRotateCTM (context, (CGFloat) RADIANS(-90));
-    [self drawAtPoint:CGPointMake(0, 0)];
-    UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
+- (UIImage *)rotateImage {
+    CGImageRef imgRef = self.CGImage;
+
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    CGRect bounds = CGRectMake(0, 0, width, height);
+
+    CGFloat scaleRatio = bounds.size.width / width;
+    CGSize imageSize = CGSizeMake(CGImageGetWidth(imgRef), CGImageGetHeight(imgRef));
+    CGFloat boundHeight;
+    UIImageOrientation orient = self.imageOrientation;
+    switch(orient) {
+
+        case UIImageOrientationUp: //EXIF = 1
+            transform = CGAffineTransformIdentity;
+            break;
+
+        case UIImageOrientationUpMirrored: //EXIF = 2
+            transform = CGAffineTransformMakeTranslation(imageSize.width, 0.0);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            break;
+
+        case UIImageOrientationDown: //EXIF = 3
+            transform = CGAffineTransformMakeTranslation(imageSize.width, imageSize.height);
+            transform = CGAffineTransformRotate(transform, (CGFloat) RADIANS(180));
+            break;
+
+        case UIImageOrientationDownMirrored: //EXIF = 4
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.height);
+            transform = CGAffineTransformScale(transform, 1.0, -1.0);
+            break;
+
+        case UIImageOrientationLeftMirrored: //EXIF = 5
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, imageSize.width);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) RADIANS(90));
+            break;
+
+        case UIImageOrientationLeft: //EXIF = 6
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.width);
+            transform = CGAffineTransformRotate(transform, (CGFloat) RADIANS(90));
+            break;
+
+        case UIImageOrientationRightMirrored: //EXIF = 7
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeScale(-1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) RADIANS(90));
+            break;
+
+        case UIImageOrientationRight: //EXIF = 8
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, 0.0);
+            transform = CGAffineTransformRotate(transform, (CGFloat) RADIANS(90));
+            break;
+
+        default:
+            [NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
+
+    }
+
+    UIGraphicsBeginImageContext(bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft) {
+        CGContextScaleCTM(context, -scaleRatio, scaleRatio);
+        CGContextTranslateCTM(context, -height, 0);
+    }
+    else {
+        CGContextScaleCTM(context, scaleRatio, -scaleRatio);
+        CGContextTranslateCTM(context, 0, -height);
+    }
+    CGContextConcatCTM(context, transform);
+
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imgRef);
+    UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    return rotatedImage;
+
+    return imageCopy;
 }
 
 - (UIImage *)crop:(CGRect)rect {
-    UIImage *rotatedImage = self;
-    if (self.imageOrientation != UIImageOrientationUp)
-        rotatedImage = [self orientUpright];
+    UIImage *rotatedImage = [self rotateImage];
+    rect = CGRectMake(rect.origin.x * self.scale, rect.origin.y * self.scale, rect.size.width * self.scale, rect.size.height * self.scale);
     CGImageRef imageRef = CGImageCreateWithImageInRect(rotatedImage.CGImage, rect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);

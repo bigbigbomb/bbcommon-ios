@@ -15,7 +15,7 @@
 - (UIImage *)imageWithAlpha;
 - (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
 
-- (UIImage *)orientUpright;
+- (UIImage *)rotateImage;
 - (UIImage *)crop:(CGRect)rect;
 - (UIImage *)resizePreservingAspect:(CGFloat)size;
 @end
