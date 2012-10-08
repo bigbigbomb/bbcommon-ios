@@ -17,8 +17,6 @@
 
 +(CGSize) sizeInOrientation:(UIInterfaceOrientation)orientation;
 
--(void) openMapsWithDirectionsFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to;
-
 - (void)openMapsWithDirectionsTo:(CLLocationCoordinate2D)to;
 
 

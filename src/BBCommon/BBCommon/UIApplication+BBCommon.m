@@ -4,6 +4,7 @@
 //
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 #import "UIApplication+BBCommon.h"
 #import "UIDevice+BBCommon.h"
 
@@ -44,27 +45,22 @@
     return size;
 }
 
-- (void)openMapsWithDirectionsFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
-    NSMutableString *mapURL;
-    if ([[UIDevice currentDevice] majorVersion] < 6) {
-        mapURL = [NSMutableString stringWithString:@"http://maps.google.com/maps?"];
-    } else {
-        mapURL = [NSMutableString stringWithString:@"Maps://?"];
-    }
-    [mapURL appendFormat:@"saddr=%f,%f", from.latitude, from.longitude];
-    [mapURL appendFormat:@"&daddr=%f,%f", to.latitude, to.longitude];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-}
-
 - (void)openMapsWithDirectionsTo:(CLLocationCoordinate2D)to {
-    NSMutableString *mapURL;
-    if ([[UIDevice currentDevice] majorVersion] < 6) {
-        mapURL = [NSMutableString stringWithString:@"http://maps.google.com/maps?"];
+    Class itemClass = [MKMapItem class];
+    if (itemClass && [itemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)]) {
+        MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+        MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[[MKPlacemark alloc] initWithCoordinate:to addressDictionary:nil] autorelease]];
+        toLocation.name = @"Destination";
+        [MKMapItem openMapsWithItems:[NSArray arrayWithObjects:currentLocation, toLocation, nil]
+                       launchOptions:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:MKLaunchOptionsDirectionsModeDriving, [NSNumber numberWithBool:YES], nil]
+                                                                 forKeys:[NSArray arrayWithObjects:MKLaunchOptionsDirectionsModeKey, MKLaunchOptionsShowsTrafficKey, nil]]];
+        [toLocation release];
     } else {
-        mapURL = [NSMutableString stringWithString:@"Maps://?"];
+        NSMutableString *mapURL = [NSMutableString stringWithString:@"http://maps.google.com/maps?"];
+        [mapURL appendFormat:@"saddr=Current Location"];
+        [mapURL appendFormat:@"&daddr=%f,%f", to.latitude, to.longitude];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
-    [mapURL appendFormat:@"daddr=%f,%f", to.latitude, to.longitude];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 }
 
 
