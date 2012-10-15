@@ -22,7 +22,6 @@
     BOOL            _priorInsetSaved;
     BOOL            _keyboardVisible;
     CGRect          _keyboardRect;
-    CGSize          _originalContentSize;
 }
 
 - (void)setup {
@@ -56,21 +55,12 @@
 -(void)setFrame:(CGRect)frame {
     [super setFrame:frame];
 
-    CGSize contentSize = _originalContentSize;
-    contentSize.width = MAX(contentSize.width, self.frame.size.width);
-    contentSize.height = MAX(contentSize.height, self.frame.size.height);
-    [super setContentSize:contentSize];
-
     if ( _keyboardVisible ) {
         self.contentInset = [self contentInsetForKeyboard];
     }
 }
 
 -(void)setContentSize:(CGSize)contentSize {
-    _originalContentSize = contentSize;
-
-    contentSize.width = MAX(contentSize.width, self.frame.size.width);
-    contentSize.height = MAX(contentSize.height, self.frame.size.height);
     [super setContentSize:contentSize];
 
     if ( _keyboardVisible ) {
