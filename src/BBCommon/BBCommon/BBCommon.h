@@ -5,6 +5,7 @@
 #import "BBStackView.h"
 #import "BBWrapView.h"
 #import "BBTextField.h"
+#import "BBScrollView.h"
 #import "UILabel+BBCommon.h"
 #import "UIView+BBCommon.h"
 #import "UIViewController+BBCommon.h"
