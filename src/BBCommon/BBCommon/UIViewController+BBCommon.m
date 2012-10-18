@@ -40,8 +40,8 @@ static char kBBViewControllerDelegateObjectKey;
         _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayWindow.userInteractionEnabled = YES;
         _overlayWindow.backgroundColor = [UIColor clearColor];
-        [_overlayWindow makeKeyAndVisible];
     }
+    [_overlayWindow makeKeyAndVisible];
 
     if ([viewControllerToPresent.bbViewControllerDelegate respondsToSelector:@selector(viewControllerWillBePresented:)])
         [viewControllerToPresent.bbViewControllerDelegate viewControllerWillBePresented:viewControllerToPresent];
@@ -63,12 +63,10 @@ static char kBBViewControllerDelegateObjectKey;
         [self.bbViewControllerDelegate viewControllerDidGetDismissed:self];
 
     if ([[_overlayWindow subviews] count] == 0) {
-        [_overlayWindow release];
-        _overlayWindow = nil;
         // find the frontmost window that is an actual UIWindow and make it keyVisible
         [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {
-            if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal) {
-                [window makeKeyWindow];
+            if([window isKindOfClass:[UIWindow class]] && window.windowLevel == UIWindowLevelNormal && window != _overlayWindow) {
+                [window makeKeyAndVisible];
                 *stop = YES;
             }
         }];
