@@ -202,7 +202,7 @@
 }
 
 - (void)accessoryDoneTap:(UIBarButtonItem *)sender {
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
 - (UIBarButtonItem *)buttonWithTag:(NSInteger)tag {
