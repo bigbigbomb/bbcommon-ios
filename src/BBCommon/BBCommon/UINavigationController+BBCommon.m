@@ -87,7 +87,6 @@
         [self logNavigationStack];
 #endif
     } else {
-        [toViewController view];
         __block BOOL completionExecuted = NO;
 
         void(^completion)(BOOL) = ^(BOOL completed){
