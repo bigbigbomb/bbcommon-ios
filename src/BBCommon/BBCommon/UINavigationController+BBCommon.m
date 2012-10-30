@@ -82,7 +82,7 @@
     if (fromViewController == toViewController) return;
 
     if ([self useDefaultTransitionFrom:fromViewController to:toViewController navigationType:BBNavigationTypePush animated:animated]) {
-        [self pushViewController:toViewController animated:animated];
+        [self pushViewController:toViewController animated:NO];
 #if LOG_NAVIGATION_STACK
         [self logNavigationStack];
 #endif
