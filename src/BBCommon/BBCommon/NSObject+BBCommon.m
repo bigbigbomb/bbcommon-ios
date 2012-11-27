@@ -11,12 +11,15 @@
     NSMethodSignature *sig = [self methodSignatureForSelector:selector];
     if (sig) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-        [invocation setArgument:&p1 atIndex:2];
-        [invocation setArgument:&p2 atIndex:3];
-        [invocation setArgument:&p3 atIndex:4];
+        __unsafe_unretained id p1uu = p1;
+        __unsafe_unretained id p2uu = p2;
+        __unsafe_unretained id p3uu = p3;
+        [invocation setArgument:&p1uu atIndex:2];
+        [invocation setArgument:&p2uu atIndex:3];
+        [invocation setArgument:&p3uu atIndex:4];
         [invocation performSelector:selector withObject:self afterDelay:delay];
         if (sig.methodReturnLength) {
-            id anObject;
+            __unsafe_unretained id anObject;
             [invocation getReturnValue:&anObject];
             return anObject;
         } else {
