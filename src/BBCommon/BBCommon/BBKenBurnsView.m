@@ -49,10 +49,10 @@
     self.layer.masksToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
 
-    self.imageA = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BBW(self), BBH(self))] autorelease];
+    self.imageA = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BBW(self), BBH(self))];
     self.imageA.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageA];
-    self.imageB = [[[UIImageView alloc] initWithFrame:self.imageA.frame] autorelease];
+    self.imageB = [[UIImageView alloc] initWithFrame:self.imageA.frame];
     self.imageB.contentMode = UIViewContentModeCenter;
     [self addSubview:self.imageB];
     _currentImage = self.imageA;
@@ -160,10 +160,6 @@
 
 - (void)dealloc {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [_images release];
-    [_imageA release];
-    [_imageB release];
-    [super dealloc];
 }
 
 @end

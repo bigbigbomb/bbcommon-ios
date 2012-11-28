@@ -53,11 +53,11 @@ static float _clockFlipDuration;
     UIView *container = [[UIView alloc] initWithFrame:fromView.frame];
     [parent addSubview:container];
 
-    UIImageView *fromViewTopHalf = [[[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]] autorelease];
+    UIImageView *fromViewTopHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]];
     fromViewTopHalf.frame = CGRectMake(0, 0, fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5));
     fromViewTopHalf.layer.anchorPoint = CGPointMake(.5, 1);
     fromViewTopHalf.layer.position = CGPointMake(fromViewTopHalf.layer.position.x, floorf(fromViewTopHalf.layer.position.y + fromViewTopHalf.frame.size.height * 0.5));
-    UIImageView *fromViewBottomHalf = [[[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]] autorelease];
+    UIImageView *fromViewBottomHalf = [[UIImageView alloc] initWithImage:[fromView getRegionScreenshot:CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5))]];
     fromViewBottomHalf.frame = CGRectMake(0, floorf(fromView.frame.size.height * 0.5), fromView.frame.size.width, floorf(fromView.frame.size.height * 0.5));
     fromViewBottomHalf.layer.position = CGPointMake(fromViewBottomHalf.layer.position.x, floorf(fromViewBottomHalf.layer.position.y - fromViewBottomHalf.frame.size.height * 0.5));
     fromViewBottomHalf.layer.anchorPoint = CGPointMake(.5, 0);
@@ -338,7 +338,6 @@ static float _clockFlipDuration;
     fromView.userInteractionEnabled = NO;
     fromView.layer.transform = CATransform3DRotate(tTrans,angleValues[2],effectX,effectY,0);
 
-    [frontResponder release];
 }
 
 + (void)toViewAnimation:(UIView *)toView toViewCompletion:(void(^)(BOOL finished))toViewCompletion angleValues:(float *)angleValues effectX:(BOOL)effectX effectY:(BOOL)effectY{
@@ -384,7 +383,6 @@ static float _clockFlipDuration;
     [toView.layer addAnimation:backAnimation forKey:@"transform"];
     toView.userInteractionEnabled = NO;
     toView.layer.transform = CATransform3DRotate(tTrans2,angleValues[5],effectX,effectY,0);
-    [backResponder release];
 }
 
 + (void)spinFromBottom:(UIView *)fromView toView:(UIView *)toView fromViewCompletion:(void(^)(BOOL finished))fromViewCompletion toViewCompletion:(void(^)(BOOL finished))toViewCompletion {
@@ -494,10 +492,6 @@ static float _clockFlipDuration;
         self.completionBlock(flag);
 }
 
-- (void)dealloc {
-    [_completionBlock release];
-    [super dealloc];
-}
 
 
 @end

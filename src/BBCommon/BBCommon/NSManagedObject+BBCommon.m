@@ -15,7 +15,7 @@
 }
 
 + (BBQuery *)queryInContext:(NSManagedObjectContext *)context {
-    return [[[BBQuery alloc] initWithEntityClass:self managedObjectContext:context] autorelease];
+    return [[BBQuery alloc] initWithEntityClass:self managedObjectContext:context];
 }
 
 @end

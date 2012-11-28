@@ -51,8 +51,6 @@
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"frame"];
-    [_color release];
-    [super dealloc];
 }
 
 

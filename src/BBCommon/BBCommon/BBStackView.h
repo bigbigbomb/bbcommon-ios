@@ -22,7 +22,7 @@ typedef enum {
     
 @private
     BBStackViewOrientation _orientation;
-    id <BBStackViewDelegate> _delegate;
+    id <BBStackViewDelegate> __unsafe_unretained _delegate;
     BOOL _isUpdating;
     BOOL _isRemovingSubview;
     
@@ -34,7 +34,7 @@ typedef enum {
 /**
  * The object acting as the delegate for the stack view instance.
  */
-@property(assign) id <BBStackViewDelegate> delegate;
+@property(unsafe_unretained) id <BBStackViewDelegate> delegate;
 
 /**
  * The orientation of the subviews. Changing this after subviews have been added will cause the stack view to update its layout to match the provided orientation, how spacers will not adjust their orientation. 

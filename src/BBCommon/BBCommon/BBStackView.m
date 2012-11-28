@@ -89,7 +89,6 @@
     }
 
     self.isRemovingSubview = YES;
-    [super dealloc];
 }
 
 - (void)didAddSubview:(UIView *)subview {
@@ -110,7 +109,7 @@
     } else {
         height = length;
     }
-    [self addSubview:[[[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)] autorelease]];
+    [self addSubview:[[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)]];
 }
 
 - (void)removeSubview:(UIView *)subview {

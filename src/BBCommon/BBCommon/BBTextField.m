@@ -34,10 +34,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
     _validationDelegate = nil;
 
-    [_placeholderStyle release];
-    [_styleAsInvalid release];
-    [_styleAsValid release];
-    [super dealloc];
 }
 
 - (void)applyValidStyle {

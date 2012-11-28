@@ -6,8 +6,8 @@
 
 @interface BBQuery()
 
-@property (nonatomic, retain) NSFetchRequest *fetchRequest;
-@property (nonatomic, retain) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
 
@@ -29,11 +29,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [_fetchRequest release];
-    [_context release];
-    [super dealloc];
-}
 
 - (BBQuery *)where:(NSPredicate *)predicate {
     [self.fetchRequest setPredicate:predicate];
@@ -44,7 +39,7 @@
     va_list args;
     va_start(args, sortDescriptor);
     
-    NSMutableArray *sortDescriptors = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     for (NSSortDescriptor *descriptor = sortDescriptor; descriptor != nil; descriptor = va_arg(args, NSSortDescriptor *))
     {
         [sortDescriptors addObject:descriptor];
@@ -68,7 +63,6 @@
     va_end(args);
     
     [self.fetchRequest setPropertiesToFetch:propertiesToFetch];
-    [propertiesToFetch release];
     
     return self;
 }
@@ -85,7 +79,6 @@
     va_end(args);
     
     [self.fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeyPaths];
-    [relationshipKeyPaths release];
     
     return self;
 }

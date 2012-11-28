@@ -10,6 +10,6 @@
     BOOL _bottomFillViewHidden;
 }
 
-@property(nonatomic, retain) UIColor *bottomFillColor;
+@property(nonatomic, strong) UIColor *bottomFillColor;
 @property(nonatomic) BOOL bottomFillViewHidden;
 @end

@@ -81,7 +81,6 @@
         formatter.positiveSuffix = @"k";
     }
     NSString *output = [formatter stringFromNumber:[NSNumber numberWithDouble:questionCount]];
-    [formatter release];
     return output;
 }
 

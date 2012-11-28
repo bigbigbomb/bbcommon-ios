@@ -21,7 +21,7 @@
     NSManagedObjectContext *_context;
 }
 
-@property (nonatomic, readonly, retain) NSFetchRequest *fetchRequest;
+@property (nonatomic, readonly, strong) NSFetchRequest *fetchRequest;
 
 - (id)initWithEntityClass:(Class)entityClass managedObjectContext:(NSManagedObjectContext *)context;
 

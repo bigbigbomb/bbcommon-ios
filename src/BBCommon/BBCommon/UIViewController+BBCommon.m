@@ -25,7 +25,7 @@ static char kBBViewControllerDelegateObjectKey;
 
 
 - (UIViewController *)insertScreenshotOfControllerAsBackground:(UIViewController *)viewController {
-    UIImageView *falseBackground = [[[UIImageView alloc] initWithImage:[viewController.view getScreenshot]] autorelease];
+    UIImageView *falseBackground = [[UIImageView alloc] initWithImage:[viewController.view getScreenshot]];
     [self.view insertSubview:falseBackground atIndex:0];
     BBResizeFrame(falseBackground, BBW(self.view), BBH(self.view));
     return self;

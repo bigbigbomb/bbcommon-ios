@@ -37,11 +37,11 @@
     UIColor *_highlightedColor;
 }
 
-@property(nonatomic, retain) UIFont *font;
-@property(nonatomic, retain) UIColor *color;
-@property(nonatomic, retain) UIColor *highlightedColor;
+@property(nonatomic, strong) UIFont *font;
+@property(nonatomic, strong) UIColor *color;
+@property(nonatomic, strong) UIColor *highlightedColor;
 @property(nonatomic) UILineBreakMode lineBreakMode;
-@property(nonatomic, retain) UIColor *shadowColor;
+@property(nonatomic, strong) UIColor *shadowColor;
 @property(nonatomic) CGSize shadowOffset;
 
 - (BBLabel *)labelWithText:(NSString *)text frame:(CGRect)frame alignment:(UITextAlignment)alignment;

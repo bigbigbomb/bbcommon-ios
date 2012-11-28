@@ -10,11 +10,11 @@
 
 
 @interface BBKenBurnsView : UIView
-@property(nonatomic, retain) NSMutableArray *images;
+@property(nonatomic, strong) NSMutableArray *images;
 
-@property(nonatomic, retain) UIImageView *imageA;
+@property(nonatomic, strong) UIImageView *imageA;
 
-@property(nonatomic, retain) UIImageView *imageB;
+@property(nonatomic, strong) UIImageView *imageB;
 
 @property(nonatomic) float durationMinimum;
 

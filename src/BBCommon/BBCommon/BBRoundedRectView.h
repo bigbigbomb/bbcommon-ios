@@ -7,7 +7,7 @@
 
 @interface BBRoundedRectView : UIView
 
-@property(nonatomic, retain) UIColor *color;
+@property(nonatomic, strong) UIColor *color;
 @property(nonatomic) CGSize cornerRadii;
 @property(nonatomic) UIRectCorner roundingCorners;
 

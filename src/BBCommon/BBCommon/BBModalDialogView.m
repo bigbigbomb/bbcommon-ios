@@ -8,8 +8,8 @@
 
 @interface BBModalDialogView ()
 
-@property(nonatomic, retain) UIView *contentContainer;
-@property (nonatomic, retain) UIWindow *overlayWindow;
+@property(nonatomic, strong) UIView *contentContainer;
+@property (nonatomic, strong) UIWindow *overlayWindow;
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
@@ -64,10 +64,6 @@ static BBModalDialogView *sharedDialog = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     _delegate = nil;
-    [_contentView release];
-    [_contentContainer release];
-    [_overlayWindow release];
-    [super dealloc];
 }
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated {
@@ -100,7 +96,7 @@ static BBModalDialogView *sharedDialog = nil;
     [self.overlayWindow addSubview:self];
     self.userInteractionEnabled = YES;
 
-    self.contentContainer = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+    self.contentContainer = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.contentContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:self.contentContainer];
 }
@@ -172,8 +168,8 @@ static BBModalDialogView *sharedDialog = nil;
 
                         [self performBlock:^{
                             [[NSNotificationCenter defaultCenter] removeObserver:sharedDialog];
-                            [_overlayWindow release], _overlayWindow = nil;
-                            [sharedDialog release], sharedDialog = nil;
+                            _overlayWindow, _overlayWindow = nil;
+                            sharedDialog, sharedDialog = nil;
 
                             // find the frontmost window that is an actual UIWindow and make it keyVisible
                              [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow *window, NSUInteger idx, BOOL *stop) {

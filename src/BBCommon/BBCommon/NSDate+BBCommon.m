@@ -13,7 +13,6 @@
     [dateFormatter setTimeZone:timeZone];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:self];
-    [dateFormatter release];
     return dateString;
 }
 

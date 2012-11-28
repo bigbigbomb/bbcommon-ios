@@ -17,11 +17,11 @@ typedef enum {
     UIView *_popupView;
 }
 
-@property(nonatomic, retain) UIButton *shimButton;
+@property(nonatomic, strong) UIButton *shimButton;
 
-@property(nonatomic, retain) UIView *popupView;
+@property(nonatomic, strong) UIView *popupView;
 
-@property(nonatomic, retain) UIView *relativeView;
+@property(nonatomic, strong) UIView *relativeView;
 
 @property(nonatomic) CGPoint relativeOffset;
 
