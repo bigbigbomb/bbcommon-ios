@@ -32,9 +32,9 @@ static char *bbButtonStyleKey = "bbButtonStyle";
 
 @interface BBButtonStyle ()
 
-@property(nonatomic, retain) NSMutableDictionary *labelStyleForState;
-@property(nonatomic, retain) NSMutableDictionary *backgroundImageForState;
-@property(nonatomic, retain) NSMutableDictionary *imageForState;
+@property(nonatomic, strong) NSMutableDictionary *labelStyleForState;
+@property(nonatomic, strong) NSMutableDictionary *backgroundImageForState;
+@property(nonatomic, strong) NSMutableDictionary *imageForState;
 
 @end
 
@@ -122,20 +122,13 @@ static char *bbButtonStyleKey = "bbButtonStyle";
 - (id)init {
     self = [super init];
     if (self) {
-        self.labelStyleForState = [[[NSMutableDictionary alloc] init] autorelease];
-        self.backgroundImageForState = [[[NSMutableDictionary alloc] init] autorelease];
-        self.imageForState = [[[NSMutableDictionary alloc] init] autorelease];
+        self.labelStyleForState = [[NSMutableDictionary alloc] init];
+        self.backgroundImageForState = [[NSMutableDictionary alloc] init];
+        self.imageForState = [[NSMutableDictionary alloc] init];
     }
 
     return self;
 }
 
-- (void)dealloc {
-    [_buttonCustomizer release];
-    [_backgroundImageForState release];
-    [_imageForState release];
-    [_labelStyleForState release];
-    [super dealloc];
-}
 
 @end

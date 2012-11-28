@@ -65,7 +65,6 @@
     UIView *spacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     spacer.backgroundColor = color;
     [self addSubview:spacer];
-    [spacer release];
 }
 
 - (UIImage *)getScreenshotDuringAnimation:(BOOL)duringAnimation {

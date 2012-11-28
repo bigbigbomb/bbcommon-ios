@@ -43,12 +43,5 @@
     view.textColor = self.color;
 }
 
-- (void)dealloc {
-    [_font release];
-    [_color release];
-    [_shadowColor release];
-    [_highlightedColor release];
-    [super dealloc];
-}
 
 @end

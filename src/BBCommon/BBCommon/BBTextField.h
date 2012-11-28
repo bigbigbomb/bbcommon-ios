@@ -8,10 +8,10 @@
 
 @interface BBTextField : UITextField
 
-@property(nonatomic, retain) BBLabelStyle *placeholderStyle;
+@property(nonatomic, strong) BBLabelStyle *placeholderStyle;
 @property(nonatomic) UIEdgeInsets textInsets;
 @property(nonatomic) UIEdgeInsets editingTextInsets;
-@property(nonatomic, assign) id<BBTextFieldValidationDelegate> validationDelegate;
+@property(nonatomic, unsafe_unretained) id<BBTextFieldValidationDelegate> validationDelegate;
 @property(nonatomic, copy) void (^styleAsValid)(BBTextField *);
 @property(nonatomic, copy) void (^styleAsInvalid)(BBTextField *);
 

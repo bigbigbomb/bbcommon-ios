@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FFC7C4D1666B832003BC0D1 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */; };
+		0FFC7C4E1666B832003BC0D1 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		15515F26156A92C80047D537 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15515F25156A92C80047D537 /* CoreText.framework */; };
-		15B6E1D5156A88420076C490 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */; };
-		15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */; };
 		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
 		4209C38FA316737990DEA5B2 /* DSFingerTipWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 4209C66B267BE8F96D905B38 /* DSFingerTipWindow.h */; };
@@ -128,9 +128,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel/TTTAttributedLabel.h; sourceTree = "<group>"; };
+		0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		15515F25156A92C80047D537 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.h; sourceTree = "<group>"; };
-		15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		15DAE742156C38FA00C4B09C /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 		15DAE743156C38FA00C4B09C /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
 		4209C66B267BE8F96D905B38 /* DSFingerTipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSFingerTipWindow.h; sourceTree = "<group>"; };
@@ -280,8 +280,8 @@
 		15B6E1D2156A88240076C490 /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
-				15B6E1D3156A88420076C490 /* TTTAttributedLabel.h */,
-				15B6E1D4156A88420076C490 /* TTTAttributedLabel.m */,
+				0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */,
+				0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */,
 			);
 			name = TTTAttributedLabel;
 			sourceTree = "<group>";
@@ -502,7 +502,6 @@
 				D3E325E214265749009248A5 /* UIPopoverController+BBCommon.h in Headers */,
 				D3E325E214265749009248A7 /* BBModalDialogView.h in Headers */,
 				D3E325E214265749009248AB /* BBPassThroughView.h in Headers */,
-				15B6E1D5156A88420076C490 /* TTTAttributedLabel.h in Headers */,
 				15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */,
 				D3D653B71579593B00D3A2AE /* BBTextView.h in Headers */,
 				D3D653B91579593B00D3A2AE /* BBTextViewStyle.h in Headers */,
@@ -515,6 +514,7 @@
 				92404C649AA9AEEABDEF7190 /* MF_Base32Additions.h in Headers */,
 				59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */,
 				4209C38FA316737990DEA5B2 /* DSFingerTipWindow.h in Headers */,
+				0FFC7C4D1666B832003BC0D1 /* TTTAttributedLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,7 +652,6 @@
 				D3E325E214265749009248A3 /* UIPopoverController+BBCommon.m in Sources */,
 				D3E325E214265749009248A9 /* BBModalDialogView.m in Sources */,
 				D3E325E214265749009248AD /* BBPassThroughView.m in Sources */,
-				15B6E1D6156A88420076C490 /* TTTAttributedLabel.m in Sources */,
 				15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */,
 				D3D653B81579593B00D3A2AE /* BBTextView.m in Sources */,
 				D3D653BA1579593B00D3A2AE /* BBTextViewStyle.m in Sources */,
@@ -664,6 +663,7 @@
 				924044089E1FB0E54B28FFEE /* MF_Base32Additions.m in Sources */,
 				59A68FF8E9B964BC3075D427 /* UIDevice+BBCommon.m in Sources */,
 				4209C3F78746BB33C89368F1 /* DSFingerTipWindow.m in Sources */,
+				0FFC7C4E1666B832003BC0D1 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +716,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
@@ -767,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
@@ -818,6 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
@@ -887,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";
@@ -902,6 +906,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BBCommon.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BBCommon/BBCommon-Prefix.pch";

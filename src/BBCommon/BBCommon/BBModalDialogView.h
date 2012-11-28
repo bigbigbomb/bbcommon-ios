@@ -8,9 +8,9 @@
 
 @interface BBModalDialogView : UIView
 
-@property(nonatomic, retain) UIView *contentView;
+@property(nonatomic, strong) UIView *contentView;
 
-@property(nonatomic, assign) id <BBModalDialogViewDelegate> delegate;
+@property(nonatomic, unsafe_unretained) id <BBModalDialogViewDelegate> delegate;
 
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 

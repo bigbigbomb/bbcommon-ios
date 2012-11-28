@@ -6,7 +6,7 @@
 #import "BBTextView.h"
 
 @interface BBTextView ()
-@property(nonatomic, retain) UILabel *placeholderLabel;
+@property(nonatomic, strong) UILabel *placeholderLabel;
 
 @end
 
@@ -25,7 +25,6 @@
         [self setPlaceholderStyle:placeholderStyle];
         placeholderStyle.color = [UIColor lightGrayColor];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
-        [placeholderStyle release];
 
     }
 
@@ -65,7 +64,6 @@
             self.placeholderLabel.textColor = self.placeholderStyle.color;
             self.placeholderLabel.alpha = 0;
             [self addSubview:self.placeholderLabel];
-            [placeholder release];
         }
         self.placeholderLabel.frame = CGRectMake(11, 9, self.bounds.size.width - 18, 0);
         self.placeholderLabel.text = self.placeholder;
@@ -80,10 +78,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_placeholderLabel release];
-    [_placeholderStyle release];
-    [_placeholder release];
-    [super dealloc];
 }
 
 @end

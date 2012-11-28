@@ -9,7 +9,7 @@
 
 @interface BBToolbar : UIToolbar
 
-@property(nonatomic, retain, readonly) NSArray *controls;
+@property(nonatomic, strong, readonly) NSArray *controls;
 
 + (id)newInputAccessoryToolbar:(NSArray *)controls;
 

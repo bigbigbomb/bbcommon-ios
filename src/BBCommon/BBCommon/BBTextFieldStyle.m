@@ -38,7 +38,7 @@
 }
 
 - (BBTextField *)bbTextFieldWithFrame:(CGRect)frame {
-    BBTextField *field = [[[BBTextField alloc] initWithFrame:frame andInsets:self.textInsets] autorelease];
+    BBTextField *field = [[BBTextField alloc] initWithFrame:frame andInsets:self.textInsets];
     if (_setEditingInsets)
         field.editingTextInsets = self.editingTextInsets;
     [self.textStyle applyStyleToTextField:field];
@@ -52,13 +52,4 @@
     return field;
 }
 
-- (void)dealloc {
-    [_textStyle release];
-    [_placeholderStyle release];
-    [_background release];
-    [_placeholder release];
-    [_styleAsValid release];
-    [_styleAsInvalid release];
-    [super dealloc];
-}
 @end

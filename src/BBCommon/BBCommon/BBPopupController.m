@@ -87,10 +87,6 @@
 
 - (void)dealloc {
     [_relativeView removeObserver:self forKeyPath:@"frame"];
-    [_shimButton release];
-    [_popupView release];
-    [_relativeView release];
-    [super dealloc];
 }
 
 @end

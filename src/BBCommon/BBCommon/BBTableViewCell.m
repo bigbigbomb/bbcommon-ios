@@ -50,11 +50,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [_backgroundViews release];
-    [_selectedBackgroundViews release];
-    [super dealloc];
-}
 
 
 @end

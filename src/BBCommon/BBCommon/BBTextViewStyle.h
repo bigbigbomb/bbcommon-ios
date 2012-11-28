@@ -17,9 +17,9 @@
     UIEdgeInsets _textInsets;
 }
 
-@property(nonatomic, retain) BBLabelStyle *textStyle;
-@property(nonatomic, retain) BBLabelStyle *placeholderStyle;
-@property(nonatomic, retain) UIImage *background;
+@property(nonatomic, strong) BBLabelStyle *textStyle;
+@property(nonatomic, strong) BBLabelStyle *placeholderStyle;
+@property(nonatomic, strong) UIImage *background;
 @property(nonatomic) UIEdgeInsets textInsets;
 
 @property(copy) void (^textViewCustomizer)(BBTextView *, BBTextViewStyle *);

@@ -6,7 +6,7 @@
 #import "UIView+BBCommon.h"
 
 @interface BBTableView ()
-@property(nonatomic, retain) UIView *bottomFillView;
+@property(nonatomic, strong) UIView *bottomFillView;
 - (void)updateShim;
 @end
 
@@ -46,7 +46,7 @@
         [self addObserver:self forKeyPath:@"bottomFillViewHidden" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
-        self.bottomFillView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)] autorelease];
+        self.bottomFillView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
         [self addSubview:self.bottomFillView];
     }
 
@@ -57,9 +57,6 @@
     [self removeObserver:self forKeyPath:@"bottomFillViewHidden"];
     [self removeObserver:self forKeyPath:@"contentOffset"];
     [self removeObserver:self forKeyPath:@"frame"];
-    [_bottomFillColor release];
-    [_bottomFillView release];
-    [super dealloc];
 }
 
 @end

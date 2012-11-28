@@ -35,9 +35,6 @@
     [super addSubview:view];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

@@ -39,7 +39,7 @@
 }
 
 + (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
-    UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
     [self labelWithTextCommon:label text:text font:font frame:frame lineBreakMode:lineBreakMode alignment:alignment];
     return label;
 }
@@ -167,7 +167,7 @@
 @implementation BBLabel(BBCommon)
 
 + (BBLabel *)labelWithText:(NSString *)text font:(UIFont *)font frame:(CGRect)frame lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(UITextAlignment)alignment {
-    BBLabel *label = [[[BBLabel alloc] initWithFrame:frame] autorelease];
+    BBLabel *label = [[BBLabel alloc] initWithFrame:frame];
     [self labelWithTextCommon:label text:text font:font frame:frame lineBreakMode:lineBreakMode alignment:alignment];
     return label;
 }

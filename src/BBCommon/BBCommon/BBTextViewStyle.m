@@ -16,7 +16,7 @@
 
 
 - (BBTextView *)bbTextViewWithFrame:(CGRect)frame {
-    BBTextView *view = [[[BBTextView alloc] initWithFrame:frame andInsets:self.textInsets] autorelease];
+    BBTextView *view = [[BBTextView alloc] initWithFrame:frame andInsets:self.textInsets];
     [self.textStyle applyStyleToTextView:view];
     view.backgroundColor = [UIColor colorWithPatternImage:self.background];
     view.placeholderStyle = self.placeholderStyle;
@@ -26,11 +26,4 @@
     return view;
 }
 
-- (void)dealloc {
-    [_textViewCustomizer release];
-    [_textStyle release];
-    [_placeholderStyle release];
-    [_background release];
-    [super dealloc];
-}
 @end

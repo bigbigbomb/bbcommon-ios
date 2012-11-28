@@ -10,14 +10,14 @@
 
 @interface BBTextFieldStyle : NSObject
 
-@property(nonatomic, retain) BBLabelStyle *textStyle;
-@property(nonatomic, retain) BBLabelStyle *placeholderStyle;
-@property(nonatomic, retain) UIImage *background;
+@property(nonatomic, strong) BBLabelStyle *textStyle;
+@property(nonatomic, strong) BBLabelStyle *placeholderStyle;
+@property(nonatomic, strong) UIImage *background;
 @property(nonatomic) UIControlContentHorizontalAlignment contentHorizontalAlignment;
 @property(nonatomic) UIControlContentVerticalAlignment contentVerticalAlignment;
 @property(nonatomic) UIEdgeInsets textInsets;
 @property(nonatomic) UIEdgeInsets editingTextInsets;
-@property(nonatomic, retain) NSString *placeholder;
+@property(nonatomic, strong) NSString *placeholder;
 @property(nonatomic, copy) void (^styleAsValid)(BBTextField *);
 @property(nonatomic, copy) void (^styleAsInvalid)(BBTextField *);
 

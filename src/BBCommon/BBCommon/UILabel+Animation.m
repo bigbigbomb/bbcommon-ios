@@ -32,16 +32,14 @@
 }
 
 - (void)animateNumericValueFrom:(NSNumber *)from to:(NSNumber *)to duration:(NSTimeInterval)duration formatBlock:(NSString * (^)(double))formatBlock {
-    NSString * (^formatBlockCopy)(double) = Block_copy(formatBlock);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
             from, @"from",
             to, @"to",
             [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]], @"startTime",
             [NSNumber numberWithDouble:duration], @"duration",
-            formatBlockCopy, @"formatBlock",
+            formatBlock, @"formatBlock",
             nil];
     NSTimer *scoreAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(animateScoreLabel:) userInfo:userInfo repeats:YES];
-    Block_release(formatBlockCopy);
 
     [self performBlock:^{
         [scoreAnimationTimer invalidate];

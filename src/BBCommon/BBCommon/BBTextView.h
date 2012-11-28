@@ -7,7 +7,7 @@
 @interface BBTextView : UITextView
 
 @property (nonatomic, copy) NSString *placeholder;
-@property (nonatomic, retain) BBLabelStyle *placeholderStyle;
+@property (nonatomic, strong) BBLabelStyle *placeholderStyle;
 
 
 - (id)initWithFrame:(CGRect)frame andInsets:(UIEdgeInsets)insets;

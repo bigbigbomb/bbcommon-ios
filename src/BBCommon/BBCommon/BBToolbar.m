@@ -11,7 +11,7 @@
 
 
 @interface BBToolbar ()
-@property(nonatomic, retain, readwrite) NSArray *controls;
+@property(nonatomic, strong, readwrite) NSArray *controls;
 
 @end
 
@@ -36,16 +36,13 @@
     [items insertObject:segmentedButton atIndex:0];
     segmentedControl.selectedSegmentIndex = -1;
 
-    [items addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]];
+    [items addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:toolbar action:@selector(accessoryDoneTap:)];
     button.tag = kDoneButtonTag;
     [items addObject:button];
 
     toolbar.items = items;
     toolbar.controls = controls;
-    [segmentedControl release];
-    [segmentedButton release];
-    [button release];
 
 
     // Wire up event handling for the controls
@@ -81,8 +78,6 @@
     for (id control in self.controls)
         [BBToolbar removeToolbar:control];
 
-    [_controls release];
-    [super dealloc];
 }
 
 #pragma mark - Private
@@ -238,7 +233,6 @@
         NSMutableArray *newControls = [existing.controls mutableCopy];
         [newControls removeObject:control];
         existing.controls = newControls;
-        [newControls release];
 
         [control performSelector:@selector(setInputAccessoryView:) withObject:nil];
     }
