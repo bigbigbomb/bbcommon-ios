@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FFC7C4D1666B832003BC0D1 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */; };
-		0FFC7C4E1666B832003BC0D1 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FFC7C651667C8E0003BC0D1 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */; };
 		15515F26156A92C80047D537 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15515F25156A92C80047D537 /* CoreText.framework */; };
 		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
@@ -617,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFC7C651667C8E0003BC0D1 /* TTTAttributedLabel.m in Sources */,
 				D3E325C81426569D00924841 /* BBButtonStyle.m in Sources */,
 				D3E325CB1426569D00924841 /* BBLabelStyle.m in Sources */,
 				D3E325CE1426569D00924841 /* BBQuery.m in Sources */,
@@ -663,7 +664,6 @@
 				924044089E1FB0E54B28FFEE /* MF_Base32Additions.m in Sources */,
 				59A68FF8E9B964BC3075D427 /* UIDevice+BBCommon.m in Sources */,
 				4209C3F78746BB33C89368F1 /* DSFingerTipWindow.m in Sources */,
-				0FFC7C4E1666B832003BC0D1 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

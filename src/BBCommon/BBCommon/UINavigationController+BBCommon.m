@@ -47,7 +47,10 @@
 
 - (BOOL)trySelector:(SEL)selector on:(id)targetObject withObject:(id)param1 {
     if ([targetObject respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [targetObject performSelector:selector withObject:param1];
+#pragma clang diagnostic pop
         return YES;
     }
     return NO;
@@ -55,7 +58,10 @@
 
 - (BOOL)trySelector:(SEL)selector on:(id)targetObject withObject:(id)param1 withObject:(id)param2 {
     if ([targetObject respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [targetObject performSelector:selector withObject:param1 withObject:param2];
+#pragma clang diagnostic pop
         return YES;
     }
     return NO;

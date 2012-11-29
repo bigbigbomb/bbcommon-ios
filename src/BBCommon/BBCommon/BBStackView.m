@@ -41,7 +41,10 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [self performSelector:(SEL)context withObject:change];
+    #pragma clang diagnostic pop
 }
 
 - (id)init {

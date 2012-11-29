@@ -42,22 +42,34 @@
 }
 
 - (id)tryPerformSelector:(SEL)selector {
-    if ([self respondsToSelector:selector])
+    if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         return [self performSelector:selector];
+#pragma clang diagnostic pop
+    }
     else
         return nil;
 }
 
 - (id)tryPerformSelector:(SEL)selector withObject:(id)obj {
-    if ([self respondsToSelector:selector])
+    if ([self respondsToSelector:selector]){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         return [self performSelector:selector withObject:obj];
+#pragma clang diagnostic pop
+    }
     else
         return nil;
 }
 
 - (id)tryPerformSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2 {
-    if ([self respondsToSelector:selector])
+    if ([self respondsToSelector:selector]){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         return [self performSelector:selector withObject:object1 withObject:object2];
+#pragma clang diagnostic pop
+    }
     else
         return nil;
 }
