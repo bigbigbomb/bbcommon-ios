@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FFC7C4D1666B832003BC0D1 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */; };
-		0FFC7C651667C8E0003BC0D1 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */; };
 		15515F26156A92C80047D537 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15515F25156A92C80047D537 /* CoreText.framework */; };
 		15DAE744156C38FA00C4B09C /* BB3DTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 15DAE742156C38FA00C4B09C /* BB3DTransition.h */; };
 		15DAE745156C38FA00C4B09C /* BB3DTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE743156C38FA00C4B09C /* BB3DTransition.m */; };
@@ -128,8 +126,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel/TTTAttributedLabel.h; sourceTree = "<group>"; };
-		0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = ../../lib/TTTAttributedLabel/TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		15515F25156A92C80047D537 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		15DAE742156C38FA00C4B09C /* BB3DTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB3DTransition.h; sourceTree = "<group>"; };
 		15DAE743156C38FA00C4B09C /* BB3DTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BB3DTransition.m; sourceTree = "<group>"; };
@@ -271,19 +267,9 @@
 		15B6E1D0156A88120076C490 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				15B6E1D2156A88240076C490 /* TTTAttributedLabel */,
 				4209CCD80C398D330C2F43B0 /* DSFingerTipWindow */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		15B6E1D2156A88240076C490 /* TTTAttributedLabel */ = {
-			isa = PBXGroup;
-			children = (
-				0FFC7C4B1666B832003BC0D1 /* TTTAttributedLabel.h */,
-				0FFC7C4C1666B832003BC0D1 /* TTTAttributedLabel.m */,
-			);
-			name = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
 		4209CCD80C398D330C2F43B0 /* DSFingerTipWindow */ = {
@@ -514,7 +500,6 @@
 				92404C649AA9AEEABDEF7190 /* MF_Base32Additions.h in Headers */,
 				59A6854B78A2817B67767D62 /* UIDevice+BBCommon.h in Headers */,
 				4209C38FA316737990DEA5B2 /* DSFingerTipWindow.h in Headers */,
-				0FFC7C4D1666B832003BC0D1 /* TTTAttributedLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +602,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FFC7C651667C8E0003BC0D1 /* TTTAttributedLabel.m in Sources */,
 				D3E325C81426569D00924841 /* BBButtonStyle.m in Sources */,
 				D3E325CB1426569D00924841 /* BBLabelStyle.m in Sources */,
 				D3E325CE1426569D00924841 /* BBQuery.m in Sources */,
