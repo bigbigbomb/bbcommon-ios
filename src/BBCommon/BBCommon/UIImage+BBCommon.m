@@ -223,7 +223,7 @@
     CGFloat changeRatio = 1 - (self.size.width > self.size.height ? (self.size.width - size) / self.size.width : (self.size.height - size) / self.size.height);
     CGRect rect = CGRectMake(0, 0, self.size.width > self.size.height ? size : self.size.width * changeRatio, self.size.width > self.size.height ? self.size.height * changeRatio : size);
 
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, [UIScreen mainScreen].scale);
     [self drawInRect: rect];
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
